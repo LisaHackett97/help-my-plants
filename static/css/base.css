@@ -10,7 +10,7 @@
   }
 
   body {
-      height: cal(100vh - 100px);
+    height: calc(100vh - 164px);
     
   }
   
@@ -51,6 +51,11 @@
   .list-inline-item:hover {
       text-decoration: underline;
   }
+  
+  /* to push content under header */
+  .content-container{
+    padding-top: 100px;
+}
 
   /* main heading styles */
   .text-heading {
@@ -120,9 +125,7 @@
  }
 
  
-/* @media (min-width: 992px) { 
-     
-} */
+
 
 
  /* // Small devices (landscape phones, 576px and up) */
