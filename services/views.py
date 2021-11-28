@@ -10,7 +10,7 @@ def all_services(request):
     services = Service.objects.all()
 
     context = {
-        'products': products,
+        'services': services,
     }
 
     return render(request, 'services/services.html', context)
