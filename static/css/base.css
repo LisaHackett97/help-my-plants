@@ -90,7 +90,8 @@
     font-weight: 500;
 }
 
-.btn:hover {
+.btn:hover,
+span.text-content:hover {
    
     color: var(--color2);
     background-color: var(--main-text-color);
