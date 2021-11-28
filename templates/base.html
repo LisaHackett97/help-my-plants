@@ -2,88 +2,91 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-{% block meta %}
+    {% block meta %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Enter your description here"/>
-{% endblock %}
+    <meta name="Description" content="Enter your description here" />
+    {% endblock %}
 
-{% block extra_meta %}
-{% endblock %}
+    {% block extra_meta %}
+    {% endblock %}
 
-{% block corecss %}
+    {% block corecss %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-{% endblock %}
+    {% endblock %}
 
-{% block extra_css %}
-{% endblock %}
+    {% block extra_css %}
+    {% endblock %}
 
-{% block corejs %}
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    {% block corejs %}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-{% endblock %}
+    {% endblock %}
 
-{% block extra_js %}
-{% endblock %}
+    {% block extra_js %}
+    {% endblock %}
 
-<title>Help My Plants {% block  extra_title%}{% endblock %}</title>
+    <title>Help My Plants {% block extra_title%}{% endblock %}</title>
 </head>
+
 <body>
-    <header class="container-fluid fixed-top">
-        <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
+    <header class="container-fluid header-container">
 
-
-    <div class="col-12 col-md-4 my-auto py-1 py-md-0 text-center text-md-left">
-        <a href="{% url 'home' %}" class="nav-link logo-link"></a>
-        <h2 class="logo-font text-heading my-0"><strong>Help</strong>my Plants</h2>
+<div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
+    <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-lg-left">
+        <a href="{% url 'home' %}" class="nav-link main-logo-link">
+            <h2 class="text-heading">Help My Plants <i class="fas fa-seedling"></i></h2>
+        </a>
     </div>
-
-
-    <!-- <div class="col-12 col-md-4 my-auto py-1 py-md-0"></div> -->
-    <div class="col-12 col-md-4 my-auto py-1 py-md-0">
-        <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-            <li class="list-inline-item dropdown">
-                <!-- <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="text-center">
-                        <div><i class="fas fa-user fa-lg"></i></div>
-                        <p class="my-0">My Account</p>
-                    </div>
-                </a> -->
-                <div class="dropdown-menu border-0" aria-labelledby="user-options">
-                    {% if request.user.is_authenticated %}
-                        {% if request.user.is_superuser %}
-                            <a href="" class="dropdown-item">Services Management</a>
-                        {% endif %}
-                        <a href="" class="dropdown-item">Services</a>
-                        <a href="" class="dropdown-item">My Profile</a>
-                        <a href="" class="dropdown-item">Find out more</a>
-                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                    {% else %}
-                        <a href="" class="dropdown-item">Home</a>
-                        <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                        <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-                    {% endif %}
-                </div>
-            </li>
-
-            
-        </ul>
+    
+    <div class="col-12 col-lg-8 my-auto py-1 py-lg-0 navbar-collapse">
+        <ul class="list-inline  text-center text-lg-right my-0">
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                    <li class="list-inline-item text-content">content Management</li>
+                {% endif %}
+                <li class="list-inline-item"><a href="" class="text-content">Services</a></li>
+                <li class="list-inline-item"><a href="" class="text-content">My Profile</a></li>
+                <li class="list-inline-item"><a href="" class="text-content">Find out more</a></li>
+                <li class="list-inline-item"><a href="{% url 'account_logout' %}" class="text-content">Logout</a></li>
+            {% else %}
+                <li class="list-inline-item"><a href="" class="text-content">Home</a></li>
+                <li class="list-inline-item"><a href="{% url 'account_signup' %}" class="text-content">Register</a></li>
+                <li class="list-inline-item"><a href="{% url 'account_login' %}" class="text-content">Login</a></li>
+            {% endif %}
+        </ul>       
     </div>
 </div>
+
+   
+<!-- for collapsed menu on medium and down screens -->
+<div class="row d-block d-lg-none">
+    <nav class="navbar navbar-expand-lg bg-mobile-nav w-100 navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>       
+        {% include 'includes/main-nav.html' %}
+    </nav>
+</div>
+
     </header>
 
     {% if messages %}
-        <div class="message-container"></div>
+    <div class="message-container"></div>
     {% endif %}
 
     {% block page_header %}
@@ -96,4 +99,5 @@
     {% endblock %}
 
 </body>
+
 </html>

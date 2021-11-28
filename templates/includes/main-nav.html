@@ -1,0 +1,17 @@
+<div class="collapse navbar-collapse" id="main-nav">
+    <ul class="navbar-nav w-auto mx-auto">
+        {% if request.user.is_authenticated %}
+        {% if request.user.is_superuser %}
+            <li class="list-inline-item text-content py-3">content Management</li>
+        {% endif %}
+        <li class="list-inline-item py-2"><a href="" class="text-content">Services</a></li>
+        <li class="list-inline-item py-2"><a href="" class="text-content">My Profile</a></li>
+        <li class="list-inline-item py-2"><a href="" class="text-content">Find out more</a></li>
+        <li class="list-inline-item py-2"><a href="{% url 'account_logout' %}" class="text-content">Logout</a></li>
+    {% else %}
+        <li class="list-inline-item py-2"><a href="" class="text-content">Home</a></li>
+        <li class="list-inline-item py-2"><a href="{% url 'account_signup' %}" class="text-content">Register</a></li>
+        <li class="list-inline-item py-2"><a href="{% url 'account_login' %}" class="text-content">Login</a></li>
+    {% endif %}
+    </ul>
+</div>
