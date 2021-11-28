@@ -4,7 +4,7 @@
         {% if request.user.is_superuser %}
             <li class="list-inline-item text-content py-3">Site Admin</li>
         {% endif %}
-        <li class="list-inline-item py-2"><a href="" class="text-content">Services</a></li>
+        <li class="list-inline-item py-2"><a href="{% url 'services' %}" class="text-content">Services</a></li>
         <li class="list-inline-item py-2"><a href="" class="text-content">My Profile</a></li>
         <li class="list-inline-item py-2"><a href="" class="text-content">Find out more</a></li>
         <li class="list-inline-item py-2"><a href="{% url 'account_logout' %}" class="text-content">Logout</a></li>
