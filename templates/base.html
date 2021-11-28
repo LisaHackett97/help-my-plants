@@ -39,7 +39,37 @@
 </head>
 <body>
     <header class="container-fluid fixed-top">
+<div class="row">
+    <div class="col-12 col-md-4 my-auto py-1 py-md-0 text-center text-md-left">
+        <a href="{% url 'home' %}" class="nav-link logo-link"></a>
+        <h2 class="logo-font text-heading my-0"><strong>Help</strong>my Plants</h2>
+    </div>
+    <!-- <div class="col-12 col-md-4 my-auto py-1 py-md-0"></div> -->
+    <div class="col-12 col-md-4 my-auto py-1 py-md-0">
+        <ul class="list-inline list-unstyled text-center text-lg-right my-0">
+            <li class="list-inline-item dropdown">
 
+                <div class="dropdown-menu border-0" aria-labelledby="user-options">
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.is_superuser %}
+                            <a href="" class="dropdown-item">Services Management</a>
+                        {% endif %}
+                        <a href="" class="dropdown-item">Services</a>
+                        <a href="" class="dropdown-item">My Profile</a>
+                        <a href="" class="dropdown-item">Find out more</a>
+                        <a href="{% url account_logout %}" class="dropdown-item">Logout</a>
+                    {% else %}
+                        <a href="" class="dropdown-item">Home</a>
+                        <a href="{% url account_signup %}" class="dropdown-item">Register</a>
+                        <a href="{% url account_login %}" class="dropdown-item">Login</a>
+                    {% endif %}
+                </div>
+            </li>
+
+            
+        </ul>
+    </div>
+</div>
     </header>
 
     {% if messages %}
