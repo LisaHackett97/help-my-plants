@@ -10,11 +10,11 @@
   }
 
   body {
-      height: cal(100vh - 164px);
+      height: cal(100vh - 100px);
     
   }
   
-/* nav bar stylings */
+/* header/nav bar stylings */
 
 /* Mobile icon */
   .fas.fa-bars {
@@ -26,7 +26,6 @@
     background-color: var(--color2);
 
 }
-
 .header-container {
     padding: 10px;
      background-color: var(--color2);
@@ -35,17 +34,27 @@
      right: 0;
      left: 0;
      z-index: 1000;
-     color: var(--heading);
+     color: var(--headers);
 }
   .main-logo-link{
-    color: var(--heading);
+    color: var(--headers);
     font-family: 'Hind', sans-serif;
-    font-size:2rem
+    font-size:12rem
+  }
+
+  h2.text-heading:hover,
+  .list-inline-item:hover,
+  .list-inline-item a:hover {
+      color: var(--color1);
+  }
+
+  .list-inline-item:hover {
+      text-decoration: underline;
   }
 
   /* main heading styles */
   .text-heading {
-      color: var(--heading);
+      color: var(--headers);
       font-family: 'Hind', sans-serif;
       font-size:2rem;
 
@@ -93,7 +102,7 @@
 /* image sections for parallax effect */
 .para-1, .para-2 {
     width: 100%;
-    height: 600px;
+    height: 500px;
     background:url(/media/landing-pg-plant-1.jpg);
     background-size: cover;
     background-attachment: fixed;
@@ -110,20 +119,10 @@
 }
  }
 
- /* from BOUTIQUE ADO lessons */
-@media (min-width: 992px) { 
-        .header-container {
-           padding: 10px;
-            background-color: var(--color2);
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            z-index: 1000;
-            color: var(--heading);
-        
-        }
-}
+ 
+/* @media (min-width: 992px) { 
+     
+} */
 
 
  /* // Small devices (landscape phones, 576px and up) */

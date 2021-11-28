@@ -2,7 +2,7 @@
     <ul class="navbar-nav w-auto mx-auto">
         {% if request.user.is_authenticated %}
         {% if request.user.is_superuser %}
-            <li class="list-inline-item text-content py-3">content Management</li>
+            <li class="list-inline-item text-content py-3">Site Admin</li>
         {% endif %}
         <li class="list-inline-item py-2"><a href="" class="text-content">Services</a></li>
         <li class="list-inline-item py-2"><a href="" class="text-content">My Profile</a></li>
