@@ -36,11 +36,7 @@
      z-index: 1000;
      color: var(--headers);
 }
-  .main-logo-link{
-    color: var(--headers);
-    font-family: 'Hind', sans-serif;
-    font-size:12rem
-  }
+
 
   h2.text-heading:hover,
   .list-inline-item:hover,
@@ -58,6 +54,10 @@
 }
 
   /* main heading styles */
+
+  h3.text-heading {
+      font-size: 3.5rem;
+  }
   .text-heading {
       color: var(--headers);
       font-family: 'Hind', sans-serif;
@@ -116,6 +116,11 @@
     background-position-x: 45%;
 }
 
+/* Services Page */
+.card-img-top{
+    object-fit: contain;
+    object-position: center center;
+}
 /* Media Queries */
 
 @media (min-width: 1200px) {
