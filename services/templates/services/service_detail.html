@@ -10,36 +10,29 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid content-container">
-    <div class="row">
-        <div class="col text-center mt3">
-            <h3 class="text-heading pt-4">Services</h3>
-            <hr class="w-50 mb-1">
-        </div>
-    </div>
 
     <div class="row">
         <div class="services-container col-10 offset-1">
             <div class="row mt-1 mb-2"></div>
             <div class="row">
-                {% for service in services %}
+                
                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
                     <div class="card-deck">
                         <div class="card">
 
-                          {% if service.image.url %}
-                          <a href="{% url 'service_detail' service.id %}">
+                          {% if service.image %}
+                          <a href="{{ service.image.url }}" target="_blank">
                             <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.name }}">
                           </a>
                           {% else %}
-                          <a href="{% url 'service_detail' service.id %}">
+                          <a href="">
                             <img src="{{ MEDIA_URL }}no-image.png" class="card-img-top" alt="{{ service.name }}">
                           </a>
                           {% endif %}
 
                           <div class="card-body">
                             <h5 class="card-title">{{ service.name}}</h5>
-                            <!-- <p class="card-text">{{ service.description}}</p> -->
+                            
                           </div>
                           <div class="card-footer">
                             <small class="text-muted">{{ service.price }}</small>
@@ -47,30 +40,10 @@
                           </div>
                         </div>  
                     </div>  
+                    <p class="card-text">{{ service.description }}</p>
                     <!-- end of card desk -->
                 </div>
-                <!-- code for the forloop below from Boutique Ado CI lessons -->
-                {% if forloop.counter|divisibleby:1 %}
-                <div class="col-12 d-sm-none mb-5">
-                    <hr>
-                </div>
-            {% endif %}                        
-            {% if forloop.counter|divisibleby:2 %}
-                <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
-                    <hr>
-                </div>
-            {% endif %}
-            {% if forloop.counter|divisibleby:3 %}
-                <div class="col-12 d-none d-lg-block d-xl-none mb-5">
-                    <hr>
-                </div>
-            {% endif %}
-            {% if forloop.counter|divisibleby:4 %}
-                <div class="col-12 d-none d-xl-block mb-5">
-                    <hr>
-                </div>
-            {% endif %}
-                {% endfor %}
+            
             </div>
         </div>
     </div>
