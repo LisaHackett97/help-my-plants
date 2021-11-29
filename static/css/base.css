@@ -58,13 +58,18 @@
   h3.text-heading {
       font-size: 3.5rem;
   }
-  .text-heading {
+
+.text-heading {
       color: var(--headers);
       font-family: 'Hind', sans-serif;
       font-size:2rem;
-
 }
 
+.text-heading2 {
+    color: var(--headers);
+    font-family: 'Hind', sans-serif;
+    font-size:1rem;
+}
 /* content styles */
 .text-content {
     color: var(--main-text-color);

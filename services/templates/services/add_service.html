@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid header-container">
+    <div class="row">
+      <div class="col-12 col-md-6">
+          <hr>
+          <h2 class="text-heading mb-4">Service Admin</h2>
+          <h5 class="text-heading2">Add a Service</h5>
+          <hr>
+      </div>
+    </div>
+  <div class="row">
+      <div class="col-12 col-md-6">
+          <form action="POST" ACTION="{% url 'add_service' %}" class="form mb-2" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <div class="text-right">
+                    <a href="{% url 'services' %}" class="btn">Cancel</a>
+                    <button class="btn" type="submit">Add a Service</button>
+                </div>
+        </form>
+      </div>
+  </div>
+  
+  </div>
+{% endblock %}
