@@ -30,7 +30,17 @@ def service_detail(request, service_id):
 
 def add_service(request):
     """ Add a service to the site """
-    form = ServiceForm()
+    if request.method == 'POST':
+        form = ServiceForm(request.Post, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added a new service')
+            return redirect(reverse('add_service'))
+        else:
+            messages.error(request, 'Failed to add service. Please check form is valid')
+    else:
+        form = ServiceForm()
+    
     template = 'services/add_service.html'
     context = {
         'form': form
