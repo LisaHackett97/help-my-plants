@@ -34,10 +34,10 @@
                     <table class="table table-sm table-borderless">
                         <thead>
                         <tr>
-                            <th scope="col" class="text-center table-heading">Service Info</th>
+                            <th scope="col" class="text-center table-heading p-3">Service Info</th>
                             <th scope="col" class="text-center table-heading"></th>
-                            <th scope="col" class="text-center table-heading">Time Requested</th>
-                            <th scope="col" class="text-center table-heading">Price</th>
+                            <th scope="col" class="text-center table-heading p-3">Time Requested</th>
+                            <th scope="col" class="text-right table-heading p-3">Price</th>
                         </tr>
                     </thead>
 
@@ -52,9 +52,15 @@
                         <td class="p-1 w-25 align-middle">
                             <p class="my-0 text-center text-content"><strong>{{ item.service.time_slot }}</strong></p>
                         </td>
+                        
                         <td class="p-3 w-25 align-middle">
-                            <p class="my-0 text-center text-content"><strong> €{{ item.service.price }}</strong></p>
+                            <p class="my-0 text-content text-right"><strong> €{{ item.service.price }}</strong></p>
                         </td>
+                        <td class="p-3 w-25 align-middle">
+                            
+                            <a class="remove-item text-danger" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                        </td>
+                        
 
                     </tr>
                     {% endfor %}
@@ -94,4 +100,24 @@
    
 </div>
 
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+  
+
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/bag/remove/${itemId}`;
+        var data = {'csrfmiddlewaretoken': csrfToken, };
+
+        $.post(url, data)
+         .done(function() {
+             location.reload();
+         });
+    })
+</script>
 {% endblock %}
