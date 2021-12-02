@@ -46,7 +46,14 @@ INSTALLED_APPS = [
     'home',
     'services',
     'checkout',
+
+    # other
+    'crispy-forms',
 ]
+
+# use this in setting 
+# per https://dontrepeatyourself.org/post/django-forms-django-crispy-forms/
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
