@@ -51,8 +51,6 @@ INSTALLED_APPS = [
     'crispy-forms',
 ]
 
-# use this in setting 
-# per https://dontrepeatyourself.org/post/django-forms-django-crispy-forms/
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
@@ -82,6 +80,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': [
+                'crispy-forms.templatetags.crispy_forms_tags',
+                'crispy-forms.templatetags.crispy_forms_field',
+
+            ]
         },
     },
 ]
