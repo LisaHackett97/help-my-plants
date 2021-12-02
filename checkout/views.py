@@ -20,5 +20,15 @@ def checkout(request):
     return render(request, template, context)
 
 
+def add_to_cart(request):
+    """ Add a service to the Cart """
+    redirect_url = request.POST.get('redirect_url')
+    cart = request.session.get('cart', {})
+
+    request.session['cart'] = cart
+    print(request.session['cart'])
+    return redirect(redirect_url)
+
+
 
 

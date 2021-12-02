@@ -33,7 +33,7 @@
         <p class="text-content">Time Requested: {{ service.time_slot }}</p>
       </div>
 
-      <form action="POST" class="form" action="">
+      <form action="POST" class="form" action="{% url 'add_to_cart' service.id %}">
         {% csrf_token %}
         <div class="form-row">
           <div class="col-12">
