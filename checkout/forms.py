@@ -6,7 +6,7 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = ('customer_name', 'email', 'phone_number',
-                  'time_slot',)
+                  'time_slot', 'order_total',)
 
     def __init__(self, *args, **kwargs):
         """

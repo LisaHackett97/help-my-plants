@@ -32,9 +32,13 @@
             <p class="text-muted">Please fill out the form below to complete your order</p>
             <form action="{% url 'checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
-                {{ form| crispy}}
-                {{ order_form.phone_number }}
-                {{ order_form.email }}
+                {{ form | crispy}}
+                {{ order_form.customer_name | as_crispy_field }}
+                {{ order_form.phone_number | as_crispy_field }}
+                {{ order_form.email | as_crispy_field }}
+                {{ order_form.time_slot | as_crispy_field }}
+                {{ order_form.order_total | as_crispy_field }}
+               
             </form>
         </div>
     </div>

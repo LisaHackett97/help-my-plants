@@ -47,8 +47,8 @@ INSTALLED_APPS = [
     'services',
     'checkout',
 
-    # other
-    'crispy-forms',
+    # Other
+    'crispy_forms',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -79,11 +79,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',  # required by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
             'builtins': [
-                'crispy-forms.templatetags.crispy_forms_tags',
-                'crispy-forms.templatetags.crispy_forms_field',
-
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
             ]
         },
     },
