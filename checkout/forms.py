@@ -19,3 +19,6 @@ class OrderForm(forms.ModelForm):
             'phone_number': 'Phone Number',
             'time_slot': 'Time Chosen',
             }
+
+       
+       
