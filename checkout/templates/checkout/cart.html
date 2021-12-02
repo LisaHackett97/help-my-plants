@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
 
 {% block page_header %}
-<div class="container-fluid header-containe">
+<div class="container-fluid header-container">
     <div class="row">
         <div class="col"></div>
     </div>
@@ -11,12 +15,13 @@
 {% endblock %}
 
 {% block content %}
-Hello this is the cart
+
 <div class="container content-container">
     <div class="row">
-        <div class="col">
+        <div class="col text-center">
             <hr>
             <h2 class="text-heading mb-4">Cart</h2>
+            <hr>
           
         </div>
     </div>
@@ -29,10 +34,10 @@ Hello this is the cart
                     <table class="table table-sm table-borderless">
                         <thead>
                         <tr>
-                            <th scope="col"></th>
-                            <th scope="col" class="text-center">Service</th>
-                            <th scope="col" class="text-center">Time Requested</th>
-                            <th scope="col" class="text-center">Price</th>
+                            <th scope="col" class="text-center table-heading">Service Info</th>
+                            <th scope="col" class="text-center table-heading"></th>
+                            <th scope="col" class="text-center table-heading">Time Requested</th>
+                            <th scope="col" class="text-center table-heading">Price</th>
                         </tr>
                     </thead>
 
@@ -42,13 +47,13 @@ Hello this is the cart
                             <img class="img-fluid rounded" src="{{ item.service.image.url }}">
                         </td>
                         <td class="p-1 w-25 align-middle">
-                            <p class="my-0 text-center"><strong>{{ item.service.name }}</strong></p>
-                        </td>
+                            <p class="my-0 text-center text-content"><strong>{{ item.service.name }}</strong></p>
+                            <p class="my-0 text-center text-content">{{ item.service.description }}</p>
                         <td class="p-1 w-25 align-middle">
-                            <p class="my-0 text-center"><strong>{{ item.service.time_slot }}</strong></p>
+                            <p class="my-0 text-center text-content"><strong>{{ item.service.time_slot }}</strong></p>
                         </td>
                         <td class="p-3 w-25 align-middle">
-                            <p class="my-0 text-center"><strong> €{{ item.service.price }}</strong></p>
+                            <p class="my-0 text-center text-content"><strong> €{{ item.service.price }}</strong></p>
                         </td>
 
                     </tr>
