@@ -16,11 +16,30 @@ Hello this is the cart
     <div class="row">
         <div class="col">
             <hr>
-            <h2 class="text-heading mb-4">Checkout</h2>
+            <h2 class="text-heading mb-4">Cart</h2>
+            <hr>
             <a href="#">Add To Cart</a>
             <hr>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col">
+            {% if cart_items %}
+                <div class="table-responsive rounded"></div>
+            {% else %}
+                <p class="mb">Your cart is empty</p>
+                <a href="{% url 'services' %}" class="btn btn-lg">
+                    <span class="icon">
+                        <i class="fas fa-chevron-circle-left"></i>
+                    </span>
+                    <span class="text-ippercase">Keep shopping</span>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+   
 </div>
 
 {% endblock %}
