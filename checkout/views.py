@@ -5,6 +5,10 @@ from .forms import OrderForm
 from .models import Order, OrderItem
 from services.models import Service
 
+def view_cart(request):
+    """ To render cart details """
+
+    return render (request, 'checkout/cart.html')
 
 def checkout(request):
     order_form = OrderForm()
@@ -14,3 +18,7 @@ def checkout(request):
     }
 
     return render(request, template, context)
+
+
+
+
