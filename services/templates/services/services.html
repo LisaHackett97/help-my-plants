@@ -28,13 +28,14 @@
                         <div class="card">
 
                           {% if service.image.url %}
-                          <a href="{% url 'service_detail' service.id %}">
-                            <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.name }}">
-                          </a>
+                            <a href="{% url 'service_detail' service.id %}">
+                                <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.name }}">
+                            </a>
                           {% else %}
-                          <a href="{% url 'service_detail' service.id %}">
-                            <img src="{{ MEDIA_URL }}no-image.png" class="card-img-top" alt="{{ service.name }}">
-                          </a>
+                            <a href="{% url 'service_detail' service.id %}">
+                                <img src="{{ MEDIA_URL }}no-image.png" class="card-img-top" alt="{{ service.name }}">
+                            </a>
+                         
                           {% endif %}
 
                           <div class="card-body">
@@ -50,26 +51,26 @@
                     <!-- end of card desk -->
                 </div>
                 <!-- code for the forloop below from Boutique Ado CI lessons -->
-                {% if forloop.counter|divisibleby:1 %}
-                <div class="col-12 d-sm-none mb-5">
-                    <hr>
-                </div>
-            {% endif %}                        
-            {% if forloop.counter|divisibleby:2 %}
-                <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
-                    <hr>
-                </div>
-            {% endif %}
-            {% if forloop.counter|divisibleby:3 %}
-                <div class="col-12 d-none d-lg-block d-xl-none mb-5">
-                    <hr>
-                </div>
-            {% endif %}
-            {% if forloop.counter|divisibleby:4 %}
-                <div class="col-12 d-none d-xl-block mb-5">
-                    <hr>
-                </div>
-            {% endif %}
+                    {% if forloop.counter|divisibleby:1 %}
+                        <div class="col-12 d-sm-none mb-5">
+                            <hr>
+                        </div>
+                    {% endif %}                        
+                    {% if forloop.counter|divisibleby:2 %}
+                        <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-5">
+                            <hr>
+                     </div>
+                    {% endif %}
+                    {% if forloop.counter|divisibleby:3 %}
+                        <div class="col-12 d-none d-lg-block d-xl-none mb-5">
+                         <hr>
+                     </div>
+                    {% endif %}
+                    {% if forloop.counter|divisibleby:4 %}
+                        <div class="col-12 d-none d-xl-block mb-5">
+                            <hr>
+                        </div>
+                    {% endif %}
                 {% endfor %}
             </div>
         </div>
