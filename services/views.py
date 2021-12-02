@@ -36,7 +36,8 @@ def add_service(request):
         form = ServiceForm(request.POST, request.FILES)
         if form.is_valid():
             service = form.save()
-            return HttpResponse("data submitted successfully")
+            messages.success(request, 'Successfully added service!')
+            return redirect(reverse('service_detail', args=[service.id]))
         else:
             messages.error(request, 'Failed to add service. Please ensure the form is valid.')
     else:

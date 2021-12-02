@@ -33,7 +33,7 @@
         <p class="text-content">Time Requested: {{ service.time_slot }}</p>
       </div>
 
-      <form action="POST" class="form" action="{% url 'add_to_cart' service.id %}">
+      <form method="POST" class="form" action="{% url 'add_to_cart' service.id %}">
         {% csrf_token %}
         <div class="form-row">
           <div class="col-12">
@@ -48,9 +48,10 @@
         <input type="hidden" name="redirect_url" value="{{ request.path }}">
       </div>
       </form>
+
       
       
-      <a href="{% url 'services' %}" class="btn my-1 mx-2">
+      <!-- <a href="{% url 'services' %}" class="btn my-1 mx-2">
         <span class="icon">
             <i class="fas fa-chevron-left"></i>
         </span>
@@ -61,7 +62,7 @@
         <i class="fas fa-cash-register"></i>
       </span>
       <span class="text-content">Check Out</span>
-  </a>
+  </a> -->
     </div>
   </div>
 </div>

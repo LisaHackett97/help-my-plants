@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 
 from .forms import OrderForm
@@ -20,8 +20,9 @@ def checkout(request):
     return render(request, template, context)
 
 
-def add_to_cart(request):
+def add_to_cart(request, item_id):
     """ Add a service to the Cart """
+    service = get_object_or_404(Service, pk=item_id)
     redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
 
