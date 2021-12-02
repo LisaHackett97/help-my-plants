@@ -35,3 +35,20 @@ def add_to_cart(request, item_id):
     request.session['cart'] = cart
 
     return redirect(redirect_url)
+
+
+# https://stackoverflow.com/questions/60859234/remove-an-unique-item-from-shopping-cart-in-django
+def remove_from_cart(request, item_id):
+    """ Add a service to the Cart """
+    cart = request.session.get("cart", {})
+    id_to_be_removed = request.POST.get(item_id)
+    if id_to_be_removed in cart:
+        del cart[id_to_be_removed]  # remove the id
+        request.session["cart"] = cart
+
+# return
+
+
+    return redirect(reverse('view_cart'))
+
+
