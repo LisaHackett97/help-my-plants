@@ -17,9 +17,7 @@ Hello this is the cart
         <div class="col">
             <hr>
             <h2 class="text-heading mb-4">Cart</h2>
-            <hr>
-            <a href="#">Add To Cart</a>
-            <hr>
+          
         </div>
     </div>
 
@@ -27,7 +25,54 @@ Hello this is the cart
         <div class="col">
             {% if cart_items %}
                 <div class="table-responsive rounded">
-                    {{ cart_items }}
+                    
+                    <table class="table table-sm table-borderless">
+                        <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col" class="text-center">Service</th>
+                            <th scope="col" class="text-center">Time Requested</th>
+                            <th scope="col" class="text-center">Price</th>
+                        </tr>
+                    </thead>
+
+                    {% for item in cart_items %}
+                    <tr>
+                        <td class="p-1 w-25">
+                            <img class="img-fluid rounded" src="{{ item.service.image.url }}">
+                        </td>
+                        <td class="p-1 w-25 align-middle">
+                            <p class="my-0 text-center"><strong>{{ item.service.name }}</strong></p>
+                        </td>
+                        <td class="p-1 w-25 align-middle">
+                            <p class="my-0 text-center"><strong>{{ item.service.time_slot }}</strong></p>
+                        </td>
+                        <td class="p-3 w-25 align-middle">
+                            <p class="my-0 text-center"><strong> €{{ item.service.price }}</strong></p>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td colspan="5" class="text-right">
+                            <a href="{% url 'services' %}" class="btn">
+                                <span class="icon">
+                                    <i class="fas fa-chevron-circle-left"></i>
+                                </span>
+                                <span class="text-uppercase">Keep shopping</span>
+                            </a>
+                            <a href="" class="btn">
+                                <span>Checkout</span>
+                                <span class="icon">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </a>
+                            
+                        </td>
+                    </tr>
+
+                    </table>
                 </div>
             {% else %}
                 <p class="mb">Your cart is empty</p>
