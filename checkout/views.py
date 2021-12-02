@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 
 from .forms import OrderForm
+from .models import Order, OrderItem
+from services.models import Service
 
 
 def checkout(request):
