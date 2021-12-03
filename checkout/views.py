@@ -17,18 +17,22 @@ def add_to_cart(request, item_id):
     User can only add one item for each service to cart
     They are redirected to cart
     """
-       
+    service = Service.objects.get(pk=item_id)   
     cart = request.session.get('cart', {})
     cart[item_id] = cart.get(item_id)
     request.session['cart'] = cart
+    messages.success(request, f'Added {service.name} to your order')
     return redirect(reverse('view_cart'))
 
 
 def remove_from_cart(request, item_id):
     """ Remove an item from the cart """
     cart = request.session.get('cart', {})
+    service = Service.objects.get(pk=item_id) 
     cart.pop(item_id)
     request.session['cart'] = cart
+    messages.success(
+                request, f'Removed {service.name} from your cart')
     return redirect(reverse('view_cart'))
 
 

@@ -128,10 +128,37 @@ span.text-content:hover {
     object-position: center center;
 }
 
-
+/* Cart */
 .remove-item {
     cursor: pointer;
 }
+
+/* Toasts and Messages */
+
+.message-container {
+    position:fixed;
+    top: 75px;
+    right: 55px;
+    z-index: 9999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-success {
+    color: var(--headers);
+    background-color: var(--color1);
+}
+
+.toast-error {
+    /* color: var(--color2); */
+    color: #df2323;
+}
+
+
+
+
 /* Media Queries */
 
 @media (min-width: 1200px) {
