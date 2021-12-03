@@ -62,7 +62,19 @@
                 {% endif %}
                 <li class="list-inline-item pl-1"><a href="{% url 'services' %}" class="text-content"><div class="text-center"><i class="fas fa-store"></i> </div>Services</a></li>
                 <li class="list-inline-item pl-1"><a href="" class="text-content"><div class="text-center"><i class="far fa-user-circle"></i></div>My Profile</a></li>
-                <li class="list-inline-item pl-1"><a href="{% url 'view_cart' %}" class="text-content"><div class="text-center"><i class="fas fa-shopping-cart"></i></div>cart</a></li>
+
+                <li class="list-inline-item pl-1">
+                    <a class="{% if service_count %}text-info font-weight-bold{% else %}text-content{% endif %} nav-link" href="{% url 'view_cart' %}">
+                        <div class="text-center"><i class="fas fa-shopping-cart"></i></div>
+                        <div class="text-center">
+                            {% if service_count %}
+                            € {{ total|floatformat:2 }}
+                            {% else %}
+                               Nothing in cart
+                            {% endif %}
+                        </div>                 
+                    </a>
+                </li>
                 <li class="list-inline-item pl-1"><a href="" class="text-content"><div class="text-center"><i class="fas fa-info-circle"></i></div>Find out more</a></li>
                 <li class="list-inline-item pl-1"><a href="{% url 'account_logout' %}" class="text-content"><div class="text-center"><i class="fas fa-sign-out-alt"></i></div>Logout</a></li>
             {% else %}
@@ -73,7 +85,6 @@
         </ul>       
     </div>
 </div>
-
    
 <!-- for collapsed menu on medium and down screens -->
 <div class="row d-block d-lg-none">

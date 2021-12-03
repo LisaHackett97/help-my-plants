@@ -22,13 +22,29 @@
             <hr>
             <h2 class="text-heading mb-4">Cart</h2>
             <hr>
-
         </div>
     </div>
 
     <div class="row">
         <div class="col">
             {% if cart_items %}
+            <div class="row">
+                <div class="col text-right">
+                    <a href="{% url 'services' %}" class="btn btn-cart">
+                        <span class="icon">
+                            <i class="fas fa-chevron-circle-left"></i>
+                        </span>
+                        <span>Back to Services</span>
+                    </a>
+                    <a href="" class="btn btn-cart">
+                        <span>Checkout</span>
+                        <span class="icon">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </a>
+                    <h4 class="mt-4 table-heading"><strong>Total of Your Cart: € {{ total|floatformat:2 }}</strong>  </h4>
+                </div>
+            </div>
             <div class="table-responsive">
 
                 <table class="table table-sm table-borderless">
@@ -44,7 +60,7 @@
 
                     {% for item in cart_items %}
                     <tr>
-                        <td class="p-3 w-25">
+                        <td class="p-3 w-25 align-middle">
                             <img class="img-fluid rounded" src="{{ item.service.image.url }}">
                         </td>
                         <td class="py-3 align-middle">
@@ -53,28 +69,24 @@
                         <td class="py-3 align-middle">
                             <p class="text-center text-content my-0"><strong>{{ item.service.time_slot }}</strong></p>
                         </td>
-
                         <td class="py-3 align-middle">
                             <p class="text-content text-right my-0"><strong> €{{ item.service.price }}</strong></p>
-                        </td>
-                                             
+                        </td>                                             
                         <td class="p-3 align-middle">
                             <a href="{% url 'remove_from_cart' item.item_id %}"><span class="icon"><i class="fas fa-trash"></i></span></a>
                         </td>
-                    </tr>
-                    
+                    </tr>                    
                     {% endfor %}
-
                     <tr>
                         <td colspan="5" class="text-right">
                             <a href="{% url 'services' %}" class="btn btn-cart">
                                 <span class="icon">
                                     <i class="fas fa-chevron-circle-left"></i>
                                 </span>
-                                <span>Keep shopping</span>
+                                <span><i class="fas fa-store"></i></span>
                             </a>
                             <a href="" class="btn btn-cart">
-                                <span>Checkout</span>
+                                <span><i class="fas fa-cash-register"></i></span>
                                 <span class="icon">
                                     <i class="fas fa-lock"></i>
                                 </span>
@@ -91,7 +103,7 @@
                 <span class="icon">
                     <i class="fas fa-chevron-circle-left"></i>
                 </span>
-                <span class="text-uppercase">Keep shopping</span>
+                <span>Keep shopping</span>
             </a>
             {% endif %}
         </div>

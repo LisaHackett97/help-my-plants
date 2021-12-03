@@ -39,13 +39,16 @@
    .btn-cart {
         padding:2px 4px;
         font-size:80%;
-        line-height: 1.5;
+        line-height: 1.2;
     }
 
     .icon {
         font-size:80%;
     }
     
+    .text-content {
+        font-size: 80%;
+    }
 
  } 
 

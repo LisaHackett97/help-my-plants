@@ -6,6 +6,8 @@
         {% endif %}
         <li class="list-inline-item py-2"><a href="{% url 'services' %}" class="text-content">Services</a></li>
         <li class="list-inline-item py-2"><a href="" class="text-content">My Profile</a></li>
+        <li class="list-inline-item py-2"><a  href="{% url 'view_cart' %}" class="text-content">Cart </a>
+        </li>
         <li class="list-inline-item py-2"><a href="" class="text-content">Find out more</a></li>
         <li class="list-inline-item py-2"><a href="{% url 'account_logout' %}" class="text-content">Logout</a></li>
     {% else %}
