@@ -28,3 +28,25 @@
     color: #e72d2d !important;
 }
 
+/* Media Queries for Cart/Checkout */
+
+@media (max-width: 767px) { 
+/* reduce sizings for small screens */
+    .table-heading {       
+        font-size:85%;
+    }
+
+   .btn-cart {
+        padding:2px 4px;
+        font-size:80%;
+        line-height: 1.5;
+    }
+
+    .icon {
+        font-size:80%;
+    }
+    
+
+ } 
+
+ 

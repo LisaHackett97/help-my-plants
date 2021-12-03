@@ -58,7 +58,7 @@
                             <p class="text-content text-right my-0"><strong> €{{ item.service.price }}</strong></p>
                         </td>
                                              
-                        <td class="py-3 align-middle">
+                        <td class="p-3 align-middle">
                             <a href="{% url 'remove_from_cart' item.item_id %}"><span class="icon"><i class="fas fa-trash"></i></span></a>
                         </td>
                     </tr>
@@ -67,13 +67,13 @@
 
                     <tr>
                         <td colspan="5" class="text-right">
-                            <a href="{% url 'services' %}" class="btn">
+                            <a href="{% url 'services' %}" class="btn btn-cart">
                                 <span class="icon">
                                     <i class="fas fa-chevron-circle-left"></i>
                                 </span>
-                                <span class="text-uppercase">Keep shopping</span>
+                                <span>Keep shopping</span>
                             </a>
-                            <a href="" class="btn">
+                            <a href="" class="btn btn-cart">
                                 <span>Checkout</span>
                                 <span class="icon">
                                     <i class="fas fa-lock"></i>
