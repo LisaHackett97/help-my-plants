@@ -159,10 +159,13 @@ span.text-content:hover {
 .info-bg {
     color: var(--color2);
     background-color: var(--headers);
-    
 }
 
-
+.cart-notification-wrapper {
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
 
 /* Media Queries */
 
@@ -171,10 +174,6 @@ span.text-content:hover {
     max-width: 80%;
 }
  }
-
- 
-
-
 
  /* // Small devices (landscape phones, 576px and up) */
 /* @media (min-width: 576px) { ... } */
