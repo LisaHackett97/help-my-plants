@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
 
@@ -22,17 +22,17 @@
             <hr>
             <h2 class="text-heading mb-4">Cart</h2>
             <hr>
-          
+
         </div>
     </div>
 
     <div class="row">
         <div class="col">
             {% if cart_items %}
-                <div class="table-responsive rounded">
-                    
-                    <table class="table table-sm table-borderless">
-                        <thead>
+            <div class="table-responsive rounded">
+
+                <table class="table table-sm table-borderless">
+                    <thead>
                         <tr>
                             <th scope="col" class="text-center table-heading p-3">Service Info</th>
                             <th scope="col" class="text-center table-heading"></th>
@@ -52,16 +52,14 @@
                         <td class="p-1 w-25 align-middle">
                             <p class="my-0 text-center text-content"><strong>{{ item.service.time_slot }}</strong></p>
                         </td>
-                        
+
                         <td class="p-3 w-25 align-middle">
                             <p class="my-0 text-content text-right"><strong> €{{ item.service.price }}</strong></p>
                         </td>
+                                             
                         <td class="p-3 w-25 align-middle">
-                            
-                            <a class="remove-item text-danger" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                            <a href="{% url 'remove_from_cart' item.item_id %}"><span class="icon"><i class="fas fa-trash"></i></span></a>
                         </td>
-                        
-
                     </tr>
                     {% endfor %}
 
@@ -79,25 +77,25 @@
                                     <i class="fas fa-lock"></i>
                                 </span>
                             </a>
-                            
+
                         </td>
                     </tr>
 
-                    </table>
-                </div>
+                </table>
+            </div>
             {% else %}
-                <p class="mb">Your cart is empty</p>
-                <a href="{% url 'services' %}" class="btn btn-lg">
-                    <span class="icon">
-                        <i class="fas fa-chevron-circle-left"></i>
-                    </span>
-                    <span class="text-uppercase">Keep shopping</span>
-                </a>
+            <p class="mb">Your cart is empty</p>
+            <a href="{% url 'services' %}" class="btn btn-lg">
+                <span class="icon">
+                    <i class="fas fa-chevron-circle-left"></i>
+                </span>
+                <span class="text-uppercase">Keep shopping</span>
+            </a>
             {% endif %}
         </div>
     </div>
 
-   
+
 </div>
 
 {% endblock %}
@@ -105,19 +103,19 @@
 {% block postloadjs %}
 {{ block.super }}
 <script type="text/javascript">
-  
+
 
     // Remove item and reload on click
-    $('.remove-item').click(function(e) {
+    $('.remove-item').click(function (e) {
         var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[0];
         var url = `/cart/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken, };
+        var data = { 'csrfmiddlewaretoken': csrfToken, };
 
         $.post(url, data)
-         .done(function() {
-             location.reload();
-         });
+            .done(function () {
+                location.reload();
+            });
     })
 </script>
 {% endblock %}
