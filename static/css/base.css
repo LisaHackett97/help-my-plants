@@ -171,7 +171,6 @@ span.text-content:hover {
 https://www.w3schools.com/howto/howto_js_scroll_to_top.asp */
 /* style back to top of page icon */
 #backToTopBtn {
-  /* display: none; */
   position: fixed;
   bottom: 40px;
   right: 15px;

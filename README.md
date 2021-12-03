@@ -359,8 +359,8 @@ GitHub docs link [Forking a repository](https://docs.github.com/en/desktop/contr
 ### Code
 
 
-
-- I followed the Code Institute Boutiqu Ado walkthrough to guide me through the structure and help me learn what I needed to do.
+- I reused the code from my MS3 project for the back to top button/icon. This was originally found on https://www.w3schools.com/howto/howto_js_scroll_to_top.asp */
+- I followed the Code Institute Boutique Ado walkthrough to guide me through the structure and help me learn what I needed to do.
 
 
 
