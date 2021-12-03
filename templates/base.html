@@ -121,10 +121,24 @@
 
     {% block content %}
     {% endblock %}
+<!-- back to top of page icon on all pages -->
+<button onclick="topFunction()" id="backToTopBtn" title="Go to top"><i class="fas fa-angle-double-up"></i></button>
 
     {% block postloadjs %}
     <script type="text/javascript">
         $('.toast').toast('show');
+    </script>
+    <script type="text/javascript">
+        let mybutton = document.getElementById("backToTopBtn");
+jQuery.event.special.touchstart = {
+  setup: function( _, ns, handle ){
+    if ( ns.includes("noPreventDefault") ) {
+      this.addEventListener("touchstart", handle, { passive: false });
+    } else {
+      this.addEventListener("touchstart", handle, { passive: true });
+    }
+  }
+};
     </script>
     {% endblock %}
 

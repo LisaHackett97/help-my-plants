@@ -167,6 +167,29 @@ span.text-content:hover {
     overflow-y: auto;
 }
 
+/*
+https://www.w3schools.com/howto/howto_js_scroll_to_top.asp */
+/* style back to top of page icon */
+#backToTopBtn {
+  /* display: none; */
+  position: fixed;
+  bottom: 40px;
+  right: 15px;
+  z-index: 9999;
+  border: none;
+  background: none;
+  color: var(--color1);
+  cursor: pointer;
+}
+
+#backToTopBtn>i {
+  font-size: 30px;
+}
+
+#backToTopBtn>i:hover {
+  color: var(--headers);
+}
+
 /* Media Queries */
 
 @media (min-width: 1200px) {
