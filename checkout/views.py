@@ -5,6 +5,18 @@ from .forms import OrderForm
 from .models import Order, OrderItem
 
 
+def checkout(request):
+    cart = request.session.get('cart', {})
+  
+    order_form = OrderForm()
+    template = 'checkout/checkout.html'
+    context = {
+        'order_form': order_form,
+    }
+
+    return render(request, template, context)
+
+
 def view_cart(request):
     """ To render cart details """
 
@@ -40,11 +52,4 @@ def remove_from_cart(request, item_id):
     return redirect(reverse('view_cart'))
 
 
-def checkout(request):
-    order_form = OrderForm()
-    template = 'checkout/checkout.html'
-    context = {
-        'order_form': order_form,
-    }
 
-    return render(request, template, context)

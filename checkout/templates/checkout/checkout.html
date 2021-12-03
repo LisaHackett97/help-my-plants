@@ -79,7 +79,7 @@
                     <legend class="fieldset-label small text-content px-2 w-auto">Booking Details</legend>
 
                     {{ order_form.time_slot | as_crispy_field }}
-                    {{ order_form.order_total | as_crispy_field }}
+                    <!-- {{ order_form.order_total | as_crispy_field }} -->
 
                     <div class="form-check form-check-inline float-right mr-0">
                         {% if user.is_authenticated %}
