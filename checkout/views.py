@@ -52,4 +52,6 @@ def remove_from_cart(request, item_id):
     return redirect(reverse('view_cart'))
 
 
-
+def checkout_success(request):
+    """ Render Success Page """
+    return render(request, 'checkout/checkout_success.html')
