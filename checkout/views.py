@@ -11,30 +11,17 @@ def view_cart(request):
     return render(request, 'checkout/cart.html')
 
 
-def checkout(request):
-    order_form = OrderForm()
-    template = 'checkout/checkout.html'
-    context = {
-        'order_form': order_form,
-    }
-
-    return render(request, template, context)
-
-
 def add_to_cart(request, item_id):
-    """ Add a service to the Cart """
-    quantity = request.POST.get('quantity')
-    redirect_url = request.POST.get('redirect_url')
+    """ 
+    Add a service to the Cart 
+    User can only add one item for each service to cart
+    They are redirected to cart
+    """
+       
     cart = request.session.get('cart', {})
-
-    if item_id in list(cart.keys()):
-        cart[item_id] = quantity
-    else:
-        cart[item_id] = quantity
-
+    cart[item_id] = cart.get(item_id)
     request.session['cart'] = cart
-
-    return redirect(redirect_url)
+    return redirect(reverse('view_cart'))
 
 
 def remove_from_cart(request, item_id):
@@ -43,3 +30,14 @@ def remove_from_cart(request, item_id):
     cart.pop(item_id)
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
+
+
+
+def checkout(request):
+    order_form = OrderForm()
+    template = 'checkout/checkout.html'
+    context = {
+        'order_form': order_form,
+    }
+
+    return render(request, template, context)
