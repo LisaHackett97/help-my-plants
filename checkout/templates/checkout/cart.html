@@ -29,38 +29,40 @@
     <div class="row">
         <div class="col">
             {% if cart_items %}
-            <div class="table-responsive rounded">
+            <div class="table-responsive">
 
                 <table class="table table-sm table-borderless">
-                    <thead>
+                    <thead class="thead-light">
                         <tr>
-                            <th scope="col" class="text-center table-heading p-3">Service Info</th>
+                            <th scope="col" class="text-center table-heading">Service Info</th>
                             <th scope="col" class="text-center table-heading"></th>
-                            <th scope="col" class="text-center table-heading p-3">Time Requested</th>
-                            <th scope="col" class="text-right table-heading p-3">Price</th>
+                            <th scope="col" class="text-center table-heading">Time Requested</th>
+                            <th scope="col" class="text-right table-heading">Price</th>
+                            <th scope="col" class="text-center table-heading"></th>
                         </tr>
                     </thead>
 
                     {% for item in cart_items %}
                     <tr>
-                        <td class="p-1 w-25">
+                        <td class="p-3 w-25">
                             <img class="img-fluid rounded" src="{{ item.service.image.url }}">
                         </td>
-                        <td class="p-1 w-25 align-middle">
-                            <p class="my-0 text-center text-content"><strong>{{ item.service.name }}</strong></p>
-                            <p class="my-0 text-center text-content">{{ item.service.description }}</p>
-                        <td class="p-1 w-25 align-middle">
-                            <p class="my-0 text-center text-content"><strong>{{ item.service.time_slot }}</strong></p>
+                        <td class="py-3 align-middle">
+                            <p class="text-center text-content my-0"><strong>{{ item.service.name }}</strong></p>
+                            <p class="text-center text-content my-0">{{ item.service.description }}</p>
+                        <td class="py-3 align-middle">
+                            <p class="text-center text-content my-0"><strong>{{ item.service.time_slot }}</strong></p>
                         </td>
 
-                        <td class="p-3 w-25 align-middle">
-                            <p class="my-0 text-content text-right"><strong> €{{ item.service.price }}</strong></p>
+                        <td class="py-3 align-middle">
+                            <p class="text-content text-right my-0"><strong> €{{ item.service.price }}</strong></p>
                         </td>
                                              
-                        <td class="p-3 w-25 align-middle">
+                        <td class="py-3 align-middle">
                             <a href="{% url 'remove_from_cart' item.item_id %}"><span class="icon"><i class="fas fa-trash"></i></span></a>
                         </td>
                     </tr>
+                    
                     {% endfor %}
 
                     <tr>
