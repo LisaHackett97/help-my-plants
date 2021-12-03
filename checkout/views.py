@@ -19,9 +19,13 @@ def add_to_cart(request, item_id):
     """
     service = Service.objects.get(pk=item_id)   
     cart = request.session.get('cart', {})
-    cart[item_id] = cart.get(item_id)
-    request.session['cart'] = cart
-    messages.success(request, f'Added {service.name} to your order')
+    
+    if item_id in cart:
+        messages.info(request, f'{service.name} already in your cart')
+    else:
+        cart[item_id] = cart.get(item_id)
+        request.session['cart'] = cart
+        messages.success(request, f'Added {service.name} to your order')
     return redirect(reverse('view_cart'))
 
 

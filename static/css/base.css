@@ -137,8 +137,8 @@ span.text-content:hover {
 
 .message-container {
     position:fixed;
-    top: 75px;
-    right: 55px;
+    top: 80px;
+    right: 80px;
     z-index: 9999999;
 }
 
@@ -156,6 +156,11 @@ span.text-content:hover {
     color: #df2323;
 }
 
+.info-bg {
+    color: var(--color2);
+    background-color: var(--headers);
+    
+}
 
 
 
