@@ -7,7 +7,6 @@ class ServiceAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'description',
-        'price',
         'time_slot',
         'price',
         'image',
