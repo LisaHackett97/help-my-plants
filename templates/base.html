@@ -23,6 +23,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    
     {% endblock %}
 
     {% block extra_css %}
@@ -37,7 +38,10 @@
 
     {% block extra_js %}
     {% endblock %}
-
+  <!-- favicon links and metadata-->
+  <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
     <title>Help My Plants {% block extra_title%}{% endblock %}</title>
 </head>
 
