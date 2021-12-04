@@ -5,16 +5,6 @@ from .forms import OrderForm
 from .models import Order, OrderItem
 
 
-def checkout(request):
-    cart = request.session.get('cart', {})
-  
-    order_form = OrderForm()
-    template = 'checkout/checkout.html'
-    context = {
-        'order_form': order_form,
-    }
-
-    return render(request, template, context)
 
 
 def view_cart(request):
@@ -50,6 +40,29 @@ def remove_from_cart(request, item_id):
     messages.success(
                 request, f'Removed {service.name} from your cart')
     return redirect(reverse('view_cart'))
+
+
+def checkout(request):
+    if request.method == "POST":
+        cart = request.session.get('cart', {})
+        form_data = {
+            'customer_name': request.POST['customer_name'],
+            'email': request.POST['email'],
+            'phone_number': request.POST['phone_number'],
+            'time_slot': request.POST['time_slot'],
+            'order_total': request.POST['order_total'],
+        }
+        order_form = OrderForm(form_data)
+    else:
+        order_form = OrderForm()
+
+    order_form = OrderForm()
+    template = 'checkout/checkout.html'
+    context = {
+        'order_form': order_form,
+    }
+
+    return render(request, template, context)
 
 
 def checkout_success(request):
