@@ -20,50 +20,55 @@
     <div class="row">
         <div class="col text-center mt3">
             <h3 class="text-heading pt-4">Articles</h3>
-            <p class="text-content text-left">We have lots of information on the benefits of plants, reasons why you
-                should love them and some quick tips to help you not kill them!
-            <p>
-            <p class="text-content text-left">Please have a read below to find out more, then head on over to our
-                services page, where you can book a personalised consulatation service or an accompanied shopping trip
-                We look forward to seeing you soon
-            </p>
             <hr class="w-50 mb-1">
-            <div class="row"></div>
         </div>
     </div>
-</div>
-<div class="row  text-center">
-    <div class="col">
-        {% for article in articles %}
-        <div class="row">
 
-            <div class="col-12  text-center">
-                <h5 class="article-title mt-4">{{ article.title }}</h5>
-
-            </div>
+    <div class="row">
+        <div class="article-content col-11">
+            <div class="row mt-1 mb-2"></div>
             <div class="row">
-                <div class="col-3 m-3">
+                {% for article in articles %}
+                <div class="col-12  text-center">
+                    <h5 class="article-title mt-4">{{ article.title }}</h5>
+                </div>
+
+                <div class="col-xs-4 col-md-3">
                     <img src="{{ article.image.url }}" alt="{{ article.title }}"
                         class="img-responsive img-thumbnail border-0 ml-3">
                 </div>
-                <div class="col-xs-10 col-md-8">
-                    <article class="m-4 text-content pr-5">
+
+                <div class="col-xs-10 col-md-9">
+                    <article class="text-content">
                         <p class="text-left">{{ article.content }}
                         </p>
-                        <p>Why not <a href="{% url 'get_serviceOne' %}" class="article-links">book a new Consult </a>,
-                            <a href="{% url 'get_serviceThree' %}" class="article-links">an accompanied shopping trip
-                                for your new house plants.</a>
-                            Or been with us before? <a href="{% url 'get_serviceTwo' %}" class="article-links">Book a
-                                follow up.</a>
-                        </p>
-                        <p>
-                            Not sure yet, why not <a href="{% url 'services' %}" class="article-links">have a look
-                                through all our currently available services</a>
-                        </p>
-                        <hr>
+                        <p>Why not <a href="{% url 'get_serviceOne' %}" class="article-links">book a new Consult
+                        </a>,
+                        <a href="{% url 'get_serviceThree' %}" class="article-links">an accompanied shopping
+                            trip
+                            for your new house plants.</a>
+                        Or been with us before? <a href="{% url 'get_serviceTwo' %}" class="article-links">Book
+                            a
+                            follow up.</a>
+                    </p>
+                    <p>
+                        Not sure yet, why not <a href="{% url 'services' %}" class="article-links">have a look
+                            through all our currently available services</a>
+                    </p>
+                    <hr>
                     </article>
                 </div>
+
+
                 {% endfor %}
+
+
+
             </div>
         </div>
-        {% endblock %}
+    </div>
+
+
+</div>
+
+{% endblock %}
