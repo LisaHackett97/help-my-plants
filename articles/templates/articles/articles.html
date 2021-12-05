@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'articles/css/articles.css' %}">
+{% endblock %}
+
+
 {% block page_header %}
 <div class="container-fluid header-container">
     <div class="row">
@@ -28,17 +34,18 @@
                 <img src="/media/cactus-2.jpg" alt="" class="img-responsive img-thumbnail border-0">
             </div>
             <div class="col-xs-10 col-md-8">
-                <article class="m-3 text-content">
+                <article class="m-3 text-content pr-4">
                     <p>For nearly ten minutes he stood there, motionless, with parted lips and eyes strangely bright. He
                         was
                         dimly conscious that entirely fresh influences were at work within him. Yet they seemed to him
                         to have
-                        come really from himself. The few words that Basil's friend had said to him--words spoken by
+                        come really from himself. <a href="{% url 'services' %}" class="text content"><h5 class="m-3 article-links">Book a new Consult now </h5></a>
+                        The few words that Basil's friend had said to him--words spoken by
                         chance, no
                         doubt, and with wilful paradox in them--had touched some secret chord that had never been
                         touched
                         before, but that he felt was now vibrating and throbbing to curious pulses.</p>
-
+                        
                     <p>Music had stirred him like that. Music had troubled him many times. But music was not articulate.
                         It was
                         not a new world, but rather another chaos, that it created in us. Words! Mere words! How
@@ -49,12 +56,13 @@
                         music of
                         their own as sweet as that of viol or of lute. Mere words! Was there anything so real as words?
                     </p>
-
+                    <a href="{% url 'services' %}" class="article-links"><h5 class="m-3 article-links">Book a shopping trip </h5></a>
                     <p>Yes; there had been things in his boyhood that he had not understood. He understood them now.
                         Life
                         suddenly became fiery-coloured to him. It seemed to him that he had been walking in fire. Why
                         had he not
                         known it?</p>
+                        <a href="{% url 'services' %}"><h5 class="m-3 article-links">Book a follow up </h5></a>
 
                     <p>With his subtle smile, Lord Henry watched him. He knew the precise psychological moment when to
                         say
@@ -63,15 +71,11 @@
                         revealed to him
                         much that he had not known before, he wondered whether Dorian Gray was passing through a similar
                         experience. He had merely shot an arrow into the air. Had it hit the mark? How fascinating the
-                        lad was!
+                        lad was! <a href="{% url 'services' %}"><h5 class="m-3 article-links">Book other </h5></a>
                     </p>
                 </article>
             </div>
-        </div>
-        <div><h5>Book a new Consult now </h5>
-            <a href=""></a>
-        </div>
-        
+        </div>              
     </div>
 </div>
 
