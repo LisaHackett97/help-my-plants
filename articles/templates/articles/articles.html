@@ -20,20 +20,42 @@
     <div class="row">
         <div class="col text-center mt3">
             <h3 class="text-heading pt-4">Articles</h3>
+            <p class="text-content text-left">We have lots of information on the benefits of plants, reasons why you should love them and some quick tips to help you not kill them!<p>
+            <p class="text-content text-left">Please have a read below to find out more, then head on over to our services page, where you can book a personalised consulatation service or an accompanied shopping trip
+                We look forward to seeing you soon
+            </p>
             <hr class="w-50 mb-1">
+            <div class="row"></div>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col">
+        {% for article in articles %}  
+            <h5 class="article-title text-center mt-4">{{ article.title }}</h5>      
         <div class="row">
-            <h5 class="article-title">{{ article.title }}</h5>
-        </div>
-        {% for service in services %}
-        <p>HELLOO</p>
-        <a href="{% url 'services' service_id=service.id %}">Product #{{ service.id }}</a>
+            <div class="col mx-3">
+                <img src="{{ article.image.url }}" alt="{{ article.title }}" class="img-responsive img-thumbnail border-0">
+            </div>
+            <div class="col-xs-10 col-md-8">
+                <article class="m-3 text-content pr-4">
+                    <p>{{ article.content }}
+                    </p>
+                    <p>Why not <a href="{% url 'get_serviceOne' %}" class="article-links">book a new Consult </a>,   
+                        <a href="{% url 'get_serviceThree' %}" class="article-links">an accompanied shopping trip for your new house plants.</a>
+                        Or been with us before? <a href="{% url 'get_serviceTwo' %}" class="article-links">Book a follow up.</a>
+                    </p>
+                    <p>
+                        Not sure yet, why not <a href="{% url 'services' %}" class="article-links">have a look through all our currently available services</a>
+                    
+                    </p>
+                  
+                    <hr>
+                </article>
         {% endfor %}
 
+
+        <!-- Hardcoded article data for design. Keep until displaying as expected from DB -->
         <div class="row">
             <div class="col mx-3">
                 <img src="/media/cactus-2.jpg" alt="" class="img-responsive img-thumbnail border-0">
@@ -56,7 +78,7 @@
                         terrible they
                         were! How clear, and vivid, and cruel! One could not escape from them. And yet what a subtle
                         magic there
-                        was in them! <a href="{% url 'get_serviceThree' %}" class="article-links">Book a shopping trip</a>
+                        was in them!
                         They seemed to be able to give a plastic form to formless things, and to have a
                         music of
                         their own as sweet as that of viol or of lute. Mere words! Was there anything so real as words?
@@ -65,7 +87,7 @@
                         Life
                         suddenly became fiery-coloured to him. It seemed to him that he had been walking in fire. Why
                         had he not
-                        known it? <a href="{% url 'get_serviceTwo' %}" class="article-links">Book a follow up</a>
+                        known it? 
                     </p>
                         
 
@@ -78,11 +100,7 @@
                         experience. He had merely shot an arrow into the air. Had it hit the mark? How fascinating the
                         lad was!
                     </p>
-                    <hr>
-                    <div class="col text-center">
-                    <a href="{% url 'services' %}"><h5 class="m-3 article-links">View all our currently available services </h5></a>
-                </div>
-                <hr>
+                   
                 </article>
             </div>
         </div>              
