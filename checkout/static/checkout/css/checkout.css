@@ -15,8 +15,6 @@
     font-size:1rem;
 
 }
-
-
 .fa-trash {
     height: 1rem;
     width: 1.5rem;
@@ -26,6 +24,12 @@
 /* add a red hover colour as warning */
 .fa-trash:hover {    
     color: #e72d2d !important;
+}
+
+.fieldset-label {
+    position: relative;
+    right: .5rem;
+    color: var(--headers);
 }
 
 /* Media Queries for Cart/Checkout */
