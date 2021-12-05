@@ -90,7 +90,8 @@
 }
 
 /* Buttons */
-.btn {
+.btn,
+.footer-home-btn {
     border: 2px solid var(--main-text-color);
     color: var(--main-text-color);
     background-color: var(--color2);
@@ -102,9 +103,9 @@
 span.text-content:hover {
    
     color: var(--color2);
-    background-color: var(--main-text-color);
-    
+    background-color: var(--main-text-color); 
 }
+
 
 /* HOME/LANDING PAGE */
 

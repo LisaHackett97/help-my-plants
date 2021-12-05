@@ -67,5 +67,18 @@
     <a href="{% url 'account_signup' %}" class="btn my-1">Register here</a>
 </div>
 {% endif %}
-
+<div class="para-2"></div>
+<div class="parallax-2 text-center py-4  px-3">
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'services' %}" class="btn my-1">Request a booking today</a>
+            <a href="{% url 'articles' %}" class="btn my-1">Learn more about the benefits of House plants here</a>
+    {% else %}
+    <p class="text-content m-2">Please register or login to access our services 
+        <a href="{% url 'account_signup' %}" class="my-3 px-3 footer-home-btn">Register</a>
+        <a href="{% url 'account_login' %}" class="my-3 px-3 footer-home-btn">Login</a>
+    </p>
+    {% endif %}
+    
+    
+</div>
 {% endblock %}
