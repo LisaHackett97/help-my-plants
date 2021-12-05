@@ -1,1 +1,10 @@
-.article-links {color:red; !important}
+.article-links {
+    color: var(--color1) !important;
+    font-weight: bold;
+}
+
+.article-links:hover {
+    color: var(--headers) !important;
+    font-size: 110%;
+    
+}

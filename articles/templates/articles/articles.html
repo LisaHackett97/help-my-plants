@@ -29,6 +29,11 @@
         <div class="row">
             <h5 class="article-title">{{ article.title }}</h5>
         </div>
+        {% for service in services %}
+        <p>HELLOO</p>
+        <a href="{% url 'services' service_id=service.id %}">Product #{{ service.id }}</a>
+        {% endfor %}
+
         <div class="row">
             <div class="col mx-3">
                 <img src="/media/cactus-2.jpg" alt="" class="img-responsive img-thumbnail border-0">
@@ -36,10 +41,9 @@
             <div class="col-xs-10 col-md-8">
                 <article class="m-3 text-content pr-4">
                     <p>For nearly ten minutes he stood there, motionless, with parted lips and eyes strangely bright. He
-                        was
-                        dimly conscious that entirely fresh influences were at work within him. Yet they seemed to him
+                        was  dimly conscious that entirely fresh influences were at work within him. Yet they seemed to him
                         to have
-                        come really from himself. <a href="{% url 'services' %}" class="text content"><h5 class="m-3 article-links">Book a new Consult now </h5></a>
+                        come really from himself. <a href="{% url 'get_serviceOne' %}" class="article-links">Book a new Consult now</a>
                         The few words that Basil's friend had said to him--words spoken by
                         chance, no
                         doubt, and with wilful paradox in them--had touched some secret chord that had never been
@@ -52,17 +56,18 @@
                         terrible they
                         were! How clear, and vivid, and cruel! One could not escape from them. And yet what a subtle
                         magic there
-                        was in them! They seemed to be able to give a plastic form to formless things, and to have a
+                        was in them! <a href="{% url 'get_serviceThree' %}" class="article-links">Book a shopping trip</a>
+                        They seemed to be able to give a plastic form to formless things, and to have a
                         music of
                         their own as sweet as that of viol or of lute. Mere words! Was there anything so real as words?
-                    </p>
-                    <a href="{% url 'services' %}" class="article-links"><h5 class="m-3 article-links">Book a shopping trip </h5></a>
+                   >
                     <p>Yes; there had been things in his boyhood that he had not understood. He understood them now.
                         Life
                         suddenly became fiery-coloured to him. It seemed to him that he had been walking in fire. Why
                         had he not
-                        known it?</p>
-                        <a href="{% url 'services' %}"><h5 class="m-3 article-links">Book a follow up </h5></a>
+                        known it? <a href="{% url 'get_serviceTwo' %}" class="article-links">Book a follow up</a>
+                    </p>
+                        
 
                     <p>With his subtle smile, Lord Henry watched him. He knew the precise psychological moment when to
                         say
@@ -71,8 +76,13 @@
                         revealed to him
                         much that he had not known before, he wondered whether Dorian Gray was passing through a similar
                         experience. He had merely shot an arrow into the air. Had it hit the mark? How fascinating the
-                        lad was! <a href="{% url 'services' %}"><h5 class="m-3 article-links">Book other </h5></a>
+                        lad was!
                     </p>
+                    <hr>
+                    <div class="col text-center">
+                    <a href="{% url 'services' %}"><h5 class="m-3 article-links">View all our currently available services </h5></a>
+                </div>
+                <hr>
                 </article>
             </div>
         </div>              
