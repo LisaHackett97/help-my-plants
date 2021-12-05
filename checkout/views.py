@@ -1,18 +1,19 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from services.models import Service
 from .forms import OrderForm
 from .models import Order, OrderItem
 
 
-
-
+@login_required
 def view_cart(request):
     """ To render cart details """
 
     return render(request, 'checkout/cart.html')
 
 
+@login_required
 def add_to_cart(request, item_id):
     """
     Add a service to the Cart
@@ -31,6 +32,7 @@ def add_to_cart(request, item_id):
     return redirect(reverse('view_cart'))
 
 
+@login_required
 def remove_from_cart(request, item_id):
     """ Remove an item from the cart """
     cart = request.session.get('cart', {})
@@ -42,6 +44,7 @@ def remove_from_cart(request, item_id):
     return redirect(reverse('view_cart'))
 
 
+@login_required
 def checkout(request):
     if request.method == "POST":
         cart = request.session.get('cart', {})
@@ -65,6 +68,7 @@ def checkout(request):
     return render(request, template, context)
 
 
+@login_required
 def checkout_success(request):
     """ Render Success Page """
     return render(request, 'checkout/checkout_success.html')
