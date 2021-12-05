@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
-
+from django.contrib.auth.decorators import login_required
 from .models import Service
 from .forms import ServiceForm
 
 # Create your views here.
 
-
+@login_required
 def all_services(request):
     """ A view to show all services """
 
@@ -18,7 +18,7 @@ def all_services(request):
 
     return render(request, 'services/services.html', context)
 
-
+@login_required
 def service_detail(request, service_id):
     """ a view to display individual service details """
     service = get_object_or_404(Service, pk=service_id)
