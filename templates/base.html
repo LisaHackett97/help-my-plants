@@ -61,10 +61,10 @@
             {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
                 
-                    <li class="list-inline-item text-content"><div class="text-center"><i class="fas fa-cogs"></i> </div> Site Admin</li>
+                    <li class="list-inline-item text-content"><div class="text-center"><i class="fas fa-cogs"></i> </div> TBC Admin</li>
                 
                 {% endif %}
-                <li class="list-inline-item pl-1"><a href="{% url 'services' %}" class="text-content"><div class="text-center"><i class="fas fa-store"></i> </div>Services</a></li>
+                <li class="list-inline-item pl-1"><a href="{% url 'services' %}" class="text-content"><div class="text-center text-content"><i class="fas fa-store"></i> </div>Services</a></li>
                 <li class="list-inline-item pl-1"><a href="" class="text-content"><div class="text-center"><i class="far fa-user-circle"></i></div>My Profile</a></li>
 
                 <li class="list-inline-item pl-1">
@@ -74,12 +74,12 @@
                             {% if service_count %}
                             € {{ total|floatformat:2 }}
                             {% else %}
-                               Nothing in cart
+                               <small>0</small>
                             {% endif %}
                         </div>                 
                     </a>
                 </li>
-                <li class="list-inline-item pl-1"><a href="{% url 'articles' %}" class="text-content"><div class="text-center"><i class="fas fa-info-circle"></i></div>Find out more</a></li>
+                <li class="list-inline-item pl-1"><a href="{% url 'articles' %}" class="text-content"><div class="text-center"><i class="fas fa-info-circle"></i></div>Learn more</a></li>
                 <li class="list-inline-item pl-1"><a href="{% url 'account_logout' %}" class="text-content"><div class="text-center"><i class="fas fa-sign-out-alt"></i></div>Logout</a></li>
             {% else %}
                 <li class="list-inline-item"><a href="" class="text-content"><div class="text-center"><i class="fas fa-home"></i></div>Home</a></li>

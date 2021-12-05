@@ -2,18 +2,18 @@
     <ul class="navbar-nav w-auto mx-auto">
         {% if request.user.is_authenticated %}
         {% if request.user.is_superuser %}
-            <li class="list-inline-item text-content py-3">Site Admin</li>
+            <li class="list-inline-item nav-text-content py-3">Site Admin</li>
         {% endif %}
-        <li class="list-inline-item py-2"><a href="{% url 'services' %}" class="text-content">Services</a></li>
+        <li class="list-inline-item py-2"><a href="{% url 'services' %}" class="nav-text-content">Services</a></li>
         <li class="list-inline-item py-2"><a href="" class="text-content">My Profile</a></li>
-        <li class="list-inline-item py-2"><a  href="{% url 'view_cart' %}" class="text-content">Cart </a>
+        <li class="list-inline-item py-2"><a  href="{% url 'view_cart' %}" class="nav-text-content">Cart </a>
         </li>
-        <li class="list-inline-item py-2"><a href="{% url 'articles' %}" class="text-content">Find out more</a></li>
-        <li class="list-inline-item py-2"><a href="{% url 'account_logout' %}" class="text-content">Logout</a></li>
+        <li class="list-inline-item py-2"><a href="{% url 'articles' %}" class="nav-text-content">Learn more</a></li>
+        <li class="list-inline-item py-2"><a href="{% url 'account_logout' %}" class="nav-text-content">Logout</a></li>
     {% else %}
         <li class="list-inline-item py-2"><a href="" class="text-content">Home</a></li>
-        <li class="list-inline-item py-2"><a href="{% url 'account_signup' %}" class="text-content">Register</a></li>
-        <li class="list-inline-item py-2"><a href="{% url 'account_login' %}" class="text-content">Login</a></li>
+        <li class="list-inline-item py-2"><a href="{% url 'account_signup' %}" class="nav-text-content">Register</a></li>
+        <li class="list-inline-item py-2"><a href="{% url 'account_login' %}" class="nav-text-content">Login</a></li>
     {% endif %}
     </ul>
 </div>

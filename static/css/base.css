@@ -26,6 +26,8 @@
     background-color: var(--color2);
 
 }
+
+
 .header-container {
     padding: 10px;
      background-color: var(--color2);
@@ -77,6 +79,7 @@
     font-size:1rem;
 
 }
+
 /* from Bulma */
 .icon {
     align-items: center;
