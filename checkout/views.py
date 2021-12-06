@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from services.models import Service
 from .forms import OrderForm
 from .models import Order, OrderItem
+from .contexts import cart_contents
 
+import stripe
 
 @login_required
 def view_cart(request):
@@ -46,6 +49,9 @@ def remove_from_cart(request, item_id):
 
 @login_required
 def checkout(request):
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
+
     if request.method == "POST":
         cart = request.session.get('cart', {})
         form_data = {
@@ -59,12 +65,24 @@ def checkout(request):
     else:
         order_form = OrderForm()
 
+    current_cart = cart_contents(request)
+    total = current_cart['total']
+    stripe_total = round(total * 100)
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
+    )
+
     order_form = OrderForm()
+
+    if not stripe_public_key:
+        messages.warning(request, 'Stripe Public key is missing. Did you forget to set it on your environment?')
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
-        'stripe_public_key': 'pk_test_51JslSmGgXmJ73lYIjBGsO8ylNfJOFQLZBnb9PpxuXExjXkNxiPByQZEvCsHUYxiXPgOpABZ1SBgoYwikNmn8VdKe00UaIgTZ95',
-        'client_secret': 'test client secret',
+        'stripe_public_key': 'stripe_public_key',
+        'client_secret': client_secret,
     }
 
     return render(request, template, context)
