@@ -20,15 +20,15 @@
 <div class="container content-container">
     <div class="row">
         <div class="col text-center">
-            <hr>
-            <h2 class="text-heading mb-4">Thank You</h2>
-            <hr>
+          
+            <h2 class="text-heading m-4">Thank You</h2>
+           
         </div>
     </div>
 <!-- Summary of the order showing each item in the cart -->
     <div class="row">
         <div class="col-12 col-lg-6 order-lg mb-5">
-            <p class="text-muted">Order Summary {{ service.name }}</p>
+            <p class="text-content">Order Summary</p>
             <div class="row">
                 <div class="col-7 offset-2">
                     <p class="mb-1 mt-0 small text-muted">Item</p>
@@ -66,8 +66,8 @@
         </div>
         <!-- Section to fill out contact details -->
         <div class="col-12 col-lg-6">
-            <p class="text-muted">Please fill out the form below to complete your order</p>
-            <form action="{% url 'checkout' %}" method="POST" id="payment-form">
+            <p class="text-content">Please fill out the form below to complete your order</p>
+            <form action="{% url 'checkout' %}" method="POST" id="payment-form" class="booking-details pt-3">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <fieldset class="px-3 mb-4">
