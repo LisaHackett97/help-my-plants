@@ -51,35 +51,30 @@ card.addEventListener('change', function (event) {
 var form = document.getElementById('payment-form');
 form.addEventListener('submit', function(event) {
     event.preventDefault();
-    card.update({ 'disabled', true});
-    $('#submit-button').attr('disabled', true)
+    card.update({ 'disabled': true});
+    $('#submit-button').attr('disabled', true);
     $('#payment-form').fadeToggle(100);
     $('#loading-overlay').fadeToggle(100);
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
             card: card,
         }
-
-//   stripe.createToken(card).then(function(result) {
     }).then(function(result) {
-    if (result.error) {
+        if (result.error) {
       // Inform the customer that there was an error.
-    //   var errorElement = document.getElementById('card-errors');
-    //   errorElement.textContent = result.error.message;
-    var errorDiv = document.getElementById('card-errors');
-    var html = `
-        <span class="icon" role="alert">
-        <i class="fas fa-times"></i>
-        </span>
-        <span>${result.error.message}</span>`;
-    $(errorDiv).html(html);
-    card.update({ 'disabled': false});
-    $('#submit-button').attr('disabled', false);
-    } else {
-      // Send the token to your server.
-    //   stripeTokenHandler(result.token);
-      if (result.paymentIntent.status === 'succeeded') {
-        form.submit();
-    }
-  });
+            var errorDiv = document.getElementById('card-errors');
+            var html = `
+                <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+                </span>
+                <span>${result.error.message}</span>`;
+            $(errorDiv).html(html);
+            card.update({ 'disabled': false});
+            $('#submit-button').attr('disabled', false);
+        } else {     
+            if (result.paymentIntent.status === 'succeeded') {
+                form.submit();
+            }
+        }
+    });
 });
