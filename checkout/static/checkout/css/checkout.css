@@ -61,6 +61,13 @@
     color: var(--headers);
 }
 
+/* Style headers on order summary on cart */
+
+.order-summary {
+    text-decoration: underline;
+    font-family: 'Poppins', sans-serif !important;
+
+}
 /* Media Queries for Cart/Checkout */
 
 @media (max-width: 767px) { 

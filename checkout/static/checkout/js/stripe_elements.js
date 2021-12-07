@@ -6,9 +6,9 @@ Css from:
 https://stripe.com/docs/stripe-js
 */
 
-var stripe_public_key = $('#id_stripe_public_key').text().slice(1, -1);
-var client_secret = $('#id_client_secret').text().slice(1, -1);
-var stripe = Stripe(stripe_public_key);
+var stripePublicKey  = $('#id_stripe_public_key').text().slice(1, -1);
+var clientSecret  = $('#id_client_secret').text().slice(1, -1);
+var stripe = Stripe(stripePublicKey);
 var elements = stripe.elements();
 var card = elements.create('card');
 
@@ -44,4 +44,42 @@ card.addEventListener('change', function (event) {
     } else {
         errorDiv.textContent = '';
     }
+});
+
+// Handle form submit 
+// Create a token or display an error when the form is submitted.
+var form = document.getElementById('payment-form');
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    card.update({ 'disabled', true});
+    $('#submit-button').attr('disabled', true)
+    $('#payment-form').fadeToggle(100);
+    $('#loading-overlay').fadeToggle(100);
+    stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+            card: card,
+        }
+
+//   stripe.createToken(card).then(function(result) {
+    }).then(function(result) {
+    if (result.error) {
+      // Inform the customer that there was an error.
+    //   var errorElement = document.getElementById('card-errors');
+    //   errorElement.textContent = result.error.message;
+    var errorDiv = document.getElementById('card-errors');
+    var html = `
+        <span class="icon" role="alert">
+        <i class="fas fa-times"></i>
+        </span>
+        <span>${result.error.message}</span>`;
+    $(errorDiv).html(html);
+    card.update({ 'disabled': false});
+    $('#submit-button').attr('disabled', false);
+    } else {
+      // Send the token to your server.
+    //   stripeTokenHandler(result.token);
+      if (result.paymentIntent.status === 'succeeded') {
+        form.submit();
+    }
+  });
 });

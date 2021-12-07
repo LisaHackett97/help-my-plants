@@ -30,11 +30,12 @@
         <div class="col-12 col-lg-6 order-lg mb-5">
             <p class="text-content">Order Summary</p>
             <div class="row">
+                
                 <div class="col-7 offset-2">
-                    <p class="mb-1 mt-0 small text-muted">Item</p>
+                    <p class="mb-1 mt-0 small text-muted order-summary">Item</p>
                 </div>
                 <div class="col-3 text-right">
-                    <p class="mb-1 mt-0 small text-muted">
+                    <p class="mb-1 mt-0 small text-muted order-summary">
                         Price
                     </p>
                 </div>
@@ -42,12 +43,12 @@
             <!-- Display details of each item in the cart -->
             {% for item in cart_items %}
             <div class="row mb-3">
-                
+                <div class="col-1"><i class="fas fa-leaf"></i></div>
                 <div class="col-9">
                     <p class="my-0"><strong>{{ item.service.name }}</strong> </p>
                     <p class="my-0">{{ item.service.description }} </p>
                 </div>
-                <div class="col-3 text-right">
+                <div class="col-2 text-right">
                     <p class="my-0 small text-muted">€ {{ item.service.price }}</p>
                 </div>
             </div>
