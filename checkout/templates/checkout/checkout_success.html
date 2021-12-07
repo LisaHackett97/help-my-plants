@@ -26,5 +26,24 @@
                 {{ order.email }}</strong>.</p>
         </div>
     </div>
+
+<!-- Where the order summary will be rendered -->
+    <div class="row">
+        <div class="col-12 col-lg-7"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-lg-7 text-right">
+            <a href="{% url 'services %}" class="btn">          
+                <span class="icon mr-2">
+                    <i class="fas fa-gifts"></i>
+                </span>
+                <span class="text-content">
+                    Check out all our services
+                </span>
+            </a>
+        </div>
+    </div>
+    
 </div>
 {% endblock %}

@@ -52,8 +52,9 @@ def remove_from_cart(request, item_id):
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-
+    print('hi!!!')
     if request.method == "POST":
+        print('hello!!!')
         cart = request.session.get('cart', {})
         form_data = {
             'customer_name': request.POST['customer_name'],
@@ -64,6 +65,7 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
+            
             order_form.save()
             for item_id, item_data in cart.items():
                 try:

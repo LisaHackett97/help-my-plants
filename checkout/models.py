@@ -36,8 +36,8 @@ class OrderItem(models.Model):
                                      null=False, blank=False, editable=False, default=0)
 
     def save(self, *args, **kwargs):
-
+        self.item_total = self.service.price
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'Order total {self.service.price} for order number {self.order_number}'
+        return f'Order total {self.service.price} for order number {self.order.order_number}'
