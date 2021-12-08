@@ -8,6 +8,7 @@ from .models import Order, OrderItem
 from .contexts import cart_contents
 
 import stripe
+import json
 
 
 @login_required
@@ -52,32 +53,29 @@ def remove_from_cart(request, item_id):
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-    print('hi!!!')
+       
     if request.method == "POST":
-        print('hello!!!')
         cart = request.session.get('cart', {})
         form_data = {
             'customer_name': request.POST['customer_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
             'time_slot': request.POST['time_slot'],
-            'order_total': request.POST['order_total'],
+            
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            
+            order = order_form.save(commit=False)
             order_form.save()
             for item_id, item_data in cart.items():
                 try:
                     service = Service.objects.get(id=item_id)
-                    if isinstance(item_data, int):
-                        order_line_item = OrderItem(
+                    order_line_item = OrderItem(
                             order=order,
                             service=service,
                         )
-                        order_line_item.save()
-                    else:
-                        order_line_item.save()
+                    order_line_item.save()
+                    
                 except Service.DoesNotExist:
                     messages.error(request, (
                         "One of the services in your cart wasn't found in our Database. "
@@ -115,7 +113,7 @@ def checkout(request):
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
-        'stripe_public_key': 'stripe_public_key',
+        'stripe_public_key': stripe_public_key,
         'client_secret': intent.client_secret,
     }
 
