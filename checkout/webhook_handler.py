@@ -1,4 +1,8 @@
 from django.http import HttpResponse
+from .models import Order, OrderItem
+from services.models import Service
+import json
+import time
 
 
 class StripeWH_Handler:
@@ -33,11 +37,13 @@ class StripeWH_Handler:
         while attempt <= 5:
             try:
                 order = Order.objects.get(
-                customer_name_iexact=billing_details.name,
-                email_iexact=billing_details.email,
-                phone_number_iexact=billing_details.phone,
-                order_total=order_total,
-            )
+                    customer_name_iexact=billing_details.name,
+                    email_iexact=billing_details.email,
+                    phone_number_iexact=billing_details.phone,
+                    order_total=order_total,
+                    original_cart=cart,
+                    stripe_pid=pid,
+                )
 
                 order_exists = True
                 break
@@ -56,6 +62,8 @@ class StripeWH_Handler:
                     customer_name=billing_details.name,
                     email=billing_details.email,
                     phone_number=billing_details.phone,
+                    original_cart=cart,
+                    stripe_pid=pid,
                 )
                 for item_id, item_data in json.loads(cart).items():
                     service = Service.objects.get(id=item_id)
