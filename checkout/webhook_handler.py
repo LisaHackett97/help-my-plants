@@ -31,6 +31,11 @@ class StripeWH_Handler:
         billing_details = intent.charges.data[0].billing_details
         order_total = round(intent.charges.data[0].amount / 100, 2)
        
+        # Clean data in the shipping details
+        for field, value in billing_details.address.items():
+            if value == "":
+                billing_details.address[field] = None
+
         order_exists = False
         attempt = 1
         while attempt <= 5:
