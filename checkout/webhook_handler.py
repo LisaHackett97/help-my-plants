@@ -16,7 +16,7 @@ class StripeWH_Handler:
         Handle a generic/unknown/unexpected webhook event
         """
         return HttpResponse(
-            content=f'Unhandled Webhook received: {event["type"]}',
+            content=f'Unhandled Generic Webhook received: {event["type"]}',
             status=200
         )
 
@@ -28,18 +28,17 @@ class StripeWH_Handler:
         pid = intent.id
         cart = intent.metadata.cart
         save_info = intent.metadata.save_info
-
         billing_details = intent.charges.data[0].billing_details
-        order_total = round(intent.data.charges[0].amount / 100, 2)
-
+        order_total = round(intent.charges.data[0].amount / 100, 2)
+       
         order_exists = False
         attempt = 1
         while attempt <= 5:
             try:
                 order = Order.objects.get(
-                    customer_name_iexact=billing_details.name,
-                    email_iexact=billing_details.email,
-                    phone_number_iexact=billing_details.phone,
+                    customer_name__iexact=billing_details.name,
+                    email__iexact=billing_details.email,
+                    phone_number__iexact=billing_details.phone,
                     order_total=order_total,
                     original_cart=cart,
                     stripe_pid=pid,
@@ -47,7 +46,7 @@ class StripeWH_Handler:
 
                 order_exists = True
                 break
-                
+
             except Order.DoesNotExist:
                 attempt += 1
                 time.sleep(1)
@@ -77,7 +76,7 @@ class StripeWH_Handler:
                     order.delete()
                 return HttpResponse(
                         content=f'Webhook received: {event["type"]} | ERROR: {e}',
-                        status=500)        
+                        status=500)
         return HttpResponse(
             content=f'Webhook received: {event["type"]} | SUCCESS: Created order in webhook',
             status=200)
