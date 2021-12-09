@@ -20,21 +20,22 @@
 <div class="container content-container">
     <div class="row">
         <div class="col text-center">
-          
+
             <h2 class="text-heading m-4">Thank You</h2>
-           
+
         </div>
     </div>
-<!-- Summary of the order showing each item in the cart -->
+    <!-- Summary of the order showing each item in the cart -->
     <div class="row">
         <div class="col-12 col-lg-6 order-lg mb-5">
             <p class="text-content">Order Summary</p>
             <div class="row">
+
                 <div class="col-7 offset-2">
-                    <p class="mb-1 mt-0 small text-muted">Item</p>
+                    <p class="mb-1 mt-0 small text-muted order-summary">Item</p>
                 </div>
                 <div class="col-3 text-right">
-                    <p class="mb-1 mt-0 small text-muted">
+                    <p class="mb-1 mt-0 small text-muted order-summary">
                         Price
                     </p>
                 </div>
@@ -42,17 +43,17 @@
             <!-- Display details of each item in the cart -->
             {% for item in cart_items %}
             <div class="row mb-3">
-                
+                <div class="col-1"><i class="fas fa-leaf"></i></div>
                 <div class="col-9">
                     <p class="my-0"><strong>{{ item.service.name }}</strong> </p>
                     <p class="my-0">{{ item.service.description }} </p>
                 </div>
-                <div class="col-3 text-right">
+                <div class="col-2 text-right">
                     <p class="my-0 small text-muted">€ {{ item.service.price }}</p>
                 </div>
             </div>
-           
-            
+
+
             {% endfor %}
             <hr class="my-0">
             <!-- Show total -->
@@ -69,9 +70,8 @@
         <!-- Section to fill out contact details -->
         <div class="col-12 col-lg-6">
             <p class="text-content">Please fill out the form below to complete your order</p>
-            <form action="{% url 'checkout' %}" method="POST" id="payment-form" class="booking-details pt-3">
+            <form method="POST" action="{% url 'checkout' %}" id="payment-form" class="booking-details pt-3">
                 {% csrf_token %}
-                {{ form|crispy }}
                 <fieldset class="px-3 mb-4">
                     <legend class="fieldset-label small text-content px-2 w-auto">Your Details</legend>
                     <div class="mb-1">{{ order_form.customer_name }}</div>
@@ -98,8 +98,8 @@
                     <!-- A Stripe card element will go here -->
                     <div class="mb-3" id="card-element"></div>
 
-                    <!-- Used to display form errors -->
-                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                   <!-- Used to display form errors -->
+                   <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                 </fieldset>
                 <div class="submit-button text-right mt-5 mb-2">
                     <button id="submit-button" class="btn my-1 mx-2">
@@ -108,6 +108,7 @@
                             <i class="fas fa-lock"></i>
                         </span>
                     </button>
+
                     <p class="small text-danger my-0">
                         <span class="icon">
                             <i class="fas fa-exclamation-circle"></i>
@@ -130,7 +131,7 @@
 {% endblock %}
 
 {% block postloadjs %}
-     {{ block.super }}
+    {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
     {{ client_secret|json_script:"id_client_secret" }}
     <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>

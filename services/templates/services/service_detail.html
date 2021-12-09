@@ -30,7 +30,13 @@
         <h5 class="card-title">{{ service.name}}</h5>
         <p class="text-content">{{ service.description }}</p>
         <p class="text-content"><strong>€ </strong>{{ service.price }}</p>
-        <p class="text-content">Time Requested: {{ service.time_slot }}</p>
+
+        <form action="" method="post">
+          <label for="time_slot">Time Requested </label>
+          <input id="time_slot" type="text" name="time_slot" value="21/12/2021">
+    
+        </form>
+        <!-- <p class="text-content">Time Requested: <input type="datetime" name="Time request" id=""> {{ service.time_slot }}</p> -->
       </div>
 
       <form method="POST" class="form" action="{% url 'add_to_cart' service.id %}">
