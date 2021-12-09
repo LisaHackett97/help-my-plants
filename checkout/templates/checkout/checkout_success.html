@@ -1,149 +1,78 @@
-{% extends "base.html" %}
-{% load static %}
+/*
+Core logic/payment flow comes from :
+https://stripe.com/docs/payments/accept-a-payment
+Css from:
+https://stripe.com/docs/stripe-js
+*/
 
+var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
+var clientSecret = $('#id_client_secret').text().slice(1, -1);
+var stripe = Stripe(stripePublicKey);
+var elements = stripe.elements();
+var style = {
+    base: {
+        color: '#000',
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSmoothing: 'antialiased',
+        fontSize: '16px',
+        '::placeholder': {
+            color: '#aab7c4'
+        }
+    },
+    invalid: {
+        color: '#dc3545',
+        iconColor: '#dc3545'
+    }
+};
+var card = elements.create('card', {style: style});
+card.mount('#card-element');
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
-{% endblock %}
+// Handle realtime validation error on the card element
+card.addEventListener('change', function (event) {
+    var errorDiv = document.getElementById('card-errors');
+    if (event.error) {
+        var html = `
+            <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+            </span>
+            <span>${event.error.message}</span>
+        `;
+        $(errorDiv).html(html);
+    } else {
+        errorDiv.textContent = '';
+    }
+});
 
-{% block page_header %}
-<div class="container header-container">
-    <div class="row">
-        <div class="col"></div>
-    </div>
-</div>
-{% endblock %}
+// Handle form submit 
 
-{% block content %}
-<div class="container content-container">
-    <div class="row">
-        <div class="col">
-            <h2 class="mb-4 text-heading">Thank You</h2>
-            <hr>
-            <p class="text-content">Your order information is below. A confirmation email will be sent to <strong>
-                {{ order.email }}</strong>.</p>
-            <p class="text-content">For all appointments, we will be in touch within 48 hours to confirm appointment details. 
-                For virtual appointments, a link will be sent to your email. </p>
-        </div>
-    </div>
+var form = document.getElementById('payment-form');
 
-<!-- Where the order summary will be rendered -->
-    <div class="row">
-        <div class="col-12 col-lg-7">
-            <div class="order-confirmation-wrapper p-2 border">
-                <div class="row">
-                    <div class="col">
-                        <small class="text-muted">Order Info</small>
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-12 col-md-4">
-                        <p class="small mb-0 font-weight-bold">Order Number:</p>
-                    </div>
-                    <div class="col-12 col-md-8 text-md-right">
-                       <p class="mb-0"> {{ order.order_number }} </p>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-12 col-md-4">
-                        <p class="small mb-0 font-weight-bold">Order Date:</p>
-                    </div>
-                    <div class="col-12 col-md-8 text-md-right">
-                       <p class="mb-0"> {{ order.date }} </p>
-                    </div>
-                </div>
-              
-
-
-
-                <div class="row">
-                    <div class="col">
-                        <small class="text-muted">Order Details</small>
-                    </div>
-                </div>
-
-                {% for item in order.lineitems.all %}
-                <div class="row mb-3">
-                    <div class="col-12 col-md-4">
-                        <p class="small mb-0 font-weight-bold">{{ item.service.name }}</p>
-                    </div>
-                    <div class="col-12 col-md-4 text-md-right">
-                        <p class="small mb-0">{{ item.service.time_slot }}</p>
-                    </div>
-                    <div class="col-12 col-md-4 text-md-right">
-                        <p class="small mb-0">€ {{ item.service.price }}</p>
-                    </div>
-                    
-                </div>
-                {% endfor %}
-
-                <div class="row">
-                    <div class="col">
-                        <small class="text-muted">Appointment Details</small>
-                    </div>
-                </div>
-
-                <div class="row mb-2">
-                    <div class="col-12 col-md-4">
-                        <p class="mb-0 text-black font-weight-bold">Full Name</p>
-                    </div>
-                    <div class="col-12 col-md-8 text-md-right">
-                        <p class="mb-0">{{ order.customer_name }}</p>
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-12 col-md-4">
-                        <p class="mb-0 text-black font-weight-bold">Phone Number</p>
-                    </div>
-                    <div class="col-12 col-md-8 text-md-right">
-                        <p class="mb-0">{{ order.phone_number }}</p>
-                    </div>
-                </div>
-                <div class="row mb-2">
-                    <div class="col-12 col-md-4">
-                        <p class="mb-0 text-black font-weight-bold">Email</p>
-                    </div>
-                    <div class="col-12 col-md-8 text-md-right">
-                        <p class="mb-0">{{ order.email }}</p>
-                    </div>
-                </div>
-
-                
-
-
-
-                <div class="row">
-                    <div class="col">
-                        <small class="text-muted">Billing Info</small>
-                    </div>
-                </div>
-
-                <div class="row mb-2">
-                    <div class="col-12 col-md-4">
-                        <p class="mb-0 font-weight-bold">Order Total:</p>
-                    </div>
-                    <div class="col-12 col-md-8 text-md-right">
-                       <p class="mb-0">€ {{ order.order_total }} </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12 col-lg-7 text-right">
-            <a href="{% url 'services' %}" class="btn mt-2">          
-                <span class="icon mr-2">
-                    <i class="fas fa-gifts"></i>
-                </span>
-                <span class="text-content">
-                    Check out all our services
-                </span>
-            </a>
-        </div>
-    </div>
+form.addEventListener('submit', function(ev) {
+    ev.preventDefault();
+    card.update({ 'disabled': true});
+    $('#submit-button').attr('disabled', true);
     
-</div>
-{% endblock %}
+    $('#loading-overlay').fadeToggle(100);
+    stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+            card: card,
+        }
+    }).then(function(result) {
+        if (result.error) {
+      // Inform the customer that there was an error.
+            var errorDiv = document.getElementById('card-errors');
+            var html = `
+                <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+                </span>
+                <span>${result.error.message}</span>`;
+            $(errorDiv).html(html);
+            card.update({ 'disabled': false});
+            $('#submit-button').attr('disabled', false);
+        } else {     
+            if (result.paymentIntent.status === 'succeeded') {
+                form.submit();
+            }
+        }
+    });
+});
