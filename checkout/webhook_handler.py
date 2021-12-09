@@ -42,8 +42,7 @@ class StripeWH_Handler:
                     email__iexact=billing_details.email,
                     phone_number__iexact=billing_details.phone,
                     order_total=order_total,
-                    original_cart=cart,
-                    stripe_pid=pid,
+                    
                 )
 
         return HttpResponse(
