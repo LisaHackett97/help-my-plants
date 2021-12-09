@@ -49,6 +49,7 @@ def remove_from_cart(request, item_id):
                 request, f'Removed {service.name} from your cart')
     return redirect(reverse('view_cart'))
 
+
 @require_POST
 @require_POST
 def cache_checkout_data(request):
@@ -60,18 +61,19 @@ def cache_checkout_data(request):
             'save_info': request.POST.get('save_info'),
             'username': request.user,
         })
-        
+
         return HttpResponse(status=200)
     except Exception as e:
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
 
+
 @login_required
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-       
+
     if request.method == "POST":
         cart = request.session.get('cart', {})
         form_data = {
@@ -79,7 +81,7 @@ def checkout(request):
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
             'time_slot': request.POST['time_slot'],
-            
+
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
@@ -93,7 +95,7 @@ def checkout(request):
                             service=service,
                         )
                     order_line_item.save()
-                    
+
                 except Service.DoesNotExist:
                     messages.error(request, (
                         "One of the services in your cart wasn't found in our Database. "
