@@ -19,7 +19,7 @@ from .models import Order, OrderItem
 from .contexts import cart_contents
 
 
-
+@require_POST
 def cache_checkout_data(request):
     """handle checkout cache"""
     try:
