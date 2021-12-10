@@ -1,12 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponse)
+from django.contrib import messages
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
+
+from services.models import Service
 
 @login_required
 def view_cart(request):
     """ To render cart details """
 
-    return render(request, 'checkout/cart.html')
+    return render(request, 'cart/cart.html')
 
-    @login_required
+@login_required
 def add_to_cart(request, item_id):
     """
     Add a service to the Cart

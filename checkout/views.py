@@ -16,7 +16,7 @@ import stripe
 from services.models import Service
 from .forms import OrderForm
 from .models import Order, OrderItem
-from .contexts import cart_contents
+from cart.contexts import cart_contents
 
 
 @require_POST
