@@ -38,13 +38,6 @@ def cache_checkout_data(request):
 
 
 @login_required
-def view_cart(request):
-    """ To render cart details """
-
-    return render(request, 'checkout/cart.html')
-
-
-@login_required
 def add_to_cart(request, item_id):
     """
     Add a service to the Cart
