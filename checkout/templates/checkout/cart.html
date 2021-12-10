@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+
+{% block page_header %}
+<div class="container-fluid header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container content-container">
+    <div class="row">
+        <div class="col text-center">
+            <hr>
+            <h2 class="text-heading mb-4">Cart</h2>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            {% if cart_items %}
+            <div class="row">
+                <div class="col text-right">
+                    <a href="{% url 'services' %}" class="btn btn-cart">
+                        <span class="icon">
+                            <i class="fas fa-chevron-circle-left"></i>
+                        </span>
+                        <span>Back to Services</span>
+                    </a>
+                    <a href="{% url 'checkout' %}" class="btn btn-cart">
+                        <span>Checkout here</span>
+                        <span class="icon">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </a>
+                    <h4 class="mt-4 table-heading"><strong>Total of Your Cart: € {{ total|floatformat:2 }}</strong>  </h4>
+                </div>
+            </div>
+            <div class="table-responsive">
+
+                <table class="table table-sm table-borderless">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col" class="text-center table-heading">Service Info</th>
+                            <th scope="col" class="text-center table-heading"></th>
+                            <th scope="col" class="text-center table-heading">Time Requested</th>
+                            <th scope="col" class="text-right table-heading">Price</th>
+                            <th scope="col" class="text-center table-heading"></th>
+                        </tr>
+                    </thead>
+
+                    {% for item in cart_items %}
+                    <tr>
+                        <td class="p-3 w-25 align-middle">
+                            <img class="img-fluid rounded" src="{{ item.service.image.url }}">
+                        </td>
+                        <td class="py-3 align-middle">
+                            <p class="text-center text-content my-0"><strong>{{ item.service.name }}</strong></p>
+                            <p class="text-center text-content my-0">{{ item.service.description }}</p>
+                        <td class="py-3 align-middle">
+                            <p class="text-center text-content my-0"><strong>{{ item.service.time_slot }}</strong></p>
+                        </td>
+                        <td class="py-3 align-middle">
+                            <p class="text-content text-right my-0"><strong> €{{ item.service.price }}</strong></p>
+                        </td>                                             
+                        <td class="p-3 align-middle">
+                            <a href="{% url 'remove_from_cart' item.item_id %}"><span class="icon"><i class="fas fa-trash"></i></span></a>
+                        </td>
+                    </tr>                    
+                    {% endfor %}
+                    <tr>
+                        <td colspan="5" class="text-right">
+                            <a href="{% url 'services' %}" class="btn btn-cart">
+                               
+                                <span><i class="fas fa-store"></i></span>
+                            </a>
+                            <a href="{% url 'checkout' %}" class="btn btn-cart">
+                                <span><i class="fas fa-cash-register"></i></span>
+                                
+                            </a>
+
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            {% else %}
+            <p class="mb">Your cart is empty</p>
+            <a href="{% url 'services' %}" class="btn btn-lg">
+                <span class="icon">
+                    <i class="fas fa-chevron-circle-left"></i>
+                </span>
+                <span>Keep shopping</span>
+            </a>
+            {% endif %}
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+
+
+    // Remove item and reload on click
+    $('.remove-item').click(function (e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[0];
+        var url = `/cart/remove/${itemId}/`;
+        var data = { 'csrfmiddlewaretoken': csrfToken, };
+
+        $.post(url, data)
+            .done(function () {
+                location.reload();
+            });
+    })
+</script>
+{% endblock %}
