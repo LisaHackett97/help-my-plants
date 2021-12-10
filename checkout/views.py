@@ -19,6 +19,24 @@ from .models import Order, OrderItem
 from .contexts import cart_contents
 
 
+
+def cache_checkout_data(request):
+    """handle checkout cache"""
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(pid, metadata={
+            'cart': json.dumps(request.session.get('cart', {})),
+            'save_info': request.POST.get('save_info'),
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry, your payment cannot be \
+            processed right now. Please try again later.')
+        return HttpResponse(content=e, status=400)
+
+
 @login_required
 def view_cart(request):
     """ To render cart details """
@@ -55,24 +73,6 @@ def remove_from_cart(request, item_id):
     messages.success(
                 request, f'Removed {service.name} from your cart')
     return redirect(reverse('view_cart'))
-
-
-@require_POST
-def cache_checkout_data(request):
-    """handle checkout cache"""
-    try:
-        pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(pid, metadata={
-            'cart': json.dumps(request.session.get('cart', {})),
-            'save_info': request.POST.get('save_info'),
-            'username': request.user,
-        })
-        return HttpResponse(status=200)
-    except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be \
-            processed right now. Please try again later.')
-        return HttpResponse(content=e, status=400)
 
 
 @login_required
