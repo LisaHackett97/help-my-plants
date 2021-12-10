@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from .models import Order, OrderItem
+from django.conf import settings
 from services.models import Service
 import json
 import time
