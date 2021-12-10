@@ -1,15 +1,22 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+"""
+cart and checkout views
+"""
+import json
+
+from django.shortcuts import (
+    render, redirect, reverse, get_object_or_404, HttpResponse)
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+
+import stripe
+
+
 from services.models import Service
 from .forms import OrderForm
 from .models import Order, OrderItem
 from .contexts import cart_contents
-
-import stripe
-import json
 
 
 @login_required
@@ -52,6 +59,7 @@ def remove_from_cart(request, item_id):
 
 @require_POST
 def cache_checkout_data(request):
+    """handle checkout cache"""
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -69,9 +77,10 @@ def cache_checkout_data(request):
 
 @login_required
 def checkout(request):
+    """ Handle checkout events """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-       
+
     if request.method == "POST":
         cart = request.session.get('cart', {})
         form_data = {
@@ -79,7 +88,7 @@ def checkout(request):
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
             'time_slot': request.POST['time_slot'],
-            
+
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
@@ -93,11 +102,12 @@ def checkout(request):
                             service=service,
                         )
                     order_line_item.save()
-                    
+
                 except Service.DoesNotExist:
                     messages.error(request, (
-                        "One of the services in your cart wasn't found in our Database. "
-                        "Please call us for assistance")
+                        "One of the services in your cart wasn't found \
+                        in our Database. \
+                        Please call us for assistance")
                     )
                     order.delete()
                     return redirect(reverse('view_cart'))
@@ -111,7 +121,8 @@ def checkout(request):
     else:
         cart = request.session.get('cart', {})
         if not cart:
-            messages.error(request, "There's nothing in your cart at the moment")
+            messages.error(
+                request, "There's nothing in your cart at the moment")
             return redirect(reverse('services'))
 
     current_cart = cart_contents(request)
@@ -126,7 +137,9 @@ def checkout(request):
     order_form = OrderForm()
 
     if not stripe_public_key:
-        messages.warning(request, 'Stripe Public key is missing. Did you forget to set it on your environment?')
+        messages.warning(
+            request, 'Stripe Public key is missing. \
+                Did you forget to set it on your environment?')
 
     template = 'checkout/checkout.html'
     context = {

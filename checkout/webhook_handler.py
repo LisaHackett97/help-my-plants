@@ -1,9 +1,14 @@
-from django.http import HttpResponse
-from .models import Order, OrderItem
-from django.conf import settings
-from services.models import Service
+"""
+Webhook handlers
+"""
+
 import json
 import time
+from django.http import HttpResponse
+from django.conf import settings
+from services.models import Service
+from .models import Order, OrderItem
+
 
 class StripeWH_Handler:
     """Handle Stripe webhooks"""
@@ -30,12 +35,12 @@ class StripeWH_Handler:
         save_info = intent.metadata.save_info
         billing_details = intent.charges.data[0].billing_details
         order_total = round(intent.charges.data[0].amount / 100, 2)
-       
+
         # Clean data in the shipping details
         for field, value in billing_details.address.items():
             if value == "":
                 billing_details.address[field] = None
-        
+
         order_exists = False
         attempt = 1
         while attempt <= 5:
@@ -51,20 +56,18 @@ class StripeWH_Handler:
 
                 order_exists = True
                 break
-            
+
             except Order.DoesNotExist:
                 attempt += 1
                 time.sleep(1)
 
-        
                 return HttpResponse(
                     content=f'Webhook received: {event["type"]} | Success: Verfied Order already in DB',
                     status=200)
         if order_exists:
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verfied order already in database',
-                status=200)   
-        
+                status=200)
 
     def handle_payment_intent_payment_failed(self, event):
         """
