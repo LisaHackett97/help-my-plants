@@ -19,6 +19,18 @@ from .models import Order, OrderItem
 from cart.contexts import cart_contents
 
 
+@require_POST
+def cache_checkout_data(request):
+    """handle checkout cache"""
+    try:
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, 'Sorry, your payment cannot be \
+            processed right now. Please try again later.')
+        return HttpResponse(content=e, status=400)
 
 
 @login_required
