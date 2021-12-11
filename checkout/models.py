@@ -29,7 +29,7 @@ class Order(models.Model):
         self.order_total = self.lineitems.aggregate(
             Sum('item_total'))['item_total__sum'] or 0
        
-        self.grand_total = self.order_total 
+        self.order_total = self.order_total 
         self.save()
 
 
