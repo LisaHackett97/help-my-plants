@@ -25,7 +25,7 @@ def cart_contents(request):
 
     context = {
         'cart_items': cart_items,
-        'total': total,
+        'cart_total': cart_total,
         'service_count': service_count,
         
     }
