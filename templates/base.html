@@ -70,10 +70,10 @@
                 <li class="list-inline-item pl-1"><a href="" class="text-content"><div class="text-center"><i class="far fa-user-circle"></i></div>My Profile</a></li>
 
                 <li class="list-inline-item pl-1">
-                    <a class="{% if service_count %}text-info font-weight-bold{% else %}text-content{% endif %} nav-link" href="{% url 'view_cart' %}">
+                    <a class="{% if cart_items %}text-info font-weight-bold{% else %}text-content{% endif %} nav-link" href="{% url 'view_cart' %}">
                         <div class="text-center"><i class="fas fa-shopping-cart"></i></div>
                         <div class="text-center">
-                            {% if service_count %}
+                            {% if cart_items %}
                             € {{ total|floatformat:2 }}
                             {% else %}
                                <small>0</small>
