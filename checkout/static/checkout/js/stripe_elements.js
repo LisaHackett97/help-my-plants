@@ -74,7 +74,7 @@ form.addEventListener('submit', function(ev) {
                     phone: $.trim(form.phone_number.value),
                     email: $.trim(form.email.value),
                 }           
-            }
+            },
         }).then(function(result) {
             if (result.error) {
           // Inform the customer that there was an error.
