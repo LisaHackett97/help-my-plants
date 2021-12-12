@@ -63,8 +63,8 @@
             {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
                 
-                    <li class="list-inline-item text-content"><div class="text-center"><i class="fas fa-cogs"></i> </div> TBC Admin</li>
-                
+                    
+                    <li class="list-inline-item pl-1"><a href="{% url 'add_service' %}" class="text-content"><div class="text-center text-content"><i class="fas fa-cogs"></i> </div>Admin</a></li>
                 {% endif %}
                 <li class="list-inline-item pl-1"><a href="{% url 'services' %}" class="text-content"><div class="text-center text-content"><i class="fas fa-store"></i> </div>Services</a></li>
                 <li class="list-inline-item pl-1"><a href="" class="text-content"><div class="text-center"><i class="far fa-user-circle"></i></div>My Profile</a></li>

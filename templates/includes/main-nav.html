@@ -2,7 +2,8 @@
     <ul class="navbar-nav w-auto mx-auto">
         {% if request.user.is_authenticated %}
         {% if request.user.is_superuser %}
-            <li class="list-inline-item nav-text-content py-3">Site Admin</li>
+        <li class="list-inline-item py-2"><a href="{% url 'add_service' %}" class="nav-text-content">Admin</a></li>
+           
         {% endif %}
         <li class="list-inline-item py-2"><a href="{% url 'services' %}" class="nav-text-content">Services</a></li>
         <li class="list-inline-item py-2"><a href="" class="text-content">My Profile</a></li>
