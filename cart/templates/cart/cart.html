@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cart_tools %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
@@ -71,6 +72,13 @@
                         </td>
                         <td class="py-3 align-middle">
                             <p class="text-content text-right my-0"><strong> €{{ item.service.price }}</strong></p>
+                         
+                        </td>
+                        <td class="py-3 w-25">
+                            {% include "cart/quantity-form.html" %}
+                        </td>
+                        <td class="py-3">
+                            <p class="my-0">${{ item.service.price | calc_subtotal:item.quantity }}</p>
                         </td>                                             
                         <td class="p-3 align-middle">
                             <a href="{% url 'remove_from_cart' item.item_id %}"><span class="icon"><i class="fas fa-trash"></i></span></a>

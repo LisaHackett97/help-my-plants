@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {%load crispy_forms_tags %}
+{% load cart_tools %}
 
 
 
@@ -28,7 +29,7 @@
     <!-- Summary of the order showing each item in the cart -->
     <div class="row">
         <div class="col-12 col-lg-6 order-lg mb-5">
-            <p class="text-content">Order Summary</p>
+            <p class="text-content">Order Summary ({{service_count }})</p>
             <div class="row">
 
                 <div class="col-7 offset-2">
@@ -36,7 +37,7 @@
                 </div>
                 <div class="col-3 text-right">
                     <p class="mb-1 mt-0 small text-muted order-summary">
-                        Price
+                        Subtotal
                     </p>
                 </div>
             </div>
@@ -50,7 +51,7 @@
                     <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                 </div>
                 <div class="col-2 text-right">
-                    <p class="my-0 small text-muted">€ {{ item.service.price }}</p>
+                    <p class="my-0 small text-muted">€ {{ item.service.price | calc_subtotal:item.quantity }}</p>
                 </div>
             </div>
 
