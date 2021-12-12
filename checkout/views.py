@@ -118,7 +118,7 @@ def checkout(request):
             for item_id, item_data in cart.items():
                 try:
                     service = Service.objects.get(id=item_id)
-                    order_line_item = OrderLineItem(
+                    order_line_item = OrderItem(
                         order=order,
                         service=service,
                         quantity=item_data,
