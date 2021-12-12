@@ -74,7 +74,7 @@
                         <div class="text-center"><i class="fas fa-shopping-cart"></i></div>
                         <div class="text-center">
                             {% if cart_items %}
-                            € {{ total|floatformat:2 }}
+                            € {{ cart_total|floatformat:2 }}
                             {% else %}
                                <small>0</small>
                             {% endif %}

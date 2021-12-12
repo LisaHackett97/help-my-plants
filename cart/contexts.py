@@ -16,8 +16,7 @@ def cart_contents(request):
         total += service.price
         cart_items.append({
             'item_id': item_id,
-            
-                
+            'quantity': item_data,                
             'service': service
             })
 
@@ -25,7 +24,7 @@ def cart_contents(request):
 
     context = {
         'cart_items': cart_items,
-        'total': total,
+        'cart_total': cart_total,
         'service_count': service_count,
         
     }
