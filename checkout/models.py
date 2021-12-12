@@ -43,11 +43,12 @@ class Order(models.Model):
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
     service = models.ForeignKey(Service, null=False, blank=False, on_delete=models.CASCADE)
+    quantity = models.IntegerField(null=False, blank=False, default=0)
     item_total = models.DecimalField(max_digits=6, decimal_places=2, 
-                                     null=False, blank=False, editable=False, default=0)
+                                     null=False, blank=False, editable=False)
 
     def save(self, *args, **kwargs):
-        self.item_total = self.service.price
+        self.item_total = self.service.price * self.quantity
         super().save(*args, **kwargs)
 
     def __str__(self):
