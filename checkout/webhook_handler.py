@@ -41,8 +41,8 @@ class StripeWH_Handler:
         while attempt <= 5:
             try:
                 order = Order.objects.get(
-                        customer_name=billing_details.name,
-                        email=billing_details.email,
+                        customer_name__iexact=billing_details.name,
+                        email__iexact=billing_details.email,
                         phone_number__iexact=billing_details.phone,                        
                         order_total=order_total,
                         original_cart=cart,
@@ -76,14 +76,12 @@ class StripeWH_Handler:
                         order_line_item = OrderItem(
                             order=order,
                             service=service,
-                            quantity=item_data,
                         )
                         order_line_item.save()
                     else:
                         order_line_item = OrderItem(
                             order=order,
                             service=service,
-                            quantity=item_data,
                         )
                         order_line_item.save()
             except Exception as e:
