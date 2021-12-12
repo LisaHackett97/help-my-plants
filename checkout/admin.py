@@ -22,7 +22,6 @@ class OrderAdmin(admin.ModelAdmin):
               'date',
               'original_bag', 
               'stripe_pid')
-              )
 
     list_display = ('order_number', 'customer_name', 'time_slot', 'order_total',)
 
