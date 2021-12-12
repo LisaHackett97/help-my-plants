@@ -13,6 +13,8 @@ class Order(models.Model):
     time_slot = models.DateField(auto_now_add=False, null=True, blank=True)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     date = models.DateField(auto_now_add=True)
+    original_bag = models.TextField(null=False, blank=False, default='')
+    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default='')
 
     def _generate_order_number(self):
         """
