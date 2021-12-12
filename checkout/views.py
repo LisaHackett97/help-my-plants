@@ -66,7 +66,7 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            order_form.save()
+            order.save()
             for item_id, item_data in cart.items():
                 try:
                     service = Service.objects.get(id=item_id)
