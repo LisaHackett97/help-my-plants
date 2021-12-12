@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
-from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
@@ -11,22 +10,6 @@ from .contexts import cart_contents
 import stripe
 import json
 
-
-@require_POST
-def cache_checkout_data(request):
-    try:
-        pid = request.POST.get('client_secret').split('_secret')[0]
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        stripe.PaymentIntent.modify(pid, metadata={
-            'cart': json.dumps(request.session.get('cart', {})),
-            'save_info': request.POST.get('save_info'),
-            'username': request.user,
-        })
-        return HttpResponse(status=200)
-    except Exception as e:
-        messages.error(request, 'Sorry, your payment cannot be \
-            processed right now. Please try again later.')
-        return HttpResponse(content=e, status=400)
 
 @login_required
 def view_cart(request):
@@ -43,43 +26,15 @@ def add_to_cart(request, item_id):
     They are redirected to cart
     """
     service = get_object_or_404(Service, pk=item_id)
-    quantity = int(request.POST.get('quantity'))
-    redirect_url = request.POST.get('redirect_url')
     cart = request.session.get('cart', {})
 
-    if item_id in list(cart.keys()):
-            cart[item_id] += quantity
-            messages.success(request, f'Updated {service.name} quantity to {cart[item_id]}')
+    if item_id in cart:
+        messages.info(request, f'{service.name} already in your cart')
     else:
-            cart[item_id] = quantity
-            messages.success(request, f'Added {service.name} to your cart')
-
-    request.session['cart'] = cart        
+        cart[item_id] = cart.get(item_id)
+        request.session['cart'] = cart
+        messages.success(request, f'Added {service.name} to your order')
     return redirect(reverse('view_cart'))
-
-def adjust_cart(request, item_id):
-    """
-        Adjust the quantity/number of customers
-        of the specified service to
-        the specified amount
-    """
-    service = get_object_or_404(Service(), pk=item_id)
-    quantity = int(request.POST.get('quantity'))
-   
-    cart = request.session.get('cart', {})
-
-    if quantity > 0:
-            cart[item_id] = quantity
-            messages.success(
-                request, f'Updated {service.name} quantity to {cart[item_id]}')
-    else:
-            cart.pop(item_id)
-            messages.success(
-                request, f'Removed {service.name} from your cart')
-
-    request.session['cart'] = cart
-    return redirect(reverse('cart'))
-
 
 
 @login_required
@@ -105,23 +60,19 @@ def checkout(request):
             'customer_name': request.POST['customer_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
-            
+            'time_slot': request.POST['time_slot'],
             
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            pid = request.POST.get('client_secret').split('_secret')[0]
-            order.stripe_pid = pid
-            order.original_cart = json.dumps(cart)
-            order.save()
+            order_form.save()
             for item_id, item_data in cart.items():
                 try:
                     service = Service.objects.get(id=item_id)
                     order_line_item = OrderItem(
-                        order=order,
-                        service=service,
-                        quantity=item_data,
+                            order=order,
+                            service=service,
                         )
                     order_line_item.save()
                     
