@@ -13,13 +13,12 @@ def cart_contents(request):
     for item_id, item_data in cart.items():
         service = get_object_or_404(Service, pk=item_id)
         total += item_data * service.price
-        service += item_data
-        cart.append({
+        service_count += item_data
+        cart_items.append({
             'item_id': item_id,
             'quantity': item_data,
             'service': service,
-        })
-      
+            })
     cart_total = total
 
     context = {
@@ -27,6 +26,6 @@ def cart_contents(request):
         'total': total,
         'service_count': service_count,
         'cart_total': cart_total,
-    }
+    }    
 
     return context
