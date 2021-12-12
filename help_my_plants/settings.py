@@ -28,7 +28,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-
 ALLOWED_HOSTS = ['help-my-plants.herokuapp.com', 'localhost']
 
 
@@ -47,7 +46,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home',
     'services',
-    'cart',
     'checkout',
     'articles',
 
@@ -86,7 +84,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                'cart.contexts.cart_contents',
+                'checkout.contexts.cart_contents',
             ],
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
@@ -138,6 +136,8 @@ else:
     }
 
 
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -186,7 +186,7 @@ if 'USE_AWS' in os.environ:
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
         'CacheControl': 'max-age=94608000',
     }
-
+    
     # Bucket Config
     AWS_STORAGE_BUCKET_NAME = 'help-my-plants'
     AWS_S3_REGION_NAME = 'eu-west-1'
