@@ -20,15 +20,19 @@ def add_to_cart(request, item_id):
     They are redirected to cart
     """
     service = get_object_or_404(Service, pk=item_id)
-    cart = request.session.get('cart', {})
+    quantity = int(request.POST.get('quantity'))
+    redirect_url = request.POST.get('redirect_url')
+    cart= request.session.get('cart', {})
 
-    if item_id in cart:
-        messages.info(request, f'{service.name} already in your cart')
+    if item_id in list(cart.keys()):
+        cart[item_id] += quantity
+        messages.success(request, f'Updated {service.name} quantity to {cart[item_id]}')
     else:
-        cart[item_id] = cart.get(item_id)
-        request.session['cart'] = cart
-        messages.success(request, f'Added {service.name} to your order')
-    return redirect(reverse('view_cart'))
+        cart[item_id] = quantity
+        messages.success(request, f'Added {service.name} to your cart')
+
+    request.session['cart'] = cart
+    return redirect(redirect_url)
 
 
 @login_required
