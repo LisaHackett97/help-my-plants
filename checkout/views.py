@@ -88,19 +88,23 @@ def checkout(request):
             'customer_name': request.POST['customer_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
-            'time_slot': request.POST['time_slot'],
+            
             
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save(commit=False)
-            order_form.save()
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_cart = json.dumps(cart)
+            order.save()
             for item_id, item_data in cart.items():
                 try:
                     service = Service.objects.get(id=item_id)
-                    order_line_item = OrderItem(
-                            order=order,
-                            service=service,
+                    order_line_item = OrderLineItem(
+                        order=order,
+                        service=service,
+                        quantity=item_data,
                         )
                     order_line_item.save()
                     
