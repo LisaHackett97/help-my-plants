@@ -30,7 +30,7 @@ class StripeWH_Handler:
         """
         intent = event.data.object
         pid = intent.id
-        cart = cart_items
+        cart = intent.metadata.cart
         save_info = intent.metadata.save_info
 
         billing_details = intent.charges.data[0].billing_details
@@ -41,8 +41,8 @@ class StripeWH_Handler:
         while attempt <= 5:
             try:
                 order = Order.objects.get(
-customer_name__iexact=billing_details.name,
-                        email__iexact=billing_details.email,
+                        customer_name=billing_details.name,
+                        email=billing_details.email,
                         phone_number__iexact=billing_details.phone,                        
                         order_total=order_total,
                         original_cart=cart,
