@@ -76,12 +76,14 @@ class StripeWH_Handler:
                         order_line_item = OrderItem(
                             order=order,
                             service=service,
+                            quantity=item_data,
                         )
                         order_line_item.save()
                     else:
                         order_line_item = OrderItem(
                             order=order,
                             service=service,
+                            quantity=item_data,
                         )
                         order_line_item.save()
             except Exception as e:
