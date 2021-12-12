@@ -17,7 +17,7 @@ class OrderForm(forms.ModelForm):
             'customer_name': 'Full Name',
             'email': 'Email Address',
             'phone_number': 'Phone Number',
-            'time_slot': 'Time Chosen',
+            'time_slot': 'Please enter a date ',
             
         }
 
