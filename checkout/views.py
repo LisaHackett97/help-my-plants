@@ -174,7 +174,9 @@ def checkout_success(request, order_number):
 
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.')
+        email will be sent to {order.email}. \
+        We will contact you within 48 hours on {order.phone_number} \
+        to discuss and confirm date for your appointment')
 
     if 'cart' in request.session:
         del request.session['cart']

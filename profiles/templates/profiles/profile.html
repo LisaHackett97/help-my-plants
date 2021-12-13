@@ -34,6 +34,9 @@
         </div>
         <div class="col-12 col-lg-8">
             <p class="text-content">Order History</p>
+            <p class="profile-text-content">
+                Once date for your appointment is agreed by phone, 
+                this will be udpated in your order history within 24 hours </p>
             <div class="order-history table-responsive">
                 <table class="table table-sm table-borderless">
                     <thead>
@@ -60,11 +63,15 @@
                                                 <li class="text-content">
                                                     {{ item.service.name }}                                                    
                                                 </li>
-                                                <!-- Only render field if date has been confirmed and updated -->
+                                                <!-- Only render field data if date has been confirmed and updated -->
                                                 {% if item.date_picked %}
                                                 <li class="profile-text-content">
                                                    Confirmed Date: {{ item.date_picked }}
-                                                </li>                      
+                                                </li>
+                                                {% else %}                     
+                                                <li class="profile-text-content">
+                                                    Date not yet confirmed
+                                                 </li>
                                                 {% endif %}                                                
                                             {% endfor %}
                                         </ul>
