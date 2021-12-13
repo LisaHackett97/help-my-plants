@@ -1,0 +1,21 @@
+Hello {{ order.customer_name }}!
+
+This is a confirmation of your appointments at Help My Plants. Your order information is below:
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Total: €{{ order.order_total }}
+
+We will contact you within 24 hours to discuss and finalise appointment times,
+and will contact you by phone or email.
+
+We've got your phone number on file as {{ order.phone_number }}.
+
+If you have any questions, feel free to contact us at {{ contact_email }}.
+
+Thank you for your order, and we look forward to helping you with your Plants
+
+Sincerely,
+
+Help My Plants Customer Team
