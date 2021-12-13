@@ -1,0 +1,19 @@
+:root {
+    --main-text-color: #3D4A3D;
+    --headers: #343434;
+    --color1:#138A36;
+    --color2:#D4C5C7;
+  }
+
+
+#profile-update-form .form-control {
+    color: var(--main-text-color);
+}
+
+#profile-update-form input::placeholder {
+    color: var(--color2)
+}
+
+#profile-form-input {
+    color: var(--main-text-color)
+}
