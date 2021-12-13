@@ -17,7 +17,8 @@ def cart_contents(request):
         cart_items.append({
             'item_id': item_id,
             'quantity': item_data,
-            'service': service
+            'service': service,
+            
         })
 
     cart_total = total

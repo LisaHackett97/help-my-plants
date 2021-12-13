@@ -78,7 +78,7 @@ def checkout(request):
             'customer_name': request.POST['customer_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
-            'time_slot': request.POST['time_slot'],
+            
             
         }
         order_form = OrderForm(form_data)
