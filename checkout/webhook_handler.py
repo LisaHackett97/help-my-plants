@@ -8,6 +8,7 @@ from django.http import HttpResponse
 from django.conf import settings
 from services.models import Service
 from .models import Order, OrderItem
+from profiles.models import UserProfile
 
 
 class StripeWH_Handler:
@@ -37,6 +38,9 @@ class StripeWH_Handler:
 
         billing_details = intent.charges.data[0].billing_details
         order_total = round(intent.charges.data[0].amount / 100, 2)
+
+        # Update Profile info is save was checked
+
 
         order_exists = False
         attempt = 1

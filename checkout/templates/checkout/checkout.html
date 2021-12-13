@@ -52,8 +52,6 @@
                     <p class="my-0 small text-muted">€ {{ item.service.price }}</p>
                 </div>
             </div>
-
-
             {% endfor %}
             <hr class="my-0">
             <!-- Show total -->
@@ -74,13 +72,13 @@
                 {% csrf_token %}
                 <fieldset class="px-3 mb-4">
                     <legend class="fieldset-label small text-content px-2 w-auto">Your Details</legend>
-                    <div class="mb-1">{{ order_form.customer_name }}</div>
-                    <div class="mb-1">{{ order_form.email }}</div>
-                    <div class="mb-1">{{ order_form.phone_number }}</div>
+                    <div class="mb-2">{{ order_form.customer_name }}</div>
+                    <div class="mb-2">{{ order_form.email }}</div>
+                    <div class="mb-2">{{ order_form.phone_number }}</div>
                 </fieldset>
                 <fieldset class="px-3 mb-5">
-                    <legend class="fieldset-label small text-content px-2 w-auto">Booking Details</legend>
-                    {{ order_form.time_slot }}
+                    
+                   
                     <div class="form-check form-check-inline float-right mr-0">
                         {% if user.is_authenticated %}
                         <label class="form-check-label" for="id-save-info">Save this information to my
