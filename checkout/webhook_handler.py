@@ -40,6 +40,13 @@ class StripeWH_Handler:
         order_total = round(intent.charges.data[0].amount / 100, 2)
 
         # Update Profile info is save was checked
+        profile = None
+        username = intent.metadata.username
+        if save_info:
+                profile.default_phone_number = billing_details.phone
+                profile.default_email = billing_details.email
+                profile.save()
+
 
 
         order_exists = False
