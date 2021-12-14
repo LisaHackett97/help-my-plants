@@ -25,12 +25,13 @@
     </div>
 </div>
 
-<div class="col-12 col-lg-8">
+<div class="col-12 col-lg-10">
     <div class="table-responsive">
         <table class="table table-sm table-borderless">
             <thead>
                 <tr>
-                    <th> Customer Name</th>
+                    <!-- Hide customner name on small screens to avoic horizontal scrolling -->
+                    <th class="d-none d-mb-block"> Customer Name</th>
                     <th> Service Booked </th>
                     <th> Date confirmed </th>
                     <th> Order Number </th>
@@ -41,7 +42,7 @@
                 {% for order in orders %}
                 {% for item in order.lineitems.all %}
                 <tr>
-                    <td>
+                    <td class="d-none d-mb-block">
                         {{item.order.customer_name }}
                     </td>
                     <td>
