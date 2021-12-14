@@ -1,5 +1,6 @@
 .article-links {
     color: #7b217e !important;
+    text-decoration: underline;
     
 }
 
@@ -7,4 +8,12 @@
     color: var(--headers) !important;
     font-size: 110%;
     
+}
+
+.article-section {
+    
+    color: var(--headers);
+    font-family: 'Poppins', sans-serif;
+      font-size:1.5rem;
+      font-style: italic;
 }
