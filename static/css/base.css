@@ -145,6 +145,11 @@ span.text-content:hover {
     object-position: center center;
 }
 
+/* standardise card body height */
+.card-body {
+    height:100px;
+}
+
 /* Cart */
 .remove-item {
     cursor: pointer;
