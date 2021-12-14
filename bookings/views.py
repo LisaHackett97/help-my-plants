@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from checkout.models import Order
 from profiles.models import UserProfile
@@ -10,15 +10,12 @@ from .forms import BookingForm
 
 def bookings_list(request):
     """ A view to return the index page """
-    profile = get_object_or_404(UserProfile, user=request.user)
-    
-    orders = Order.objects.all()
-   
+    profile = get_object_or_404(UserProfile, user=request.user)    
+    orders = Order.objects.all()   
 
     context = {
         'profile': profile,
-        'orders': orders,
-    }
+        'orders': orders,    }
 
     return render(request, 'bookings/bookings_list.html', context)
 
@@ -36,15 +33,17 @@ def update_order(request, order_id):
     if request.method == 'POST':
         form = BookingForm(request.POST, instance=order)
         if form.is_valid():
-            form.save()
-            messages.success(request, 'Successfully updated booking!')
+            # Post functionality to update the date field on each line item in the customers order has not been finalised
+            # Giving the authenticated user a message
+            messages.error(request, 
+                'Please contact your admin. We are currently experiencing issues with this functionality. The order has not been Updated')
+            return redirect(reverse('bookings_list'))
             
-        else:
-            messages.error(request, 'Failed to update service. Please ensure the form is valid.')
+  
     else:
         form = BookingForm(instance=order)
         
-        messages.info(request, f'You are editing { order.customer_name }')
+        messages.info(request, f'Apologies. Order for { order.customer_name } cannot be updated at this time')
 
     template = 'bookings/update_order.html'
     

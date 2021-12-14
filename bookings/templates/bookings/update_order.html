@@ -30,8 +30,11 @@
                   </div>
 
                 <div class="text-right m-4">
-                    <a href="#" class="btn mr-2">Cancel</a>
-                    <button class="btn" type="submit">Update Booking</button>
+                    <a href="{% url 'bookings_list' %}" class="btn mr-2">Back to Bookings List</a>
+                    <!-- Btn disabled as full functionality note yet in place. 
+                    View written with message, 
+                    if this btn was enabled in error before functionality updated -->
+                    <button class="btn" type="submit" disabled>Update Booking</button>
                 </div>
         </form>
       </div>
