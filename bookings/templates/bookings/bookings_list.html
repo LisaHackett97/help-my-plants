@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+{% endblock %}
+
+
+{% block page_header %}
+<div class="container-fluid header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid content-container">
+    <div class="row">
+        <div class="col text-center mt3">
+            <h3 class="text-heading pt-4">Customer Bookings</h3>
+            <hr class="w-50 mb-1">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-lg-4">
+            <p class="text-content">Information</p>
+            
+        </div>
+      
+    </div>
+</div>
+
+{% for order in orders %}
+<p>{{ order.lineitems.name }} </p>
+{% endfor %}
+
+{% for order in orders %}
+{% for item in order.lineitems.all %}
+{{ item.service.name }}
+{% endfor %}
+{% endfor %}
+
+
+                   
+
+{% endblock %}
