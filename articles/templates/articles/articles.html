@@ -43,32 +43,63 @@
                         <p class="text-left">{{ article.content }}
                         </p>
                         <p>Why not <a href="{% url 'get_serviceOne' %}" class="article-links">book a new Consult
-                        </a>,
-                        <a href="{% url 'get_serviceThree' %}" class="article-links">an accompanied shopping
-                            trip
-                            for your new house plants.</a>
-                        Or been with us before? <a href="{% url 'get_serviceTwo' %}" class="article-links">Book
-                            a
-                            follow up.</a>
-                    </p>
-                    <p>
-                        Not sure yet, why not <a href="{% url 'services' %}" class="article-links">have a look
-                            through all our currently available services</a>
-                    </p>
-                    <hr>
+                            </a>,
+                            <a href="{% url 'get_serviceThree' %}" class="article-links">an accompanied shopping
+                                trip
+                                for your new house plants.</a>
+                            Or been with us before? <a href="{% url 'get_serviceTwo' %}" class="article-links">Book
+                                a
+                                follow up.</a>
+                        </p>
+                        <p>
+                            Not sure yet, why not <a href="{% url 'services' %}" class="article-links">have a look
+                                through all our currently available services</a>
+                        </p>
+                        <hr>
                     </article>
                 </div>
-
-
                 {% endfor %}
-
-
-
             </div>
         </div>
     </div>
+    
+    
+        <section class="col-xs-12 col-md-10 offset-md-4 mt-4">
+                <h6 class="article-section">This is what you have previously ordered</h6>
+
+                <div class="table-responsive text-centre">
+                    <table class="table table-sm table-borderless">
+                       
+                        <tbody>
+                            {% for order in orders %}
+                            <tr>
+                                <td>
+                                    {% for item in order.lineitems.all %}
+                                    {{ item.service.name }}
+                                        {% if item.date_picked %}
+                                        <li class="profile-text-content">
+                                            Confirmed Date: {{ item.date_picked }}
+                                        </li>
+                                        {% else %}
+                                        <li class="profile-text-content">
+                                         Date not yet confirmed
+                                     </li>
+                                        {% endif %}
+                                {% endfor %}
+
+                                </td>
+                               
+                                    </tr>
+                        {% endfor %} 
 
 
-</div>
+                        </tbody>
+                    </table>
+                </div>
+                                    
+        </section>
+   
+
+
 
 {% endblock %}

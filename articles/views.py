@@ -1,17 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Article
 from services.models import Service
+from checkout.models import Order
+from profiles.models import UserProfile
 
 
 @login_required()
 def all_articles(request):
     """ A view to show all articles """
-
+    profile = get_object_or_404(UserProfile, user=request.user)
     articles = Article.objects.all()
+    orders= profile.orders.all()
     context = {
         'articles': articles,
+        'orders': orders,
     }
     return render(request, 'articles/articles.html', context)
 
