@@ -28,15 +28,17 @@
                         <div class="card">
 
                           {% if service.image.url %}
-                            <a href="{% url 'service_detail' service.id %}">
-                                <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.name }}">
-                            </a>
-                          {% else %}
+                          <a href="{% url 'service_detail' service.id %}">
+                            <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.name }}">
+                        </a>
+                          {% else %}                          
+                            
                             <a href="{% url 'service_detail' service.id %}">
                                 <img src="{{ MEDIA_URL }}no-image.png" class="card-img-top" alt="{{ service.name }}">
                             </a>
                          
                           {% endif %}
+                        
 
                           <div class="card-body">
                             <h5 class="card-title">{{ service.name}}</h5></div>

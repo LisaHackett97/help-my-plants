@@ -14,7 +14,7 @@
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
       <div class="image-container my-5">
-        {% if service.image %}
+        {% if service.image.url %}
         <a href="{{ service.image.url }}" target="_blank">
           <img src="{{ service.image.url }}" class="img-fluid" alt="{{ service.name }}">
         </a>
@@ -30,6 +30,12 @@
         <h5 class="card-title">{{ service.name}}</h5>
         <p class="text-content">{{ service.description }}</p>
         <p class="text-content"><strong>€ </strong>{{ service.price }}</p>
+        {% if request.user.is_superuser %}
+        <p class="ml-3">
+          <a href="{% url 'edit_service' service.id %}">Edit</a> |
+          
+        </p>
+        {% endif %}
 
         <!-- Hidden Fields as due to time constraints, have not written code 
           to pass this ot order line items, then add to cart and render correctly
