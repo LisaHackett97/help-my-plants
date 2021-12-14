@@ -68,6 +68,14 @@
                             {{item.order.date }}
                         </p>
                     </td>
+                    <td>
+                        {% if request.user.is_superuser %}
+                                <small>
+                                    <a href="{% url 'update_order' order.id %}">Edit</a> 
+                                  
+                                </small>
+                                {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
                 {% endfor %}

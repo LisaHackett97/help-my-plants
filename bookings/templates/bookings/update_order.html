@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid content-container">
+    <div class="row">
+      <div class="col-12 text-center mt-3">
+          
+          
+          <h5 class="text-heading2">Update date for Booking</h5>
+          
+      </div>
+    </div>
+
+  <div class="row">
+      <div class="col-12 col-md-6 offset-md-3">
+          <form method="POST" action="{% url 'update_order' order.id %}" class="form mb-2" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form |crispy }}
+                <div class="form-row col-md-6">
+                    
+                  </div>
+
+                <div class="text-right m-4">
+                    <a href="#" class="btn mr-2">Cancel</a>
+                    <button class="btn" type="submit">Update Booking</button>
+                </div>
+        </form>
+      </div>
+  </div>
+  
+</div>
+{% endblock %}
