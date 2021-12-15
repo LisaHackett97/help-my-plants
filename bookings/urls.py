@@ -1,4 +1,5 @@
-
+""" Urls to access bookings list and
+when functionality complete, enable Admin to update a booking record"""
 from django.urls import path
 from .import views
 

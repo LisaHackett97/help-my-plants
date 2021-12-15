@@ -1,4 +1,4 @@
-""" Views for Bopkings app """
+""" Views for Bookings app """
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -13,7 +13,7 @@ def bookings_list(request):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only site owners can do that.')
         return redirect(reverse('home'))
-        
+
     profile = get_object_or_404(UserProfile, user=request.user)
     orders = Order.objects.all()
 

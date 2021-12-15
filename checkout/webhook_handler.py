@@ -9,10 +9,8 @@ from django.http import HttpResponse
 from django.conf import settings
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
-from profiles.models import UserProfile
 from services.models import Service
 from .models import Order, OrderItem
-
 
 
 class StripeWH_Handler:
