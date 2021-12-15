@@ -1,3 +1,4 @@
+"""imports and viewss for Services models and views """
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -6,17 +7,16 @@ from .forms import ServiceForm
 
 # Create your views here.
 
+
 @login_required
 def all_services(request):
     """ A view to show all services """
-
     services = Service.objects.all()
-
     context = {
         'services': services,
     }
-
     return render(request, 'services/services.html', context)
+
 
 @login_required
 def service_detail(request, service_id):
@@ -26,8 +26,8 @@ def service_detail(request, service_id):
     context = {
         'service': service,
     }
-
     return render(request, 'services/service_detail.html', context)
+
 
 @login_required
 def add_service(request):
@@ -35,7 +35,7 @@ def add_service(request):
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only site owners can do that.')
         return redirect(reverse('home'))
-        
+
     if request.method == 'POST':
         form = ServiceForm(request.POST, request.FILES)
         if form.is_valid():
@@ -43,7 +43,8 @@ def add_service(request):
             messages.success(request, 'Successfully added service!')
             return redirect(reverse('service_detail', args=[service.id]))
         else:
-            messages.error(request, 'Failed to add service. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add service. \
+                Please ensure the form is valid.')
     else:
         form = ServiceForm()
 
@@ -53,6 +54,7 @@ def add_service(request):
     }
 
     return render(request, template, context)
+
 
 @login_required
 def edit_service(request, service_id):
@@ -69,7 +71,8 @@ def edit_service(request, service_id):
             messages.success(request, 'Successfully updated service!')
             return redirect(reverse('service_detail', args=[service.id]))
         else:
-            messages.error(request, 'Failed to update service. Please ensure the form is valid.')
+            messages.error(request, 'Failed to update service. \
+                Please ensure the form is valid.')
     else:
         form = ServiceForm(instance=service)
         messages.info(request, f'You are editing {service.name}')
@@ -81,6 +84,7 @@ def edit_service(request, service_id):
     }
 
     return render(request, template, context)
+
 
 @login_required
 def delete_service(request, service_id):
