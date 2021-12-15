@@ -1,3 +1,6 @@
+/*jshint esversion: 6 */
+/*globals $:false */
+
 /*
 Core logic/payment flow comes from :
 https://stripe.com/docs/payments/accept-a-payment
