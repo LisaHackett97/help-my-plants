@@ -24,10 +24,9 @@
 
  .bg-mobile-nav  {
     background-color: var(--color2);
-
 }
 
-
+/* Header contaner */
 .header-container {
     padding: 10px;
      background-color: var(--color2);
@@ -226,12 +225,6 @@ https://www.w3schools.com/howto/howto_js_scroll_to_top.asp */
         width: 100%;
     }  
 }
- 
- /* // Small devices (landscape phones, 576px and up) */
-/* @media (min-width: 576px) { ... } */
-
-/* Medium devices (tablets, 768px and up) */
-/* @media (min-width: 768px) { ... } */
 
 
 

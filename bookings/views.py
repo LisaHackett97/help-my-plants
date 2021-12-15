@@ -10,6 +10,10 @@ from .forms import BookingForm
 
 def bookings_list(request):
     """ A view to return the index page """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only site owners can do that.')
+        return redirect(reverse('home'))
+        
     profile = get_object_or_404(UserProfile, user=request.user)
     orders = Order.objects.all()
 
