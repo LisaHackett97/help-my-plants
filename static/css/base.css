@@ -26,6 +26,13 @@
     background-color: var(--color2);
 }
 
+.nav-text-content {
+    color: var(--main-text-color);
+}
+
+.cart-info {
+    color:#0b5248;
+}
 /* Header contaner */
 .header-container {
     padding: 10px;
@@ -79,14 +86,25 @@
 
 }
 
-/* On Profile Page */
+/* On Profile Page Class use on bookings list page too */
 .profile-text-content {
     color: var(--main-text-color);
     font-family: 'Poppins', sans-serif;
     font-size:.7rem;
     font-style: italic;
-
 }
+
+/* to change colors of anchors renders in tables */
+td a {
+    color: #18612e;
+}
+
+td a:hover {
+    font-weight: 700;
+}
+
+
+
 
 /* from Bulma */
 .icon {
@@ -209,6 +227,7 @@ https://www.w3schools.com/howto/howto_js_scroll_to_top.asp */
 #backToTopBtn>i:hover {
   color: var(--headers);
 }
+
 
 
 /* Media Queries */

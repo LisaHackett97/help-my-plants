@@ -70,7 +70,7 @@
                 <li class="list-inline-item pl-1"><a href="{% url 'profile' %}" class="text-content"><div class="text-center"><i class="far fa-user-circle"></i></div>My Profile</a></li>
 
                 <li class="list-inline-item pl-1">
-                    <a class="{% if service_count %}text-info font-weight-bold{% else %}text-content{% endif %} nav-link" href="{% url 'view_cart' %}">
+                    <a class="{% if service_count %}cart-info font-weight-bold{% else %}text-content{% endif %} nav-link" href="{% url 'view_cart' %}">
                         <div class="text-center"><i class="fas fa-shopping-cart"></i></div>
                         <div class="text-center">
                             {% if service_count %}
