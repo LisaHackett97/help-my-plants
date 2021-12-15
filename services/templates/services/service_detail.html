@@ -38,11 +38,11 @@
         {% endif %}
 
         <!-- Hidden Fields as due to time constraints, have not written code 
-          to pass this ot order line items, then add to cart and render correctly
-          Message is displayed to user and email noteing business will be in touch
+          to pass this to order line items, then add to cart and render correctly
+          Message is displayed to user and email noting business will be in touch
            and once date confirmed will be added to their profile-->
-        <form action="" method="post">
-          <label for="date_picked" class="d-none">Please Choose a date </label>
+        <form action="#" method="post" id="date_picked">
+          
           <input class="form-control Date" type="hidden" name="date_picked" data-item_id="{{ order.date_picked }}"
             id="id_date_picked">
         </form>

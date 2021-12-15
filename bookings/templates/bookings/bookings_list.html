@@ -36,18 +36,22 @@
                     <th> Date confirmed </th>
                     <th> Order Number </th>
                     <th> Order Date </th>
+                    <th> Admin Options </th>
                 </tr>
             </thead>
             <tbody>
                 {% for order in orders %}
                 {% for item in order.lineitems.all %}
                 <tr>
+                    <!-- column 1 in table -->
                     <td class="d-none d-mb-block">
                         {{item.order.customer_name }}
                     </td>
+                    <!-- column 2 in table -->
                     <td>
                         <p class="profile-text-content">{{ item.service.name }}</p>
                     </td>
+                    <!-- column 3 in table -->
                     <td>
                         {% if item.date_picked %}
                             <p class="profile-text-content">
@@ -59,16 +63,19 @@
                             </p>
                         {% endif %}
                     </td>
+                    <!-- column 4 in table -->
                     <td>
                         <p class="profile-text-content">
                             {{ item.order.order_number|truncatechars:10 }}
                         </p>
                     </td>
+                    <!-- column 5 in table -->
                     <td>
                         <p class="profile-text-content">
                             {{item.order.date }}
                         </p>
                     </td>
+                    <!-- column 6 in table -->
                     <td>
                         {% if request.user.is_superuser %}
                                 <small>
