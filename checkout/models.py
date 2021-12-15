@@ -30,10 +30,9 @@ class Order(models.Model):
         """
         self.order_total = self.lineitems.aggregate(
             Sum('item_total'))['item_total__sum'] or 0
-       
-        self.grand_total = self.order_total 
-        self.save()
 
+        self.total = self.order_total
+        self.save()
 
     def save(self, *args, **kwargs):
         if not self.order_number:
@@ -49,7 +48,8 @@ class OrderItem(models.Model):
     service = models.ForeignKey(Service, null=False, blank=False, on_delete=models.CASCADE)
     date_picked = models.DateField(auto_now_add=False, null=True, blank=True)
     item_total = models.DecimalField(max_digits=6, decimal_places=2, 
-                                     null=False, blank=False, editable=False, default=0)
+                                     null=False, blank=False,
+                                     editable=False, default=0)
 
     def save(self, *args, **kwargs):
         self.item_total = self.service.price

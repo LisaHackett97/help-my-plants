@@ -1,8 +1,10 @@
+""" User Profile Form """
 from django import forms
 from .models import UserProfile
 
 
 class UserProfileForm(forms.ModelForm):
+    """ User Profile form """
     class Meta:
         model = UserProfile
         exclude = ('user',)
@@ -15,7 +17,6 @@ class UserProfileForm(forms.ModelForm):
         placeholders = {
             'default_phone_number': 'Phone Number',
             'default_email': 'Your Email',
-           
         }
 
         self.fields['default_phone_number'].widget.attrs['autofocus'] = True

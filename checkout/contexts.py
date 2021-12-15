@@ -1,10 +1,11 @@
+""" context to enable cart contents accessible across site """
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from services.models import Service
 
 
 def cart_contents(request):
-
+    """ get details of cart """
     cart_items = []
     total = 0
     service_count = 0
@@ -17,7 +18,6 @@ def cart_contents(request):
         cart_items.append({
             'item_id': item_id,
             'service': service,
-            
         })
 
     cart_total = total

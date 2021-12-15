@@ -1,20 +1,24 @@
+""" Imports and views to for checkout and Cart """
+
+import json
+import stripe
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
-from services.models import Service
-from .forms import OrderForm
-from .models import Order, OrderItem
-from .contexts import cart_contents
-from profiles.forms import UserProfileForm
-from profiles.models import UserProfile
 
-import stripe
-import json
+from services.models import Service
+from profiles.models import UserProfile
+from profiles.forms import UserProfileForm
+from .models import Order, OrderItem
+from .forms import OrderForm
+from .contexts import cart_contents
+
 
 @require_POST
 def cache_checkout_data(request):
+    """ cache the data at checkout """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -28,6 +32,7 @@ def cache_checkout_data(request):
         messages.error(request, 'Sorry, your payment cannot be \
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
+
 
 @login_required
 def view_cart(request):
@@ -69,17 +74,16 @@ def remove_from_cart(request, item_id):
 
 @login_required
 def checkout(request):
+    """Enable user to checkout their cart and make payment """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-       
+
     if request.method == "POST":
         cart = request.session.get('cart', {})
         form_data = {
             'customer_name': request.POST['customer_name'],
             'email': request.POST['email'],
             'phone_number': request.POST['phone_number'],
-            
-            
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
@@ -93,10 +97,11 @@ def checkout(request):
                             service=service,
                         )
                     order_line_item.save()
-                    
+
                 except Service.DoesNotExist:
                     messages.error(request, (
-                        "One of the services in your cart wasn't found in our Database. "
+                        "One of the services in your cart \
+                         wasn't found in our Database. "
                         "Please call us for assistance")
                     )
                     order.delete()
@@ -111,7 +116,8 @@ def checkout(request):
     else:
         cart = request.session.get('cart', {})
         if not cart:
-            messages.error(request, "There's nothing in your cart at the moment")
+            messages.error(request, "There's nothing \
+                in your cart at the moment")
             return redirect(reverse('services'))
 
     current_cart = cart_contents(request)
@@ -123,10 +129,9 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
     )
 
-
     if request.user.is_authenticated:
         try:
-            profile=UserProfile.objects.get(user=request.user)
+            profile = UserProfile.objects.get(user=request.user)
             order_form = OrderForm(initial={
                 'customer_name': profile.user.get_full_name(),
                 'email': profile.default_email,
@@ -138,7 +143,8 @@ def checkout(request):
         order_form = OrderForm()
 
     if not stripe_public_key:
-        messages.warning(request, 'Stripe Public key is missing. Did you forget to set it on your environment?')
+        messages.warning(request, 'Stripe Public key is missing. \
+            Did you forget to set it on your environment?')
 
     template = 'checkout/checkout.html'
     context = {

@@ -1,24 +1,25 @@
+""" View set up to for user to update details for Order """
 from django import forms
 from .models import Order
 
 
 class OrderForm(forms.ModelForm):
+    """ Order form details """
     class Meta:
+        """ Meta Order and fields for form """
         model = Order
         fields = ('customer_name', 'email', 'phone_number',
                   )
 
     def __init__(self, *args, **kwargs):
         """
-        Add placeholders 
+        Add placeholders
         """
         super().__init__(*args, **kwargs)
         placeholders = {
             'customer_name': 'Full Name',
             'email': 'Email Address',
             'phone_number': 'Phone Number',
-            
-            
         }
 
         self.fields['customer_name'].widget.attrs['autofocus'] = True
@@ -30,6 +31,3 @@ class OrderForm(forms.ModelForm):
             self.fields[field].widget.attrs['placeholder'] = placeholder
             self.fields[field].widget.attrs['class'] = 'stripe-style-input w-100'
             self.fields[field].label = False
-
-       
-       
