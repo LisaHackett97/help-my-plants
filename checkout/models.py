@@ -1,3 +1,4 @@
+""" Models for Order and related Line Items """
 import uuid
 from django.db.models import Sum
 from django.db import models
@@ -7,6 +8,7 @@ from profiles.models import UserProfile
 
 
 class Order(models.Model):
+    """Order model """
     order_number = models.CharField(max_length=32, null=False, editable=False)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.SET_NULL,
                                      null=True, blank=True, related_name='orders')
@@ -44,10 +46,11 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
+    """ Related Line Item Model """
     order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
     service = models.ForeignKey(Service, null=False, blank=False, on_delete=models.CASCADE)
     date_picked = models.DateField(auto_now_add=False, null=True, blank=True)
-    item_total = models.DecimalField(max_digits=6, decimal_places=2, 
+    item_total = models.DecimalField(max_digits=6, decimal_places=2,
                                      null=False, blank=False,
                                      editable=False, default=0)
 
