@@ -16,18 +16,16 @@
          
           <h2 class="text-heading mb-4">Service Admin</h2>
 
-          <h3 class="text-heading2"><div class="text-centre m-4">Click here to see
+          <h3 class="text-heading2">Click here to see
             <a href="{% url 'bookings_list' %}" class="mr-2">All Customer Orders</a>
-            Or see below to add a service:
-        </div>
-    </h3>
-    
-    <hr>
-    <h4 class="text-heading2">Add a Service</h4>
-         
+            Or see below to add a service:      
+        </h3>    
+        <hr>
+        <h4 class="text-heading2">Add a Service</h4>
+        <h3 class="text-heading2">Please Update details Below</h3>         
       </div>
     </div>
-
+<!-- Render form to update service details -->
   <div class="row">
       <div class="col-12 col-md-6 offset-md-3">
           <form method="POST" action="{% url 'add_service' %}" class="form mb-2" enctype="multipart/form-data">

@@ -54,11 +54,12 @@
                             <th scope="col" class="text-center table-heading">Service Info</th>                            
                             <th scope="col" class="text-right table-heading">Price</th>
                             <th scope="col" class="text-center table-heading"></th>
+                            <th scope="col" class="text-center table-heading"></th>
                         </tr>
                     </thead>
 
                     {% for item in cart_items %}
-                    <tr>
+                    <tr> <!-- column 1 in table -->
                         <td class="p-3 w-25 align-middle">
                             {% if item.service.image %}
                           <img class="w-100 img-fluid rounded" src="{{ item.service.image.url }}" alt="{{ item.service.name }}">
@@ -66,19 +67,23 @@
                           <img class="w-100 img-fluid rounded" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.service.name }}">
                           {% endif %}
                         </td>
+                         <!-- column 2 in table -->
                         <td class="py-3 align-middle">
                             <p class="text-center text-content my-0"><strong>{{ item.service.name }}</strong></p>
                             <p class="text-center text-content my-0">{{ item.service.description }}</p>
                         </td>
+                         <!-- column 3 in table -->
                         <td class="py-3 align-middle">
                             <p class="text-content text-right my-0"><strong> €{{ item.service.price }}</strong></p>
-                        </td>                                             
+                        </td> 
+                         <!-- column 4 in table -->                                            
                         <td class="p-3 align-middle">
                             <a href="{% url 'remove_from_cart' item.item_id %}"><span class="icon"><i class="fas fa-trash"></i></span></a>
                         </td>
                     </tr>                    
                     {% endfor %}
                     <tr>
+                         <!-- column 5 in table -->
                         <td colspan="5" class="text-right">
                             <a href="{% url 'services' %}" class="btn btn-cart">
                                
