@@ -10,6 +10,8 @@ The site offers consultation services for registered users to book services. The
 
 Site is aiming to encourage people to book consulations and get help on how to not kill their plants!. 
 
+Please use Test Card 4242 4242 4242 4242 expiry:0424 cvc:242 zip: 42424
+
 [Link to live Site](https://help-my-plants.herokuapp.com/)
 
 ## **To open any links in a new tab, please press Ctrl + click**
@@ -32,7 +34,8 @@ Site is aiming to encourage people to book consulations and get help on how to n
 - [Testing](#testing)
 - [Deployment](#deployment)
     - [SetUp](#set-up)
-    - [Heroku Deployment](#deployment-to-heroku)
+    - [Heroku Deployment](#steps)
+	- [AWS Steps for Set Up](#aws-steps)
     - [Run repo locally](#download-and-run-repo-locally)
     - [Cloning the repo](#cloning-the-repo)
     - [Forking the repo](#forking-the-repo)
@@ -309,79 +312,180 @@ The following are defensive design elements identified in planning. Each will be
 
 ### Set up:
 
-1) Some requirements
+#### Some requirements
 - git
 - python3
 - pip3 to install packages
-- for connection with flask, run these--> pip3 install dnspython  pip3 install pymongo  
-	- (*ensure these are added to the requirements.txt file)
-- Flask:  install Flask-->  pip3 install flask
-- ....
+- Django:  -->  pip3 install django
 - Heroku Account
 
-2) ...
+### Steps 
+
+1. Log into Heroku
+2. Create new app name and region
+3. Resources tab --> Provision a new Postgres DB
+	Add ons : Search for Postgress and selected. Hobby-dev is free
+A message should then display on the page, confirming the add-on heroku-postgresql has been installed
+4. In Gitpod:
+	- install dj database and psycopg2
+		- pip3 install dj_database_url
+		- pip3 install psycopg2-binary
+	- Freeze requirements
+		- pip3 freeze > freeze requirements
+5. Settings.py
+	- import dj_database_url, if not already installed
 	
-3) In Gitpod, create....
+	- DB Settings: comment out the default config
+		- Replace the default DB with a call to dj_database_url.parse, and give it the db URL from Heroku
+			- (Get from config vars in Heroku or in cmd line, type Heroku config)
+- DATABASES = {
+    - 'default': dj_database_url.parse('DATA BASE URL from config goes in here')}
 
-4) Add env.py file to .gitignore. 
+***Nb Once migrations and data uploaded, reverft to default settings. You should not push this URL to your remote environment ***
+	- Save
+		- Note if you need to log into the Heroku cli, use the command:heroku login -i
 
-5) Connecting...
-	
+6. Run migrations  python3 manage.py migrate
+7. Import data to the DB:
+	- I did not use a fixtures file, so used the following steps:
 
-6) import os and set config variables in the env.py file, using os.environ.setdefault()
+	- a) ensure connected to the the local SQLite DB
+	- b)  Use this command to backup the current database and load it into a db.json file:
+		python3 manage.py dumpdata --exclude auth.permission --exclude contenttypes > db.json
+	- c) Connect manage.py file to the postgres database
+	- d)  Use this command to load the data from the db.json file into postgres:
+		- python3 manage.py loaddata db.json
 
-	a. 
-	b. 
-	c.
-	d.
-	d. 
+**Before commiting *****Remove DB Url and uncomment the configs in settings so that the DB URL doesn't end up in version ctrl**
+**Ensure django default secret key is removed forom settings file**
 
-7) In the app.py file, set up imports, flask and other required variables:
-	- note using an if statment to import the env.py, will create the __pycache__ directory, which must also be added to the .gitignore file.
+9. Settings py: 
 
-8) Commit and push appropriate files to Github.
+![db-settings](README-assets/DB-settings.PNG)
 
-### Deployment to Heroku:
+10. Install gunicorn, freeze requirements, Create Procfile (Ensuring no additional lines in this file)
+11. Loginto Heroku on CLI
+12. temporarily disable collectstatic
+	cli: heroku config:set DISABLE COLLECTSTATIC=1 --app heroku_app_name
+(--app flag needed if you have more than one app)
 
-1. A requirements.txt file must be in place
-	Use the command-->  pip3 freeze > requirements.txt
+13. Hostname of our heroku app in settings, also add local host so gitpod still works
+ALLOWED_HOSTS = ['help-my-plants.herokuapp.com', 'localhost']
 
-2. Add a Procfile, so that Heroku know how to run the app
-	Use the command-->  echo web: python app.py > Procfile
-Ensure there are no additional blank lines in the Procfile
-
-3. Create a new app in Heroku
-	- On the dashboard, click New, and Create New app
-	- Give the app a unique name (Use hyphens instead of spaces), select Region and click Create App
-4. 
-5. 
-
-![New App]
-
-
-4. Set up environmental variables in Heroku.
+14. Ensure the environmental variables are set up in Heroku.
 	- Select Settings
 	- Select Reveal Config Vars
-	Add the following and their corresponding key values. Click Add after each
-	- 
+	- Add the required key values. Click Add after each
+	 ![config vars](README-assets/heroku-config-vars-requirements.PNG)
 
-![Adding config vars](
+	** Note the AWS and stripe variable are put in places, once you set up stripe and AWS on your project
+	*** Generate a secret key using an appropriate generator. These key will be different to secret key in gitpod
 
 **Config Variables must be set up before Automatic Deployment is put in place**
 
-5. Set up Automatic Deployment to Github
-	- Select Deploy tab
-	- Choose deploy using Github. Select your repo and click connect
-	- Under automatic deploy, choose master branch 
-	- Click Enable automatic deploys. ***nb ensure config variables are set up before you do this)
-	- Under manual deploy section, select the branch to deploy
-	- Click Deploy branch
-	- A message should be displayed once the app is successfully deployed
-	- Click view to launch app
+16. Set up to auto deploy github/heroku
+	Deploy tab: Click gihthub
+			Find Repo
+			Click Connect
+			Enable Automatic deploys
+15. Commit and push
+	- if not auto connected use this command to push to heroku
+	- git push Heroku main
+16. - A message should be displayed once the app is successfully deployed
+	- Click view to launch app. Static files will not be in place until AWS Set up
 
-![Auto deployment to Github](README-assets/deploy-connect.PNG)
 
-### To download and run locally, follow the below steps:
+### AWS Steps 
+
+AWS S3 for storing static files
+
+1. Create account/Login as root user
+https://aws.amazon.com/
+
+2. Access the management console (Through your account if not on screen)
+	Find S3 in services
+	Open S3 and create a new bucket (Used to store files)
+	Name bucket to match heroku app
+	Uncheck block all public access
+	Acknowledge the bucket will be public
+	Click Create bucket
+3. Set some basic settings on bucket
+	- Properties tab
+		- turn on static website hosting
+		- Index and error document, fill in some default values
+		- Save
+	- Permissions tab	
+		- Paste the below infto the CORS section Config (sets up the required access btween heroku app and s3 bucket)
+			- Click edit to enable you to paste data, and save
+
+		![aws-cors](README-assets/aws-cors-config.PNG)
+
+	- Bucket Policy Tab
+		- Select edit, then select policy generator  
+			- type will be s3 bucket policy . allow all principals using a *
+			- Action will be get object
+
+	- Get the  ARN (Amazon resource name) from the properties tab, and paste it into the ARN Box at bittom
+	- Click Add statement
+	- Then generate policy
+	- Copy the policy (Before you click close) to the bucket policy editor
+	- Allow access to all resources in this bucket, add a /* at end of the resource key line  ....help-my-plants/*"/
+	- Save Changes
+
+	- Still within Permissions tab, go to Access control List tab. Edit and Under Everyone section, select List
+	- Confirm and save
+
+4. configure bucket
+	- Access control list tab:
+		set list objects permission for everyone under the Public Access section
+
+##### Creating AWS Groups,Policies and Users
+
+5.	Create a user to access the bucket
+	- Services Menu, Open AIM
+	- Create a grp for our user to live in
+	- Create an access policy giving the group access to the bucket we created
+		- Assign the user to the group
+	a. Create the group. 
+		Give it a name such as manage-help-my-plants
+		Click create group
+	b. Create policy
+		Json tab, select import managed policy, search for s3, then import the s3 full access policy
+		Get the bucket ARN and paste that into the policy at the resources line, twice. Second will have */ at end, for all files/folders in the bucket
+		Click review policy, give it a name and description
+		Clock create policy
+	c. Attache the policy to the group. Go to the User group, select Add Permissions, Select the policy, click Add
+	d. Create a user
+		Click add user help-my-plants-staticfiles-user
+		Give the user programmatic access
+		Select next
+		Put user the the group, click through to the end and click create user
+- Download the CSV File which has the access and secret access keys.. NB Keep this private but must download at this point
+
+#### CONNECT DJANGO TO S3
+
+- Install  the following if not already in place:
+	- boto3
+	- django-storages
+	- freeze requirements
+
+- add storages to installed apps
+
+- Use following settings for S3
+
+- if 'USE_AWS' in os.environ:
+    AWS_STORAGE_BUCKET_NAME = 'xx-xx'
+    AWS_S3_REGION_NAME = 'eu-west-1'
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+
+- Add AWS config vars to heroku
+- set up custom_storages.py file
+
+- Ensure heroku variables are updated with the AWS settings
+
+
+### To download and run the project locally, follow the below steps:
 
 1. Log into GitHub and lcoate the repository.
 2. Select Code
@@ -398,7 +502,7 @@ Ensure there are no additional blank lines in the Procfile
 6. Use command git clone and the copied URL
 7. Press enter
 
-NB: In order to work with a clone of this project, you will need to create the env.py file using your own variables and create a MongoDB database with collections. See Databas Schema section of this document for more details.
+NB: In order to work with a clone of this project, you may need to download all the DB details, then upload to your own DB
 You will also need to install all of the packages listed in the requirements file you can use the following command in the terminal pip install -r requirements.txt which will do it for you.
 
 
@@ -486,7 +590,6 @@ I referred to the following to add to my knowledge and for help.
 - https://www.codacy.com/***
 - Code Institute course material, in particular I followed the Boutiqu Ado walkthrough to guide me through the structure
 - Slack Community - I searched for a topic and usually someone else had the same question. This has been a great help in developing my understanding.
-- And thank you to those on slack who took the time to review my project and give me feedback.
 - Thank you to my mentor Adegbenga Adeye, for his help and guidance.
 
 [Back to table of contents](#table-of-contents)
