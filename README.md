@@ -83,12 +83,10 @@ The main goal of the site is to provide user with a site where they can find fin
 To convert a visitor, and draw them in, there will be a short explanation of qhat they can access on the site. Links to the booking/services page will be provided across the site
 
 
-##### Strategy and scope tables
-
 <details>
-  <summary>![Strategy and scope plan] </summary>
-  <img src="README-assets/ux-strategy-plan.PNG" alt="strategy-plane-plan-part1" width="80%" height="80%">
-  <img src="README-assets/ux-scope-plan.PNG" alt="scope-plane-plan-part2" width="80%" height="80%">
+  <summary>Strategy and scope plan</summary>
+  <img src="README-assets/ux-strategy-plan.PNG" alt="strategy-plane-plan-part1" width="70%" height="70%">
+  <img src="README-assets/ux-scope-plan.PNG" alt="scope-plane-plan-part2" width="70%" height="70%">
 </details>
 <br>
 
@@ -105,8 +103,8 @@ A profile page will give the user their details. Options will be provided for ad
 
  <details>
   <summary>Surface plane plan </summary>
-  <img src="README-assets/ux-structure-plan-pt1.PNG" alt="surface-plane-plan-part1" width="80%" height="80%">
-  <img src="README-assets/ux-structure-plan-pt2.PNG" alt="surface-plane-plan-part2" width="80%" height="80%">
+  <img src="README-assets/ux-structure-plan-pt1.PNG" alt="surface-plane-plan-part1" width="70%" height="70%">
+  <img src="README-assets/ux-structure-plan-pt2.PNG" alt="surface-plane-plan-part2" width="70%" height="70%">
 </details>
 <br>
 
@@ -114,10 +112,8 @@ A profile page will give the user their details. Options will be provided for ad
 
 #### Final Wireframes 
 
-[This is the final mobile wireframe](README-assets/wireframe-mobile-final.pdf)
-These were built using balsamiq.
-
-- 
+[click here for the final mobile wireframe](README-assets/wireframe-mobile-final.pdf)
+ 
 #### These were the original wireframes
 
 [Mobile](README-assets/wireframe-mobile.pdf)
@@ -147,7 +143,7 @@ to have a user input field on checkout, which would then be added to order. Ran 
 
  <details>
   <summary>Surface plane plan</summary>
-  <img src="README-assets/ux-surface-plan.PNG" alt="surface-plane-plan" width="80%" height="80%">
+  <img src="README-assets/ux-surface-plan.PNG" alt="surface-plane-plan" width="70%" height="70%">
 
 </details>
 <br>
@@ -181,7 +177,7 @@ I have included a rendering of the models, including the all auth ones, created 
 
  <details>
   <summary>Click to view </summary>
-  <img src="README-assets/models.png" alt="django-models" width="80%" height="80%">
+  <img src="README-assets/models.png" alt="django-models" width="70%" height="70%">
 </details>
 
 Below is a table of the models/views/templates
@@ -210,7 +206,7 @@ Below is a table of the models/views/templates
 | Home                                       | None        | Index                               | index.html       |                                                                                                                                                  |
 | Bookings                                   | None        | bookings_list                       | Bookings List    | "BookingForm : allow admin to update dates on order.                                                                                             |
 | **   Functionality not fully in place yet" |
-|                                            |             | update_order                        | update_order     | ** As booking form functionality not yet fully place, the update order page will render with submit btn disabled and a message to the admin user |
+|                                            |             | update_order                        | update_order     | ** As booking form functionality not yet fully in place, the update order page will render with submit btn disabled and a message to the admin user |
 
 
 
@@ -218,23 +214,146 @@ Below is a table of the models/views/templates
 
 ## Features
 
-**_Website has the following features_**
+
+**_Website has the following_**
+
 
 ### Features which are accessible on all pages with the exception of error pages.
 
 #### Navigation Menu. 
 
-#### Logout 
-#### Icon
+- Contains links to:
+
+| Logged Out | Logged In	|
+|------------|-----------------	|
+|  Home	     | Services     	|
+|  Log In    | More Info	|
+|  Register  | Profile 		|
+|  	     | Admin *  	| 
+				| ** The Admin option is restricted and regular user will not have access
+|  	     | Log Out  	|
+|  	     |   		|
+
+- Navbar is collapsible icon on medium and small screens, and will display as vertical menu when clicked
 
 
-#### 
 
-### Features on individual pages
+#### Footer
+Contains some text and links to other pages. Only for logged in user
+
+### Branch/Icon which links back to home Page. 
+This is hidden on mobile screens and an option for home is instead displayed in drop down menu
+
+****For logged in users, links to booking services/articles page as featured across the site
+****For logged out users, links are displayed at a number of points on the page for user to login/register
+### Features on individual pages (In addition to the above)
+
+#### Landing Page
+
+Contains the following:
+
+- Logged Out User 
+	- Navigation Menu
+	
+	- Button to Log in
+	- Button to register 
+	- Button to click to go to top of page.
+	- Footer
 
 
+#### Registration Page
+
+Contains the following:
+
+- Navigation Menu
+
+- Registration Form with input fields and submit button
+	- username
+	- password
+	- password confirmation
+	- email field
+	- Submit button to register
+	- Link to login page
 
 
+#### Log In Page
+
+Contains the following:
+
+- Navigation Menu
+- Log In Form with 2 input fields and submit button
+	- username
+	- password
+	- Log In button
+	- link to registration page
+
+
+#### Service Page
+
+Contains the following:
+
+- Navigation Menu
+- Card groups showing the different services and prices
+- Link to More info page
+- For Admin/Owner, options available to edit/delete a service
+
+- Individual service. User clicks:
+	- Full description
+	- Price
+	- Add to cart button
+- Message will be displayed to user when item successfully added to cart or an info to say item already in cart.
+
+#### Cart 
+
+- Details of items added to cart
+- Check/more shopping buttons, top and bottom of pages
+
+#### Checkout Page
+- Full order details and Total
+- Booking/Payment form
+	- user input fields: name, email and phone number		
+	- **Prefill some details from profile
+	- Payment section
+	- Submit Button/Cancel Button 
+	- Checkout Success message
+- Buttons to view more services/articles
+
+
+#### More Info/Articles Page
+
+Contains the following:
+
+- Different Text Sections
+- Small images for search section
+- Links within relevant parts of the text to go to booking/services page
+
+
+#### Profile Page
+
+Contains the following:
+
+- Profile details section
+	Username
+	email
+	Phone number
+
+-Booking History
+	- current fields on display
+	- Includes date order was created so user can check most recent order
+Btns/links back to book a new service
+
+#### Logout Page
+
+Contains the following:
+
+- Confirm logout button. 
+
+
+#### Logout confirmation
+
+Contains the following:
+
+- Message to user 
 
 
 
@@ -255,7 +374,7 @@ The following are defensive design elements identified in planning. Each will be
 
  <details>
   <summary>Click </summary>
-  <img src="README-assets/Defensive-Design-Notes.PNG" alt="DefensiveDesign" width="80%" height="80%">
+  <img src="README-assets/Defensive-Design-Notes.PNG" alt="DefensiveDesign" width="70%" height="70%">
 </details>
 <br>
 		
