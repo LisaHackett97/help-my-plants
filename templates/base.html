@@ -131,8 +131,9 @@
     <!-- footer type section to direct user to services or profile page -->
     <div></div>
 
+    <div class="footer-container">
     {% if request.user.is_authenticated %}
-    <div class="container-fluid footer-container">
+    <div class="container-fluid">
         <div class="row">
             <footer class="footer-text-content text-centre mt-1 pt-1 col-xs-11 col-lg-10 offset-lg-1">
               
@@ -148,6 +149,7 @@
         </div>
         </div>
         {% endif %}
+    </div>
   
 <!-- back to top of page icon on all pages -->
 <button onclick="topFunction()" id="backToTopBtn" title="Go to top"><i class="fas fa-angle-double-up"></i></button>
