@@ -667,13 +667,12 @@ GitHub docs link [Forking a repository](https://docs.github.com/en/desktop/contr
 ### Content
 
 ##### Home Page and Articles Page Content
-https://lifehacker.com/why-you-keep-killing-your-plants-and-what-to-do-about-i-1778545598
-https://www.rte.ie/lifestyle/living/2021/1203/1264612-tips-to-keep-your-house-plants-alive-this-winter-and-beyond/
-https://www.tinashomedesigns.com/inspiration-solutions/design/benefits-of-houseplants
-https://www.gardenersworld.com/plants/25-of-the-best-house-plants-to-grow/
-https://www.healthline.com/health/healthy-home-guide/benefits-of-indoor-plant
-https://www.prevention.com/health/g27586276/benefits-of-indoor-plants/
-https://www.rhs.org.uk/plants/types/houseplants/for-human-health
+[lifehacker.com](https://lifehacker.com/why-you-keep-killing-your-plants-and-what-to-do-about-i-1778545598)
+[rte.ie](https://www.rte.ie/lifestyle/living/2021/1203/1264612-tips-to-keep-your-house-plants-alive-this-winter-and-beyond/)
+[tinashomedesigns](https://www.tinashomedesigns.com/inspiration-solutions/design/benefits-of-houseplants)
+[gardenersworld](https://www.gardenersworld.com/plants/25-of-the-best-house-plants-to-grow/)
+[healthline.com](https://www.healthline.com/health/healthy-home-guide/benefits-of-indoor-plant)
+
 
 
 ### Colours
@@ -688,6 +687,7 @@ https://www.rhs.org.uk/plants/types/houseplants/for-human-health
 - I followed the Code Institute Boutique Ado walkthrough to guide me through the structure and help me learn what I needed to do.
 - Stripe JS Core logic/payment flow comes from ( https://stripe.com/docs/payments/accept-a-payment)
 - And CSS from (https://stripe.com/docs/stripe-js)
+- Code for back to top taken from B Ado project
 
 ### Acknowledgements
 

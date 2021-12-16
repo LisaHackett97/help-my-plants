@@ -35,72 +35,87 @@
                 </div>
 
                 {% if article.image %}
-                    <div class="col-xs-4 col-md-3">
-                        <img src="{{ article.image.url }}" alt="{{ article.title }}"
-                            class="img-responsive img-thumbnail border-0 ml-2">
-                    </div>
+                <div class="col-xs-4 col-md-3">
+                    <img src="{{ article.image.url }}" alt="{{ article.title }}"
+                        class="img-responsive img-thumbnail border-0 ml-2">
+                </div>
                 {% else %}
-                   
-                    <img src="{{ MEDIA_URL }}no-image.png" class="img-fluid" alt="{{ article.title }}">
-                    
+
+                <img src="{{ MEDIA_URL }}no-image.png" class="img-fluid" alt="{{ article.title }}">
+
                 {% endif %}
 
-                <div class="col-xs-10 col-md-9">                   
-                        <p class="text-left">{{ article.content }}
-                        </p>
-                        <div>Why not <a href="{% url 'getServiceOne' %}" class="article-links">book a new Consult</a>,
-                            <a href="{% url 'getServiceThree' %}" class="article-links">an accompanied shopping
-                            trip for your new house plants.</a> Or been with us before? <a href="{% url 'getServiceTwo' %}" class="article-links">Book
+                <div class="col-xs-10 col-md-9">
+                    <p class="text-left">{{ article.content }}
+                    </p>
+                    <div>Why not <a href="{% url 'getServiceOne' %}" class="article-links">book a new Consult</a>,
+                        <a href="{% url 'getServiceThree' %}" class="article-links">an accompanied shopping
+                            trip for your new house plants.</a> Or been with us before? <a
+                            href="{% url 'getServiceTwo' %}" class="article-links">Book
                             a follow up.</a>
-                            Not sure yet, why not <a href="{% url 'services' %}" class="article-links">have a look
+                        Not sure yet, why not <a href="{% url 'services' %}" class="article-links">have a look
                             through all our currently available services</a>
-                        </div>
+                    </div>
                     <hr>
-                    
+
                 </div>
                 {% endfor %}
             </div>
         </article>
     </div>
     <div class="row">
-    <div class="col-xs-12 col-md-9 offset-md-3 mt-4">
-        <h6 class="article-section pr-4">This is what you have previously ordered</h6>
+        <div class="col-xs-12 col-md-9 offset-md-3 mt-4">
+            <h6 class="article-section pr-4">This is what you have previously ordered</h6>
 
-        <div class="table-responsive text-centre">
-            <table class="table table-sm table-borderless">
+            <div class="table-responsive text-centre">
+                <table class="table table-sm table-borderless">
 
-                <tbody>
-                    {% for order in orders %}
-                    <tr>
-                        <td>
-                            <div>
-                                {% for item in order.lineitems.all %}
-                                {{ item.service.name }}
-                                {% if item.date_picked %}
-                                <div class="profile-text-content">
-                                    Confirmed Date: {{ item.date_picked }}
+                    <tbody>
+                        {% for order in orders %}
+                        <tr>
+                            <td>
+                                <div>
+                                    {% for item in order.lineitems.all %}
+                                    {{ item.service.name }}
+                                    {% if item.date_picked %}
+                                    <div class="profile-text-content">
+                                        Confirmed Date: {{ item.date_picked }}
+                                    </div>
+                                    {% else %}
+                                    <div class="profile-text-content">
+                                        Date not yet confirmed
+                                    </div>
+                                    {% endif %}
+                                    {% endfor %}
                                 </div>
-                                {% else %}
-                                <div class="profile-text-content">
-                                    Date not yet confirmed
-                                </div>
-                                {% endif %}
-                                {% endfor %}
-                            </div>
-                        </td>
+                            </td>
 
-                    </tr>
-                    {% endfor %}
+                        </tr>
+                        {% endfor %}
 
 
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+
         </div>
-
+        <!-- end of section showing customers types of services previously ordered -->
     </div>
-    <!-- end of section showing customers types of services previously ordered -->
+    <hr>
+    <div class="btt-button shadow-sm rounded-0 border-black">
+        <a class="btt-link d-flex h-100">
+            <i class="fas fa-arrow-up text-black mx-auto my-auto"></i>
+        </a>
+    </div>
 </div>
-<hr>
+{% endblock %}
 
-</div>
+{% block postloadjs %}
+{{ block.super }}
+
+<script type="text/javascript">
+    $('.btt-link').click(function (e) {
+        window.scrollTo(0, 0)
+    })
+</script>
 {% endblock %}
