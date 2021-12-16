@@ -231,7 +231,7 @@ https://www.w3schools.com/howto/howto_js_scroll_to_top.asp */
 }
 
 /* Links on home page text */
-a .home-pg-links {
+a.home-pg-links {
   color: #7b217e !important;
     text-decoration: underline;    
 }
