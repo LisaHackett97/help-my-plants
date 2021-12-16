@@ -1,4 +1,7 @@
-# [Help My Plants]
+# [Help My Plants](https://help-my-plants.herokuapp.com/)
+
+
+![site-mockup](README-assets/final-site-image.PNG)
 
 ![site-mockup]
 
@@ -8,7 +11,7 @@ The site offers consultation services for registered users to book services. The
 
 Site is aiming to encourage people to book consulations and get help on how to not kill their plants!. 
 
-[Link to live Site]
+[Link to live Site](https://help-my-plants.herokuapp.com/)
 
 ## **To open any links in a new tab, please press Ctrl + click**
 
@@ -51,7 +54,7 @@ Site is aiming to encourage people to book consulations and get help on how to n
 | US-03 | First time User | Register, then login to the site                      | Easily enter my registration details, then click to login                                                                           |
 | US-04 | Registered User | Login to the site                                     | Easily enter my login details to enter thesite                                                                                      |
 | US-05 | Registered User | View Services & Prices                                | Reading the list of available services and being able to view the cost of each                                                      |
-| US-06 | Registered User | Choose and book a service                             | Select a service, view the total cost, add my details and click to submit                                                           |
+| US-06 | Registered User | Choose and book a service                             | Select a service, view the cost, add my details and click to submit                                                           |
 | US-07 | Registered User | Make a payment for the service                        | Easily enter my payment info and complete payment quickly                                                                           |
 | US-08 | Registered User | Submit the order                                      | clicking to submit and receiving a confirmation                                                                                     |
 | US-09 | Registered User | Navigate easily                                       | Moving around the site with as few clicks as possible, and understand easily how to naviagate to different parts of the site        |
@@ -114,7 +117,13 @@ These were built using balsamiq.
 
 #### Colors
 
-
+I used the coolors site to generate a pallette related to plants and nature. These were set as root colours in css and used throughout the site. Where there were
+contrast colour issues, I used color picker to change, tryin to keep selected colors in line with site theme.
+Root Colours are
+ 	- main-text-color: #3D4A3D;
+    - headers: #343434;
+    - color1:#138A36;
+    - color2:#D4C5C7
 
 #### Typography
 
@@ -124,7 +133,8 @@ I feel these fonts are easy for user to read on screen and are visually appealin
 
 #### Images
 
-
+I used one background image on the home page. Each of there services has an accompanying plant image. 
+And there is a small image with each article for visual appeal
 
 #### DB Schema
 
@@ -142,8 +152,7 @@ DB has ...
 
 #### Navigation Menu. 
 
-
-
+#### Logout 
 #### Icon
 
 
@@ -152,14 +161,16 @@ DB has ...
 ### Features on individual pages
 
 
-#### Logout 
+
 
 
 
 
 ## Future Features
 
-- 
+- Full ability for Admin to update dates/times on orders (Functionality for this has been started on the site but not finished due to time constraint)
+- Ability for user to select an available date/time slot from site owner provided calendar
+
 
 
 [Back to table of contents](#table-of-contents)
@@ -169,8 +180,8 @@ DB has ...
 The following are defensive design elements identified in planning. Each will be manually tested (See testing docs)
 
  <details>
-  <summary>Click to see results</summary>
-  <img src="README-assets/Defensive-Design-Notes.PNG" alt="DefensiveDesign" width="50%" height="50%">
+  <summary>Click </summary>
+  <img src="README-assets/Defensive-Design-Notes.PNG" alt="DefensiveDesign" width="80%" height="80%">
 </details>
 <br>
 		

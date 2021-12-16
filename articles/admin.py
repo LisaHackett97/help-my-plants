@@ -12,5 +12,6 @@ class ArticleAdmin(admin.ModelAdmin):
         'created_date',
         )
 
+ordering = ('created_date')
 
 admin.site.register(Article, ArticleAdmin)

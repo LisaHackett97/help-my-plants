@@ -14,9 +14,9 @@
   <div class="row">
     <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
       <div class="image-container my-5">
-        {% if service.image.url %}
-        <a href="{{ service.image.url }}" target="_blank">
-          <img src="{{ service.image.url }}" class="img-fluid" alt="{{ service.name }}">
+        {% if service.image %}
+        <a href="{{ service.image }}" target="_blank">
+          <img src="{{ service.image }}" class="img-fluid" alt="{{ service.name }}">
         </a>
         {% else %}
         <a href="">

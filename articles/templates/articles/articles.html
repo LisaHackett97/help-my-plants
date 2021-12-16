@@ -34,10 +34,16 @@
                     <h5 class="article-title mt-4">{{ article.title }}</h5>
                 </div>
 
-                <div class="col-xs-4 col-md-3">
-                    <img src="{{ article.image.url }}" alt="{{ article.title }}"
-                        class="img-responsive img-thumbnail border-0 ml-2">
-                </div>
+                {% if article.image %}
+                    <div class="col-xs-4 col-md-3">
+                        <img src="{{ article.image.url }}" alt="{{ article.title }}"
+                            class="img-responsive img-thumbnail border-0 ml-2">
+                    </div>
+                {% else %}
+                   
+                    <img src="{{ MEDIA_URL }}no-image.png" class="img-fluid" alt="{{ article.title }}">
+                    
+                {% endif %}
 
                 <div class="col-xs-10 col-md-9">                   
                         <p class="text-left">{{ article.content }}
