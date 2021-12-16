@@ -154,13 +154,13 @@ Done and working without full WH handler functionality.
   18. The went back and re- added all the required code to the checkout app for webhook handlers etc. And checked migrations all ok pn postgres
   19. Issue now resolved with checkout. Working as expected
 
-
-
 - Footer added day before submission. To give better layout on full content pages. However for logout and empty cart pages, footer is floating up the page.
 I have the code to fix the footer, but when this is applied to footer in base template results in footer fixing on top of content in some pages such as articles.
 For this project and due to time issues, I have just added some margin on logout and empty cart pages so that footer shows in middle of page and doesn't hug the buttons.
 If time allows, will come back to this
 
+- Code on articles page for links to particular sevices needs to be udpated as it is repeating and not really adhering to DRY principles. Knowledge at time of writing the code didn't allow for me to refactor, and unfortunately time doesn't allow. Decided to link to a few services and then one link to see all services.
+Could not use this code in a live site or site with many more services as would not be efficient or practical.
 
 
 

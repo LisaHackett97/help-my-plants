@@ -3,7 +3,6 @@
 
 ![site-mockup](README-assets/final-site-image.PNG)
 
-![site-mockup]
 
 Help My Plants is a site designed to give users a place to find out how to look after their house plants, and helo choosng the best plants for the space/light in their home/office.
 User can learn how to better look after their house plants and find out why they should, by reading articles provided on the site. It will give registered users more information on the benefits of plants and some common things to do to care for their house plants, with links back to the services page where they can book a consulation service relating to the issue. 
@@ -81,11 +80,25 @@ The main goal of the site is to provide user ...
 
 [Strategy and scope tables])
 
+<details>
+  <summary>![Strategy and scope plan] </summary>
+  <img src="README-assets/ux-strategy-plan.PNG" alt="strategy-plane-plan-part1" width="80%" height="80%">
+  <img src="README-assets/ux-scope-plan.PNG" alt="scope-plane-plan-part2" width="80%" height="80%">
+</details>
+<br>
+
 ### Structure of the website
 
 The basic structure of the site is designed around...
 
 ![Structure Plan]
+
+ <details>
+  <summary>![Surface plane plan] </summary>
+  <img src="README-assets/ux-structure-plan-pt1.PNG" alt="surface-plane-plan-part1" width="80%" height="80%">
+  <img src="README-assets/ux-structure-plan-pt2.PNG" alt="surface-plane-plan-part2" width="80%" height="80%">
+</details>
+<br>
 
 ### Wireframes
 
@@ -113,9 +126,14 @@ I have the code to fix the footer, but when this is applied to footer in base te
 For this project and due to time issues, I have just added some margin on logout and empty cart pages so that footer shows in middle of page and doesn't hug the buttons.
 If time allows, will come back to this
 
+- Home page link on mobile nav bar, not on desktop version. Link to home through Icon/branch which is hidden on mobile.
 
+ <details>
+  <summary>![Surface plane plan] </summary>
+  <img src="README-assets/ux-surface-plan.PNG" alt="surface-plane-plan" width="80%" height="80%">
 
-![Surface plane plan](README-assets/surface.PNG)
+</details>
+<br>
 
 
 
