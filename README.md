@@ -76,9 +76,11 @@ Site is aiming to encourage people to book consulations and get help on how to n
 
 ### Strategy and scope
 
-The main goal of the site is to provide user ...
+The main goal of the site is to provide user with a site where they can find find out how to "not kill their house plants".
+To convert a visitor, and draw them in, there will be a short explanation of qhat they can access on the site. Links to the booking/services page will be provided across the site
 
-[Strategy and scope tables])
+
+##### Strategy and scope tables
 
 <details>
   <summary>![Strategy and scope plan] </summary>
@@ -89,12 +91,17 @@ The main goal of the site is to provide user ...
 
 ### Structure of the website
 
-The basic structure of the site is designed around...
+The basic structure of the site is designed around making it easy for the user to navigate and book services. A user will land on the home page where they can view some high level information and use a simple process to register/login in order to view detailed articles and book services. 
 
-![Structure Plan]
+Login, registration, andd logout will also be provided in simple easy to use format. 
+Users can read interesting articles about plants, wnd links to booking will be provided on tis page, to encourage booking the services.
+Users can view cards with all services which can currently be booked, they will be then taken to a simple checkout page where payment details can be provided.
+A profile page will give the user their details. Options will be provided for admin to add new services, and edit or delete currently existing services
+
+#### Structure Plan
 
  <details>
-  <summary>![Surface plane plan] </summary>
+  <summary>Surface plane plan </summary>
   <img src="README-assets/ux-structure-plan-pt1.PNG" alt="surface-plane-plan-part1" width="80%" height="80%">
   <img src="README-assets/ux-structure-plan-pt2.PNG" alt="surface-plane-plan-part2" width="80%" height="80%">
 </details>
@@ -104,18 +111,17 @@ The basic structure of the site is designed around...
 
 #### Final Wireframes 
 
-[This is the final mobile wireframe]
-
+[This is the final mobile wireframe](README-assets/wireframe-mobile-final.pdf)
 These were built using balsamiq.
 
 - 
 #### These were the original wireframes
 
-[Mobile]
+[Mobile](README-assets/wireframe-mobile.pdf)
 
-[Tablet]
+[Tablet](README-assets/wireframe-tablet.pdf)
 
-[Desktop]
+[Desktop](README-assets/wireframe-desktop.pdf)
 
 ### Surface
 
@@ -128,8 +134,16 @@ If time allows, will come back to this
 
 - Home page link on mobile nav bar, not on desktop version. Link to home through Icon/branch which is hidden on mobile.
 
+- Decisions relating to time/date field:
+	-  My plan was to have a calendar app that user could select availability from, which would be added to order. Couldn't quite figure out how to do this. Then decided
+to have a user input field on checkout, which would then be added to order. Ran out of time to get this fully in place, was not getting the date to attach/update on the customers order. Date cannot be updated by user at this time but have added a note and if/else stmt to order history. Wanted to then give Admin access on the front end to amend the "confirmed Date". Page is available but unfortunately I ran out of time to get this full in place. Left page in place for admin but disabled buttons and added a message to admin. Adminuser with access to DB can update at that point.
+
+- I originally planned to have a "one-click" type payment for each product. Due to my knowledge at this time, I decided to change this so that users could book mulitple services(though at this time only one of each type), by adding to cart and procedding to the checkout page.
+
+- I hadn't included quantities on the services. This was designed with the user/customer only wanting to book one service type at a time. A future feature would be that the customer could increase the quantity to book for multiple people on the one booking.
+
  <details>
-  <summary>![Surface plane plan] </summary>
+  <summary>Surface plane plan</summary>
   <img src="README-assets/ux-surface-plan.PNG" alt="surface-plane-plan" width="80%" height="80%">
 
 </details>
@@ -141,9 +155,9 @@ If time allows, will come back to this
 
 I used the coolors site to generate a pallette related to plants and nature. These were set as root colours in css and used throughout the site. Where there were
 contrast colour issues, I used color picker to change, tryin to keep selected colors in line with site theme.
-Root Colours are
+- Root Colours are: 
  	- main-text-color: #3D4A3D;
-    - headers: #343434;
+	- headers: #343434;
     - color1:#138A36;
     - color2:#D4C5C7
 
@@ -192,6 +206,7 @@ DB has ...
 
 - Full ability for Admin to update dates/times on orders (Functionality for this has been started on the site but not finished due to time constraint)
 - Ability for user to select an available date/time slot from site owner provided calendar
+- Ability for user to book each service for multiple people. ie using a quantity type input field.
 
 
 

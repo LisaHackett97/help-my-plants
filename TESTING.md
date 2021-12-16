@@ -103,7 +103,7 @@ Recommended do not use IE10 to view site, please use Microsoft edge for best vie
 
 - My plan was to have a calendar app that user could select availability from, which would be added to order. Couldn't quite figure out how to do this. Then decided
 to have a user input field on checkout, which would then be added to order. Ran out of time to get this fully in place, was not getting the date to attach/update on the customers order.
-Date cannot be updated by user at this time but have added a note and if/else stmt to order history. Wanted to then give Admin access on the fron end to amended the "confirmed Date". Page is available but unfortunately I ran out of time to get this full in place. Let page in place for admin but disable buttong and message to admin. Adminuser with access to DB can update at that point.
+Date cannot be updated by user at this time but have added a note and if/else stmt to order history. Wanted to then give Admin access on the fron end to amended the "confirmed Date". Page is available but unfortunately I ran out of time to get this full in place. Left page in place for admin but disable button and message to admin. Admin-user with access to DB can update at that point.
 
 -  Main issue I had during development took a number of days to resolve. During building of the checkout, all code updated and linked to stripe, with variables set up. 
 No issues on local server, all worked and displayed as expected, but when deployed to Heroku I was getting 500 server errors, both on the site and when I tried to access services/orders in the heroku admin. Below is a summary of the steps I took to try and resolve.
