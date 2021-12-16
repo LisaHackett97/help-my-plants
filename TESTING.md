@@ -132,13 +132,14 @@ And Order is not defined. Add import to file. recheck local Push and test. Can s
   But once the code udpated, still the 500 Server Error
   Tutor support: helped identify some code I was missing and understnad the webhook and what it was looking for as now causing duplicate orders in the DB
 
-This has helped me to understand that I wasn't handling the time slot field correctly.
+This has helped me to understand that I wasn't handling the time slot field correctly. <br>
 Have decided to have as a user input field (similar to user selecting quantities in B Ado)
-And add that to the order. 
-1st step, Find and remove all references across the app to time_slot
-Local environment, no issue. Still duplicates in DB, But at this point need to go back and fix up form data that webhook is checking for.
-Push to live and check
-Still get 500 error
+And add that to the order. <br>
+1st step, Find and remove all references across the app to time_slot <br>
+Local environment, no issue. Still duplicates in DB, But at this point need to go back and fix up form data that webhook is checking for. <br>
+Push to live and check<br>
+Still get 500 error<br>
+
   8. Manually compared my data to b ado. Wasn't saving the order correctly, but still 500 issue. Duplicate Issue Resolved.
   9. Tried adding quantities, updating contexts and views. Still 500 Server Error
   10. Reverting to a previous commit and started again. Revert to my original plan where cart and checkout in same app.
@@ -190,8 +191,8 @@ But on site itself, this then caused  issue with image when try to select servic
   - Removed int in view. Made quanity field hidden on form, updated contexts.py then rendered as expected
 
 - Bug: Can't get remove link to remove items from cart
-To resolved: - Updated view function:- to get the cart items and pop out the item id
-Then Added a form to html for the remove section
+To resolve: - Updated view function:- to get the cart items and pop out the item id
+Then Added a form to html for the remove section. Bug resolved
 
 - Bug: Checkout page wouldn't render. 
 To resolve I set up a new booking page to use instead. Use to branch to test with same functionality etc as original checkout page
@@ -209,9 +210,16 @@ RESOLVED.
 - Bug/Error
   - Stripe WH, NOT CREATING PAYMENT SUCCESS Intent. Issue was that i had only one underscore before iexact
 
-- A few times I would get an attribute error. But this was usually that I needed to aply migrations
+- A few times I would get an attribute error. But this was usually that I needed to apply migrations
 
-- Text on the profile link on mobiel nav menu dispaying different to others: Resolved, jsut needed to update the class
+- Text on the profile link on mobile nav menu dispaying different to others: Resolved, just needed to update the class.
+
+- Bug: After updating css for footer and fixng image rendering/issue with service causing 500 error where no image, now have css not applied to footers and links. Also. Images in service detail npage not rendering. No-image.png renders when I remove and image. Update if statement for image to include id on the detail page.
+
+-  Looking at footer again, it doesn't look well on some pages. Giving it more margin top, pushes it away but again when less content on page it floats in middle.
+TRying to position fixed but then main content scrolls behind footer and user cannot see it. Set padding on content container and fix footer. This just give issues on the home parrallax sections. Added another parallax empty div and some margin. Footer not overlapping the buttons
+
+
 
 
 

@@ -60,6 +60,7 @@
   /* to push content under header */
   .content-container{
     padding-top: 100px;
+    padding-bottom: 100px;
 }
 
   /* main heading styles */
@@ -230,8 +231,8 @@ https://www.w3schools.com/howto/howto_js_scroll_to_top.asp */
 }
 
 /* Links on home page text */
-a.home-pg-links {
-    color: #7b217e !important;
+a .home-pg-links {
+  color: #7b217e !important;
     text-decoration: underline;    
 }
 
@@ -253,7 +254,17 @@ a.home-pg-links {
 /* footer background */
 .footer-container {
     background-color: #e7d3d3;
-      
+    position:fixed;    
+    bottom: 0;
+    left:0;
+}
+
+.footer-text-content {
+    color: var(--main-text-color);
+    font-family: 'Poppins', sans-serif;
+    font-size:.8rem;
+    font-style: italic;
+    margin-left: 10px;;
 }
 
 
