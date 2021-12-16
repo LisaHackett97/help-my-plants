@@ -2,9 +2,10 @@
     <ul class="navbar-nav w-auto mx-auto">
         {% if request.user.is_authenticated %}
         {% if request.user.is_superuser %}
-        <li class="list-inline-item py-2"><a href="{% url 'add_service' %}" class="nav-text-content">Admin</a></li>
+        <li class="list-inline-item py-2 pt-3"><a href="{% url 'add_service' %}" class="nav-text-content">Admin</a></li>
            
         {% endif %}
+        <li class="list-inline-item py-2"><a href="{% url 'home' %}" class="nav-text-content">Home</a></li>
         <li class="list-inline-item py-2"><a href="{% url 'services' %}" class="nav-text-content">Services</a></li>
         <li class="list-inline-item py-2"><a href="{% url 'profile' %}" class="nav-text-content">My Profile</a></li>
         <li class="list-inline-item py-2"><a  href="{% url 'view_cart' %}" class="nav-text-content">Cart </a>
