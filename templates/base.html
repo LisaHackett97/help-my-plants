@@ -84,7 +84,7 @@
                 <li class="list-inline-item pl-1"><a href="{% url 'articles' %}" class="text-content"><div class="text-center"><i class="fas fa-info-circle"></i></div>Learn more</a></li>
                 <li class="list-inline-item pl-1"><a href="{% url 'account_logout' %}" class="text-content"><div class="text-center"><i class="fas fa-sign-out-alt"></i></div>Logout</a></li>
             {% else %}
-                <li class="list-inline-item"><a href="" class="text-content"><div class="text-center"><i class="fas fa-home"></i></div>Home</a></li>
+                <li class="list-inline-item"><a href="{% url 'home' %}" class="text-content"><div class="text-center"><i class="fas fa-home"></i></div>Home</a></li>
                 <li class="list-inline-item"><a href="{% url 'account_signup' %}" class="text-content"><div class="text-center"><i class="fas fa-user-plus"></i></div>Register</a></li>
                 <li class="list-inline-item"><a href="{% url 'account_login' %}" class="text-content"><div class="text-center"><i class="fas fa-sign-in-alt"></i></div>Login</a></li>
             {% endif %}
