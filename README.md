@@ -168,7 +168,11 @@ DB has ...
 
 The following are defensive design elements identified in planning. Each will be manually tested (See testing docs)
 
- 
+ <details>
+  <summary>Click to see results</summary>
+  <img src="README-assets/Defensive-Design-Notes.PNG" alt="DefensiveDesign" width="50%" height="50%">
+</details>
+<br>
 		
 *** Abuse of Admin privileges, controls on this and info security need to be in place as part of the business process ***
 
@@ -177,21 +181,25 @@ The following are defensive design elements identified in planning. Each will be
 
 - HTML5 - Programming language for structuring the site.
 - CSS3- Style sheet programming language
-- Python3, Jinja templating language....
+- Python3, Jinja templating language.
+- Postgres DB
+
 - [Github](https://github.com/)- software hosting platform to keep project in a remote location
 - [Gitpod](https://gitpod.io/) - a development hosting platform
 - Git - used for version-control.
 - [Google fonts](https://fonts.google.com/) -used to select and provide typography.
-- [Online kanban tool for plan and management of project tasks](https://kanbantool.com/)
 - [Balsamiq](https://balsamiq.com/) - used to build wireframes. Downloaded software to use.
 - [Markdown table convert](https://tableconvert.com/) - I am using this to turn data on excel into markdown table syntax
 - Microsoft word and excel: to assist in organising planning for project
-- 
+- Amazon Web services for hosting static files
 - [Site for creating DB schema diagrams](dbdiagram.io)
 - [Site to enable me to edit pdfS](https://www.ilovepdf.com/) - I needed a tool to allow me to edit pdfs of diagrams 
 - [Heroku for deployment](https://heroku.com/)
-- 
-- [Favicon generator - website planet](https://www.websiteplanet.com/webtools/favicon-generator/)
+- Stripe for payments
+- gmail for sending emails to users
+- temp-email.org
+- Secret-key generator
+- [Favicon generator - website planet](https://favicon.io/)
 - Bootstrap4
 - Fontawesome & google fonts
 - [ami responsive for mock-ups](ami.responsivedesign.i)
@@ -200,7 +208,6 @@ The following are defensive design elements identified in planning. Each will be
   - validator.w3.org
   - jigsaw.w3.org/css-validator
   - pep8online.com
-- [Site for CSS animations](https://animate.style/.)
 - [techsini for mock-ups](https://techsini.com/multi-mockup/index.php)
 - WAVE extension for reviewing accessibility and colour contrasts in testing.
 - Chrome Dev Tools - used to view responsiveness and layout as site was being developed. I found this very useful when developing the site, as it aided my learning throughout the project.
@@ -332,44 +339,69 @@ GitHub docs link [Forking a repository](https://docs.github.com/en/desktop/contr
 #### Images Used
 
 
-- Favicon generated from (https://www.websiteplanet.com/webtools/favicon-generator/)
+- Favicon generated from (https://favicon.io/)
 
-##### User default images
 
-- 
-
-- Site owners own images
-	-
-
+- pixabay.com
+	- Cactus1  
+	- Pink-Orchid
+	- Green-plant1#
+	- cactus-2
+	- aloe-vera-2
+	- bonsai-pink
+	- bonsai-1
+	- No camera image
 - Unsplash.com
-	
+	- Aloe-vera1  unsplash.com/@laurinscheuber
 
 #### Other
 
-
+- lorem ipsum generators
+		- http://www.cupcakeipsum.com/
 
 ### Content
 
-/
+##### Home Page and Articles Page Content
+https://lifehacker.com/why-you-keep-killing-your-plants-and-what-to-do-about-i-1778545598
+https://www.rte.ie/lifestyle/living/2021/1203/1264612-tips-to-keep-your-house-plants-alive-this-winter-and-beyond/
+https://www.tinashomedesigns.com/inspiration-solutions/design/benefits-of-houseplants
+https://www.gardenersworld.com/plants/25-of-the-best-house-plants-to-grow/
+https://www.healthline.com/health/healthy-home-guide/benefits-of-indoor-plant
+https://www.prevention.com/health/g27586276/benefits-of-indoor-plants/
+https://www.rhs.org.uk/plants/types/houseplants/for-human-health
+
 
 ### Colours
 
-
+- coolor.co to select colours
+- color picker to change as needed
 
 ### Code
 
 
 - I reused the code from my MS3 project for the back to top button/icon. This was originally found on https://www.w3schools.com/howto/howto_js_scroll_to_top.asp */
 - I followed the Code Institute Boutique Ado walkthrough to guide me through the structure and help me learn what I needed to do.
-
-
-
+- Stripe JS Core logic/payment flow comes from ( https://stripe.com/docs/payments/accept-a-payment)
+- And CSS from (https://stripe.com/docs/stripe-js)
 
 ### Acknowledgements
 
 I referred to the following to add to my knowledge and for help.
 
--
+- https://boto3.amazonaws.com/v1/documentation/api/latest/index.html 
+- https://lynxbee.com/cloud-technologies/django-and-django-rest-framework/
+- https://www.geeksforgeeks.org/django-models/?ref=lbp
+- w3docs.com
+- https://django-allauth.readthedocs.io/
+- stackoverflow
+- https://thecodelearners.com/python-django-forms-creating-rendering-validating-and-saving-forms/
+- Stripe Docs https://stripe.com/docs/payments/payment-element
+- pytutorial.com
+- boutique.ado walkthrough projuect
+- developer.mozilla.org
+- https://lynxbee.com/cloud-technologies/django-and-django-rest-framework/
+- https://www.geeksforgeeks.org/django-models/?ref=lbp
+- https://www.codacy.com/***
 - Code Institute course material, in particular I followed the Boutiqu Ado walkthrough to guide me through the structure
 - Slack Community - I searched for a topic and usually someone else had the same question. This has been a great help in developing my understanding.
 - And thank you to those on slack who took the time to review my project and give me feedback.
