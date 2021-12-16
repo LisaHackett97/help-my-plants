@@ -62,7 +62,7 @@
                     <tr> <!-- column 1 in table -->
                         <td class="p-3 w-25 align-middle">
                             {% if item.service.image %}
-                          <img class="w-100 img-fluid rounded" src="{{ item.service.image.url }}" alt="{{ item.service.name }}">
+                          <img class="w-100 img-fluid rounded" src="{{ item.service.image }}" alt="{{ item.service.name }}">
                           {% else %}
                           <img class="w-100 img-fluid rounded" src="{{ MEDIA_URL }}no-image.png" alt="{{ item.service.name }}">
                           {% endif %}
