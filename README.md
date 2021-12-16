@@ -169,14 +169,47 @@ I feel these fonts are easy for user to read on screen and are visually appealin
 
 #### Images
 
-I used one background image on the home page. Each of there services has an accompanying plant image. 
+I used one background image on the home page. Each of the services has an accompanying plant image. 
 And there is a small image with each article for visual appeal
 
 #### DB Schema
 
-DB has ...
+I have included a rendering of the models, including the all auth ones, created directly from django.
 
-![DB Schema diagram]
+ <details>
+  <summary>Click to view </summary>
+  <img src="README-assets/models.png" alt="django-models" width="80%" height="80%">
+</details>
+
+Below is a table of the models/views/templates
+
+| App                                        | Models      | Views                               | Template         | Forms                                                                                                                                            |
+|--------------------------------------------|-------------|-------------------------------------|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| services                                   | services    | all_services                        | services         | ServiceForm                                                                                                                                      |
+|                                            |             | service_detail                      | service_detail   |                                                                                                                                                  |
+|                                            |             | add_service                         | add_service      |                                                                                                                                                  |
+|                                            |             | edit_service                        | edit_service     |                                                                                                                                                  |
+|                                            |             | delete_service                      |                  |                                                                                                                                                  |
+| profiles                                   | UserProfile | UserProfile                         | profile.html     | UserProfileForm                                                                                                                                  |
+|                                            |             | order_history                       |                  |                                                                                                                                                  |
+|                                            |             |                                     |                  |                                                                                                                                                  |
+| articles                                   | article     | all_articles                        | articles.html    |                                                                                                                                                  |
+|                                            |             | to get specifc service type details |                  |                                                                                                                                                  |
+|                                            |             |                                     |                  |                                                                                                                                                  |
+|                                            |             |                                     |                  |                                                                                                                                                  |
+| checkout                                   | order       | cache checkout data                 | cart             | OrderForm                                                                                                                                        |
+|                                            | orderItem   | view cart                           | Checkout         |                                                                                                                                                  |
+|                                            |             | add to cart                         | Checkout Success |                                                                                                                                                  |
+|                                            |             | remove frrom cart                   |                  |                                                                                                                                                  |
+|                                            |             | checkout                            |                  |                                                                                                                                                  |
+|                                            |             | checkout_success                    |                  |                                                                                                                                                  |
+|                                            |             |                                     |                  |                                                                                                                                                  |
+| Home                                       | None        | Index                               | index.html       |                                                                                                                                                  |
+| Bookings                                   | None        | bookings_list                       | Bookings List    | "BookingForm : allow admin to update dates on order.                                                                                             |
+| **   Functionality not fully in place yet" |
+|                                            |             | update_order                        | update_order     | ** As booking form functionality not yet fully place, the update order page will render with submit btn disabled and a message to the admin user |
+
+
 
 [Back to table of contents](#table-of-contents)
 
@@ -207,6 +240,7 @@ DB has ...
 - Full ability for Admin to update dates/times on orders (Functionality for this has been started on the site but not finished due to time constraint)
 - Ability for user to select an available date/time slot from site owner provided calendar
 - Ability for user to book each service for multiple people. ie using a quantity type input field.
+- Ability for Admin to update articles directly on the front end
 
 
 
@@ -231,7 +265,7 @@ The following are defensive design elements identified in planning. Each will be
 - CSS3- Style sheet programming language
 - Python3, Jinja templating language.
 - Postgres DB
-
+- pygraphviz with django extensions to render a model direct from DB
 - [Github](https://github.com/)- software hosting platform to keep project in a remote location
 - [Gitpod](https://gitpod.io/) - a development hosting platform
 - Git - used for version-control.
@@ -386,10 +420,6 @@ GitHub docs link [Forking a repository](https://docs.github.com/en/desktop/contr
 
 #### Images Used
 
-
-- Favicon generated from (https://favicon.io/)
-
-
 - pixabay.com
 	- Cactus1  
 	- Pink-Orchid
@@ -406,6 +436,10 @@ GitHub docs link [Forking a repository](https://docs.github.com/en/desktop/contr
 
 - lorem ipsum generators
 		- http://www.cupcakeipsum.com/
+
+- Favicon generated from (https://favicon.io/)
+
+- How to run models image from django on [medium.com](https://medium.com/@yathomasi1/1-using-django-extensions-to-visualize-the-database-diagram-in-django-application-c5fa7e710e16)
 
 ### Content
 

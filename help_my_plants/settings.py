@@ -60,6 +60,14 @@ INSTALLED_APPS = [
 GRAPH_MODELS = {
   'all_applications': True,
   'group_models': True,
+  'app_labels': ['home',
+                 'services',
+                 'checkout',
+                 'articles',
+                 'profiles',
+                 'bookings',
+                 'allauth.account'
+                 ],
 }
 
 MIDDLEWARE = [
