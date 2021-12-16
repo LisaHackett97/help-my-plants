@@ -241,23 +241,29 @@ a.home-pg-links {
     font-size: 110%;    
 }
 
+.footer-links {
+    color: #1b061b !important;
+    text-decoration: underline;    
+}
+
+
 
 
 /* footer background */
  .footer-container { 
     background-color: #e7d3d3;
-    /* position:fixed;    
+    position:fixed;    
     bottom: 0;
-    left:0; */
+    left:0;
 }
 
-/* .footer-text-content {
+.footer-text-content {
     color: var(--main-text-color);
     font-family: 'Poppins', sans-serif;
     font-size:.8rem;
     font-style: italic;
     margin-left: 10px;;
-} */
+}
 
 
 /* Media Queries */
@@ -274,9 +280,9 @@ a.home-pg-links {
         width: 100%;
     };
     /* links and text on article page and also on footer */
-    .article-links {
+    /* .article-links {
         font-size: 1rem;   
-    };
+    }; */
     /* footer {
         font-size: .8rem;
     };

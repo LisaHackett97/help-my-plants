@@ -221,8 +221,9 @@ Trying to position fixed but then main content scrolls behind footer and user ca
   - Resolves image issue.
   - Still bug with css. checking aws account. CSS stored there as expected. 
   - have change the parent/child in css. Now showing a .home-pg-link. Fixed this and then removed some of the footer related css. Not resolving, footer background not displaying on deployed app. css in AWS is showing as expected.
-  - Tried removing some css and then removing row around footer container to see if this resolves issue.
-  
+  - Tried removing some css and then removing row around footer container to see if this resolves issue. It didn't.
+  - I had moved some article related css to the base css file. This seems to be the issue. Move article links back to article.css. Ensure all on home page had correct link class. Try to add footer back to base template and add a different class for links in the footer in base css. Push to githib and test again.
+
 
 
 
