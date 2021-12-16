@@ -1,8 +1,12 @@
-# [Help my Plants!]
+# [Help My Plants](https://help-my-plants.herokuapp.com/)
 
-![site-mockup]
 
-## [Link to live site]
+![site-mockup](README-assets/final-site-image.PNG)
+
+
+Please use Test Card 4242 4242 4242 4242 expiry:0424 cvc:242 zip: 42424
+
+[Link to live Site](https://help-my-plants.herokuapp.com/)
 
 This document will cover manual, compatability and validation testing. Issues found during development and bugs are also detailed.
 I have included a section on the defensive design elements of the site I planned.
@@ -70,7 +74,16 @@ Wave tests help identify issues early so that they could be corrected and featur
 
 #### Defensive Design
 
-The following are defensive design elements identified in planning. Each will be manually tested
+The following are defensive design elements identified in planning. Each has been manually tested as workings as expected
+
+
+The following are defensive design elements identified in planning. Each will be manually tested (See testing docs)
+
+ <details>
+  <summary>Click </summary>
+  <img src="README-assets/Defensive-Design-Notes.PNG" alt="DefensiveDesign" width="70%" height="70%">
+</details>
+<br>
 
 [Back to table of contents](#table-of-contents)
 
@@ -279,6 +292,32 @@ Recommended do not use IE10 to view site, please use Microsoft edge for best vie
 [Back to table of contents](#table-of-contents)
 ### User stories Testing
 
+| ID    | As as a:        | I want to:                                            | Tests                                                                                                                     | Outcome                                                                                               |
+|-------|-----------------|-------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| US-01 | First time User | Find Out what the site is about                       | View the page and read information                                                                                        | As Expected                                                                                           |
+| US-02 | First time User | Navigate easily                                       | View accessible parts of the site without to many clicks                                                                  | As Expected                                                                                           |
+| US-03 | First time User | Register, then login to the site                      | Easily enter my registration details, then click to login                                                                 | register and validate email. No issues                                                                |
+| US-04 | Registered User | Login to the site                                     | Easily enter my login details to enter thesite                                                                            | Logged in. No Issues                                                                                  |
+| US-05 | Registered User | View Services & Prices                                | Read the list of available services and  view the cost of each                                                            | View the page and pdetails. Can view all as expected                                                  |
+| US-06 | Registered User | Choose and book a service                             | Select a service, view the total cost, add my details and click to submit                                                 | View the service detail, click to add to cart and then click for checkout, wehre details can be added |
+| US-07 | Registered User | Make a payment for the service                        | Easily enter my payment info and complete payment quickly                                                                 | Payment form on checkout page. Entered details and tested. Working as expected                        |
+| US-08 | Registered User | Submit the order                                      | click to submit and receive a confirmation                                                                                | As Expected                                                                                           |
+| US-09 | Registered User | Navigate easily                                       | Move around the site with as few clicks as possible, and understand easily how to navigate to different parts of the site | As Expected                                                                                           |
+| US-10 | Registered User | View More info                                        | Click on a more info item and read the information                                                                        | View articles page                                                                                    |
+| US-11 | Registered User | View my profile                                       | Click on a menu item/icon and see my registered details                                                                   | Click Profile nav item and viewed page as expected                                                    |
+| US-12 | Registered User | Edit my profile                                       | Click on my profile page and update details                                                                               | view profile page, update details No issues                                                           |
+| US-13 | Registered User | See my previous orders                                | View my profile page and see my list of previous orders                                                                   | view profile page, view details No issues                                                             |
+| US-14 | Registered User | See my most recent order                              | See my most recent order                                                                                                  | View list of orders on profile page. Viewed created/orderd date                                       |
+| US-15 | Registered User | Log Out                                               | Click on a menu item/icon and easily log out                                                                              | As Expected                                                                                           |
+| US-16 | Site Owner      | Provide the functionality for users to Register/Login | Login and registration forms, which are easy for the user to update, and easy to find, are provided                       | As Expected                                                                                           |
+| US-17 | Site Owner      | Showcase available services & Cost                    | View services page to confirm services are availabe to be booked                                                          | As Expected                                                                                           |
+| US-18 | Site Owner      | Allow users to choose & book a service                | Confirm booking form provided                                                                                             | Checkout and cart forms/pages available and working                                                   |
+| US-19 | Site Owner      | Allow users to pay for the service online             | confirm easy and secure payment section is provided. Do test payment                                                      | Done. No Issues                                                                                       |
+| US-20 | Site Owner      | Give users a confirmation email                       | confirm users receive message and email                                                                                   | As Expected                                                                                           |
+| US-21 | Site Owner      | Provide more info on what the site is about           | View page with content. Check links back to the services page are working and placed in relevant content                  | As Expected                                                                                           |
+| US-22 | Site Owner      | Delete content                                        | Delete some content, through easy to use delete options                                                                   | added a service, confirmed changes, then deleted                                                      |
+| US-23 | Site Owner      | Edit content                                          | Edit content to confirm easy to do                                                                                        | Edit a service, confirmed changes                                                                     |
+| US-24 | Site Owner      | Provide the functionality for users toLogout          | Check logout form is available and easy to find                                                                           | Easily accessible through buttons and nav menu                                                        |
 
 [Back to table of contents](#table-of-contents)
 
@@ -448,4 +487,4 @@ When all feature, user story testing etc fully completed. Rerun though validator
 
 [Back to table of contents](#table-of-contents)
 
-[Link to README File]()
+[Link to README File](https://github.com/LisaHackett97/help-my-plants/blob/main/README.md)

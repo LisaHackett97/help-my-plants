@@ -56,7 +56,7 @@ Please use Test Card 4242 4242 4242 4242 expiry:0424 cvc:242 zip: 42424
 | US-03 | First time User | Register, then login to the site                      | Easily enter my registration details, then click to login                                                                           |
 | US-04 | Registered User | Login to the site                                     | Easily enter my login details to enter thesite                                                                                      |
 | US-05 | Registered User | View Services & Prices                                | Reading the list of available services and being able to view the cost of each                                                      |
-| US-06 | Registered User | Choose and book a service                             | Select a service, view the cost, add my details and click to submit                                                           |
+| US-06 | Registered User | Choose and book a service                             | Select a service, view the total cost, add my details and click to submit                                                           |
 | US-07 | Registered User | Make a payment for the service                        | Easily enter my payment info and complete payment quickly                                                                           |
 | US-08 | Registered User | Submit the order                                      | clicking to submit and receiving a confirmation                                                                                     |
 | US-09 | Registered User | Navigate easily                                       | Moving around the site with as few clicks as possible, and understand easily how to naviagate to different parts of the site        |
@@ -64,7 +64,7 @@ Please use Test Card 4242 4242 4242 4242 expiry:0424 cvc:242 zip: 42424
 | US-11 | Registered User | View my profile                                       | Clicking on a menu item/icon and seeing my registered details                                                                       |
 | US-12 | Registered User | Edit my profile                                       | Clicking on my profile page and updating details                                                                                    |
 | US-13 | Registered User | See my previous orders                                | Viewing my profile page and seeing my list of previous orders                                                                       |
-| US-14 | Registered User | See my Active order                                   | Viewing my profile page and seeing my active order                                                                                  |
+| US-14 | Registered User | See my most recent order                              | Viewing my profile page and seeing my active order                                                                                  |
 | US-15 | Registered User | Log Out                                               | Clicking on a menu item/icon and easily logging out                                                                                 |
 | US-16 | Site Owner      | Provide the functionality for users to Register/Login | Providing a login and registration forms, which are easy for the user to update, and easy to find, through menu option or buttons   |
 | US-17 | Site Owner      | Showcase available services & Cost                    | Provide a list of available services with descriptions and cost, that will encourage users to book                                  |
@@ -74,7 +74,7 @@ Please use Test Card 4242 4242 4242 4242 expiry:0424 cvc:242 zip: 42424
 | US-21 | Site Owner      | Provide more info on what the site is about           | Providing an easy to find page, with content interest to the user, links back to the services page to encourage booking of services |
 | US-22 | Site Owner      | Delete content                                        | Easily deleting incorrect/expired content, through easy to use delete options                                                       |
 | US-23 | Site Owner      | Edit content                                          | Easily editing content, through easy to use edit options                                                                            |
-| US-24 | Site Owner      | Provide the functionality for users toLogout          | Providing a logout form,  which the user can find through through menu option or buttons                                            |
+| US-24 | Site Owner      | Provide the functionality for users to Logout         | Providing a logout form,  which the user can find through through menu option or buttons                                            |
 
 
 ### Strategy and scope
@@ -422,8 +422,8 @@ The following are defensive design elements identified in planning. Each will be
 
 ## Testing
 
-[Testing Documentation]
 
+[Testing Documentation](https://github.com/LisaHackett97/help-my-plants/blob/main/TESTING.md)
 
 - Issues during development and bugs are covered in this document, in addition to the planned testing.
 
