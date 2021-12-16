@@ -214,10 +214,18 @@ RESOLVED.
 
 - Text on the profile link on mobile nav menu dispaying different to others: Resolved, just needed to update the class.
 
-- Bug: After updating css for footer and fixng image rendering/issue with service causing 500 error where no image, now have css not applied to footers and links. Also. Images in service detail npage not rendering. No-image.png renders when I remove and image. Update if statement for image to include id on the detail page.
-
 -  Looking at footer again, it doesn't look well on some pages. Giving it more margin top, pushes it away but again when less content on page it floats in middle.
-TRying to position fixed but then main content scrolls behind footer and user cannot see it. Set padding on content container and fix footer. This just give issues on the home parrallax sections. Added another parallax empty div and some margin. Footer not overlapping the buttons
+Trying to position fixed but then main content scrolls behind footer and user cannot see it. Set padding on content container and fix footer. This just give issues on the home parrallax sections. Added another parallax empty div and some margin. Footer not overlapping the buttons. Resolved
+
+- Bug: After updating css for footer and fixing image rendering/issue on service page which caused 500 error where there was no image attached to a service,  the css is not being applied to the footers and links which have been updated since. Also, the images in service detail page not rendering. No-image.png renders when I remove an image, nut actual image not rendering at all. Update the if statement for image to include id on the detail page.
+  - Resolves image issue.
+  - Still bug with css. checking aws account. CSS stored there as expected. 
+  - have change the parent/child in css. Now showing a .home-pg-link. Fixed this and then removed some of the footer related css. Not resolving, footer background not displaying on deployed app. css in AWS is showing as expected.
+  - Tried removing some css and then removing row around footer container to see if this resolves issue.
+  
+
+
+
 
 
 
