@@ -1,4 +1,13 @@
 
+.article-links {
+    color: #7b217e !important;
+    text-decoration: underline;    
+}
+
+.article-links:hover {
+    color: var(--headers) !important;
+    font-size: 110%;    
+}
 
 .article-section {
     color: var(--headers);
