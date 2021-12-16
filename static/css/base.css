@@ -239,6 +239,22 @@ a.home-pg-links {
     font-size: 110%;    
 }
 
+.article-links {
+    color: #7b217e !important;
+    text-decoration: underline;    
+}
+
+.article-links:hover {
+    color: var(--headers) !important;
+    font-size: 110%;    
+}
+
+/* footer background */
+.footer-container {
+    background-color: #e7d3d3;
+}
+
+
 /* Media Queries */
 
 @media (min-width: 1200px) {
@@ -251,7 +267,20 @@ a.home-pg-links {
     .img-thumbnail {
         height: 80%;
         width: 100%;
-    }  
+    },
+    /* links and text on article page and also on footer */
+    .article-links {
+        font-size: 1rem;   
+    },
+    footer {
+        font-size: .8rem;
+    }
+    a.footer-home-btn {
+        font-size: .8rem;
+        border-style: none !important;
+        margin: 0 !important;
+    }
+       
 }
 
 

@@ -130,6 +130,25 @@
 <!-- back to top of page icon on all pages -->
 <button onclick="topFunction()" id="backToTopBtn" title="Go to top"><i class="fas fa-angle-double-up"></i></button>
 
+<!-- footer type section to direct user to services or profile page -->
+{% if request.user.is_authenticated %}
+<div class="container-fluid footer-container">
+    <div class="row">
+        <footer class="my-2 text-content text-centre col-xs-11 col-lg-10 offset-lg-2">
+          
+            <p class="mx-4">Please go to our <a href="{% url 'services' %}" class="article-links">services page</a> 
+                to book or to your <a href="{% url 'profile' %}" class="article-links">your profile page</a> to see full details of previous orders                
+            </p>
+            {% else %}
+            <p class="d-none">
+                <!-- empty for logged out users -->
+            </p>
+          
+        </footer>
+    </div>
+    </div>
+    {% endif %}
+
     {% block postloadjs %}
     <script>
         $('.toast').toast('show');
