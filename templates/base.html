@@ -129,7 +129,7 @@
     {% endblock %}
 
     <!-- footer type section to direct user to services or profile page -->
-<div class="row">
+
     {% if request.user.is_authenticated %}
     <div class="container-fluid footer-container">
         <div class="row">
@@ -147,7 +147,7 @@
         </div>
         </div>
         {% endif %}
-    </div>
+  
 <!-- back to top of page icon on all pages -->
 <button onclick="topFunction()" id="backToTopBtn" title="Go to top"><i class="fas fa-angle-double-up"></i></button>
 

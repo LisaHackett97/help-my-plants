@@ -241,7 +241,7 @@ a.home-pg-links {
     font-size: 110%;    
 }
 
-/* .article-links {
+.article-links {
     color: #7b217e !important;
     text-decoration: underline;    
 }
@@ -249,14 +249,14 @@ a.home-pg-links {
 .article-links:hover {
     color: var(--headers) !important;
     font-size: 110%;    
-} */
+}
 
 /* footer background */
 .footer-container {
     background-color: #e7d3d3;
-    /* position:fixed;    
+    position:fixed;    
     bottom: 0;
-    left:0; */
+    left:0;
 }
 
 .footer-text-content {
