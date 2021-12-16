@@ -13,43 +13,68 @@
 {% block content %}
 <div class="row">
     {% if request.user.is_authenticated %}
-        <a href="{% url 'services' %}" class="btn my-1">Book today</a>
+    <a href="{% url 'services' %}" class="btn my-1">Book today</a>
     {% endif %}
 </div>
 
 <!-- Parallax section 1 -->
-<div class="para-1"> 
+<div class="para-1">
 </div>
 <div class="parallax-1 text-center py-4 px-3">
     <h2>Do you need help with your house plants?</h2>
     <div class="text-center mb-3">
         {% if request.user.is_authenticated %}
-            <a href="{% url 'services' %}" class="btn my-1">Book today <i class="far fa-smile"></i></a>
+        <a href="{% url 'services' %}" class="btn my-1">Book today <i class="far fa-smile"></i></a>
         {% endif %}
     </div>
     <p class="text-content mx-2">
-        Cupcake ipsum dolor sit amet topping chupa chups. Candy sweet sweet roll sweet roll chocolate bar. Ice cream cake icing sugar plum cupcake.
-        Chupa chups jujubes danish toffee topping donut tart jelly carrot cake. Wafer topping dragée croissant cotton candy lemon drops. Gingerbread ice cream muffin danish jujubes donut chocolate bar. Jelly beans croissant cookie icing carrot cake candy.
-        Chocolate toffee tiramisu chocolate muffin dessert jelly-o macaroon dessert. Jelly shortbread bonbon jelly-o halvah cake cake. Icing jujubes candy pastry macaroon wafer toffee cookie.
-        Lemon drops sesame snaps macaroon carrot cake halvah. Pie cookie dessert pie bonbon topping marshmallow cupcake. Chocolate halvah chocolate bar dragée chocolate tiramisu.
-        Biscuit sesame snaps chocolate cake cake lollipop pudding jelly-o biscuit sugar plum. Tart gummies lollipop halvah chocolate bar icing brownie topping. Tart muffin candy donut tart shortbread jelly beans cake. Shortbread tootsie roll pie bear claw macaroon soufflé pie cotton candy pudding.</p>
+        Did you know a cactus could droop? I didn’t until I killed one. It doesn’t have to be this way. You, too, can
+        keep a plant alive indoors.
+        <br>
+        Did you know that indoor plants can actually make you healthier and happier. There is so much more to
+        houseplants than their beauty.
+        Plants in hospital rooms have been found to speed the recovery rates of surgical patients, lower blood pressure
+        and decrease anxiety.
+
+        If you are a habitual plant killer, we can help.
+        From general questions to accompanied shopping trips, to lessons and follow ups helping you learn where you are
+        going wrong,
+        we are here to help you not to kill your plants.
         {% if request.user.is_authenticated %}
-       <!-- nothing here for logged in user --> 
+        <a href="{% url 'services' %}" class="my-1 home-pg-links">Book with us today</a> or head on over to our
+        <a href="{% url 'articles' %}" class="my-1 home-pg-links">articles page</a> to read more
         {% else %}
-            <a href="{% url 'account_login' %}" class="btn my-1">Login</a>
-            <a href="{% url 'account_signup' %}" class="btn my-1">Register here</a>
+    <p class="text-content mx-2">
+        Please <a href="{% url 'account_login' %}" class="home-pg-links">login</a> or
+        <a href="{% url 'account_signup' %}" class="home-pg-links">register</a>
+        to book with us and we can help you choose the right plants for your indoor space, and help you learn how you
+        can have happier and healthier indoor plants.
+        We also have some articles for registered users to read on the benefits of keeping plants, and some general tips
+        and tricks
         {% endif %}
+    </p>
+    {% if request.user.is_authenticated %}
+    <!-- nothing here for logged in user -->
+    {% else %}
+    <a href="{% url 'account_login' %}" class="btn my-1">Login</a>
+    <a href="{% url 'account_signup' %}" class="btn my-1">Register here</a>
+    {% endif %}
 </div>
 <!-- Parallax section 2 -->
 <div class="para-2"></div>
 <div class="parallax-2 text-center py-4  px-3">
     <h2>Some tips and tricks</h2>
     <p class="text-content mb-0 mx-2">
-        Cupcake ipsum dolor sit amet topping chupa chups. Candy sweet sweet roll sweet roll chocolate bar. Ice cream cake icing sugar plum cupcake.
-        Chupa chups jujubes danish toffee topping donut tart jelly carrot cake. Wafer topping dragée croissant cotton candy lemon drops. Gingerbread ice cream muffin danish jujubes donut chocolate bar. Jelly beans croissant cookie icing carrot cake candy.
-        Chocolate toffee tiramisu chocolate muffin dessert jelly-o macaroon dessert. Jelly shortbread bonbon jelly-o halvah cake cake. Icing jujubes candy pastry macaroon wafer toffee cookie.
-        Lemon drops sesame snaps macaroon carrot cake halvah. Pie cookie dessert pie bonbon topping marshmallow cupcake. Chocolate halvah chocolate bar dragée chocolate tiramisu.
-        Biscuit sesame snaps chocolate cake cake lollipop pudding jelly-o biscuit sugar plum. Tart gummies lollipop halvah chocolate bar icing brownie topping. Tart muffin candy donut tart shortbread jelly beans cake. Shortbread tootsie roll pie bear claw macaroon soufflé pie cotton candy pudding.</p>
+        Remember the basics of water, light, soil, and temperature.
+        If you can get these somewhat right, don't worry about all the other fancy things you can but in shops today
+        Don’t overwater your plants. It’s much easier to revive them when they’re under-watered. Also, don’t put your
+        plants in direct sunlight,
+        which can cause spotting, burning or the leaves to fall off.
+        But the right plant for your indoor space. Some love lots of sunlight, others can take a lot of shade.
+        Aspidistras are known as the cast iron plant for a reason and will be the easiest plant you own.
+        They are pretty unkillable. It can go without water for a month or more. It's can take shade and will often grow
+        up to a meter tall
+    </p>
 </div>
 <!-- Parallax section 3 -->
 {% if request.user.is_authenticated %}
@@ -59,11 +84,19 @@
 <div class="parallax-2 text-center py-4  px-3">
     <h2>Why Register?</h2>
     <p class="text-content mx-2">
-        Cupcake ipsum dolor sit amet topping chupa chups. Candy sweet sweet roll sweet roll chocolate bar. Ice cream cake icing sugar plum cupcake.
-        Chupa chups jujubes danish toffee topping donut tart jelly carrot cake. Wafer topping dragée croissant cotton candy lemon drops. Gingerbread ice cream muffin danish jujubes donut chocolate bar. Jelly beans croissant cookie icing carrot cake candy.
-        Chocolate toffee tiramisu chocolate muffin dessert jelly-o macaroon dessert. Jelly shortbread bonbon jelly-o halvah cake cake. Icing jujubes candy pastry macaroon wafer toffee cookie.
-        Lemon drops sesame snaps macaroon carrot cake halvah. Pie cookie dessert pie bonbon topping marshmallow cupcake. Chocolate halvah chocolate bar dragée chocolate tiramisu.
-        Biscuit sesame snaps chocolate cake cake lollipop pudding jelly-o biscuit sugar plum. Tart gummies lollipop halvah chocolate bar icing brownie topping. Tart muffin candy donut tart shortbread jelly beans cake. Shortbread tootsie roll pie bear claw macaroon soufflé pie cotton candy pudding.</p>
+        Indoor plants improve your mental and physical well-being in ways you probably didn’t even realize.
+        Ever wonder why you feel like you can breathe easier, focus better, and simply be happier in a room full of
+        nature?
+        You’ll breathe better air.
+        Research shows that indoor plants help rid the air of common toxins and indoor pollutants such as formaldehyde
+        and benzene.
+        Houseplants can also do wonders for your mental health. For instance, when 28 new plants were placed in common
+        areas of a heart and lung rehab center in Norway,
+        patients reported a greater increase in well-being four weeks later compared to patients who didn’t have
+        greenery added, one study found.
+        We can help you get tehse and many more benefits in your home or other indoor space
+
+    </p>
     <a href="{% url 'account_signup' %}" class="btn my-1">Register here</a>
 </div>
 {% endif %}
@@ -71,9 +104,9 @@
 <div class="parallax-2 text-center py-4  px-3">
     {% if request.user.is_authenticated %}
     <a href="{% url 'services' %}" class="btn my-1">Request a booking today</a>
-            <a href="{% url 'articles' %}" class="btn my-1">Learn more about the benefits of House plants here</a>
+    <a href="{% url 'articles' %}" class="btn my-1">Learn more about the benefits of House plants here</a>
     {% else %}
-    <p class="text-content m-2">Please register or login to access our services 
+    <p class="text-content m-2">Please register or login to access our services
         <a href="{% url 'account_signup' %}" class="my-3 px-3 footer-home-btn">Register</a>
         <a href="{% url 'account_login' %}" class="my-3 px-3 footer-home-btn">Login</a>
     </p>
