@@ -269,14 +269,14 @@ a.home-pg-links {
     .img-thumbnail {
         height: 80%;
         width: 100%;
-    },
+    };
     /* links and text on article page and also on footer */
     .article-links {
         font-size: 1rem;   
-    },
+    };
     footer {
         font-size: .8rem;
-    }
+    };
     a.footer-home-btn {
         font-size: .8rem;
         border-style: none !important;

@@ -13,7 +13,7 @@
         <li class="list-inline-item py-2"><a href="{% url 'articles' %}" class="nav-text-content">Learn more</a></li>
         <li class="list-inline-item py-2"><a href="{% url 'account_logout' %}" class="nav-text-content">Logout</a></li>
     {% else %}
-        <li class="list-inline-item py-2"><a href="" class="text-content">Home</a></li>
+        <li class="list-inline-item py-2"><a href="" class="nav-text-content">Home</a></li>
         <li class="list-inline-item py-2"><a href="{% url 'account_signup' %}" class="nav-text-content">Register</a></li>
         <li class="list-inline-item py-2"><a href="{% url 'account_login' %}" class="nav-text-content">Login</a></li>
     {% endif %}
