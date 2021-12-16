@@ -11,6 +11,7 @@
 
   body {
     height: calc(100vh - 164px);
+
     
   }
   
@@ -252,6 +253,7 @@ a.home-pg-links {
 /* footer background */
 .footer-container {
     background-color: #e7d3d3;
+      
 }
 
 

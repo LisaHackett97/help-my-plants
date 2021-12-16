@@ -108,6 +108,10 @@ These were built using balsamiq.
 
 #### Includes some design decision made during development
 
+- Footer added day before submission. To give better layout on full content pages. However for logout and empty cart pages, footer is floating up the page.
+I have the code to fix the footer, but when this is applied to footer in base template results in footer fixing on top of content in some pages such as articles.
+For this project and due to time issues, I have just added some margin on logout and empty cart pages so that footer shows in middle of page and doesn't hug the buttons.
+If time allows, will come back to this
 
 
 

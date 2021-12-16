@@ -156,6 +156,10 @@ Done and working without full WH handler functionality.
 
 
 
+- Footer added day before submission. To give better layout on full content pages. However for logout and empty cart pages, footer is floating up the page.
+I have the code to fix the footer, but when this is applied to footer in base template results in footer fixing on top of content in some pages such as articles.
+For this project and due to time issues, I have just added some margin on logout and empty cart pages so that footer shows in middle of page and doesn't hug the buttons.
+If time allows, will come back to this
 
 
 
@@ -208,7 +212,6 @@ RESOLVED.
 - A few times I would get an attribute error. But this was usually that I needed to aply migrations
 
 - Text on the profile link on mobiel nav menu dispaying different to others: Resolved, jsut needed to update the class
-
 
 
 
