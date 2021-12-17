@@ -487,7 +487,18 @@ Css for footer not fully updating in deployed version. May be a timing issue. To
 ### Code Validation
 
 
-When all feature, user story testing etc fully completed. Rerun though validators. Any changes would be noted here
+When all features, user story testing etc fully completed. Rerun though validators. Any changes would be noted here
+- CSS Final Validation: One parse error. Corrected and validation re-ran
+- JS. Had added in esversion comment to js file, and removed type from all script elements. No errors
+
+[Final Css and JS validation Results](README-assets/final-css-js-validation.pdf)
+
+- HTML: All pages validated by using code on page course on deployed app
+
+[Attached here is a summary of templates checked and results]()
+
+
+
 
 [Back to table of contents](#table-of-contents)
 
