@@ -522,6 +522,14 @@ There were a few contrast errors relating to allauth templates. I decided not to
 </details>
 <br>
 
+- Lighthouse 
+  - Performance scores have gone up and down each time I run the reports. Best practice score is down with a warning about the jquery library
+
+      - Mobile and desktop reports are attached
+
+      [Mobile](README-assets/Lighthouse-reports-Mobile.pdf)
+      [Desktop](README-assets/Lighthouse-Reports-Desktop.pdf)
+
 
 
 
