@@ -470,7 +470,7 @@ Css for footer not fully updating in deployed version. May be a timing issue. To
   - I had moved some article related css to the base css file. This seems to be the issue. Move article links back to article.css. Ensure all on home page had correct link class. 
   - Try to add footer back to base template and add a different class for links in the footer in base css. Push to githib and test again.
   - On local version, footer is fixed in place and displaying as expected. Footer is not fixing on deployed, not all css changes updating in deployed. 
-  - Seems to be delay/timing with aws update. Leave overnight and recheck!
+  - Seems to be delay/timing with aws update. Leave overnight and recheck! Resolved fully now. There was a parsing error in the base.css file, media query. Fixed and pushed to deployed. Looks fine now
 
 [Back to table of contents](#table-of-contents)
 
@@ -493,9 +493,13 @@ When all features, user story testing etc fully completed. Rerun though validato
 
 [Final Css and JS validation Results](README-assets/final-css-js-validation.pdf)
 
-- HTML: All pages validated by using code on page course on deployed app
+- HTML: All pages validated by using code on page course on deployed app. Needed to move the closing tag for footer and its container outside the if statement.
 
 [Attached here is a summary of templates checked and results]()
+
+- Python: All python files initially run through pep8 check,. and errors/warnings corrected. There were a few "line too long" warnings I could not correct as it caused issues with my code. Once all changes made, all files checked on PEP8. 
+Below are the results
+
 
 
 
