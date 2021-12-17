@@ -70,7 +70,7 @@ Wave tests help identify issues early so that they could be corrected and featur
 
 [Back to table of contents](#table-of-contents)
 
-### django testing TBC
+
 
 #### Defensive Design
 
@@ -495,11 +495,25 @@ When all features, user story testing etc fully completed. Rerun though validato
 
 - HTML: All pages validated by using code on page course on deployed app. Needed to move the closing tag for footer and its container outside the if statement.
 
-[Attached here is a summary of templates checked and results]()
+
+<details>
+  <summary>here is a summary of templates checked and results </summary>
+  <img src="README-assets/html-validation-results.PNG" alt="HTML Validation" width="70%" height="70%">
+</details>
+<br>
+
 
 - Python: All python files initially run through pep8 check,. and errors/warnings corrected. There were a few "line too long" warnings I could not correct as it caused issues with my code. Once all changes made, all files checked on PEP8. 
 Below are the results
 
+- Wave Reports
+There were a few contrast errors relating to allauth templates. I decided not to touch these. Also a few label warnings on the forms, which I was unable to fix
+
+<details>
+  <summary>here is a summary of templates checked and results </summary>
+  <img src="README-assets/wave-check-report.PNG" alt="HTML Validation" width="70%" height="70%">
+</details>
+<br>
 
 
 
