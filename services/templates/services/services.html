@@ -47,7 +47,7 @@
                                 <small class="text-content">€ {{ service.price }}</small>
                                 {% if request.user.is_superuser %}
                                 <small>
-                                    <a href="{% url 'edit_service' service.id %}">Edit</a> |
+                                    <a href="{% url 'edit_service' service.id %}" class="home-pg-links">Edit</a> |
                                     <a class="text-danger" href="{% url 'delete_service' service.id %}">Delete</a>
                                 </small>
                                 {% endif %}

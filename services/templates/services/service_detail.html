@@ -32,7 +32,7 @@
         <p class="text-content"><strong>€ </strong>{{ service.price }}</p>
         {% if request.user.is_superuser %}
         <p class="ml-3">
-          <a href="{% url 'edit_service' service.id %}">Edit</a> |
+          <a href="{% url 'edit_service' service.id %}" class="home-pg-links">Edit</a> |
           <a class="text-danger" href="{% url 'delete_service' service.id %}">Delete</a>
         </p>
         {% endif %}
