@@ -506,12 +506,19 @@ When all features, user story testing etc fully completed. Rerun though validato
 - Python: All python files initially run through pep8 check,. and errors/warnings corrected. There were a few "line too long" warnings I could not correct as it caused issues with my code. Once all changes made, all files checked on PEP8. 
 Below are the results
 
+<details>
+  <summary>here is a summary of files checked and results </summary>
+  <img src="README-assets/pep8-validation-results.PNG" alt="HPEP8-Validation" width="70%" height="70%">
+</details>
+<br>
+
+
 - Wave Reports
 There were a few contrast errors relating to allauth templates. I decided not to touch these. Also a few label warnings on the forms, which I was unable to fix
 
 <details>
   <summary>here is a summary of templates checked and results </summary>
-  <img src="README-assets/wave-check-report.PNG" alt="HTML Validation" width="70%" height="70%">
+  <img src="README-assets/wave-check-report.PNG" alt="WAVE-Results" width="70%" height="70%">
 </details>
 <br>
 
