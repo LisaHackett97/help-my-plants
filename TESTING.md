@@ -454,7 +454,7 @@ Trying to position fixed but then main content scrolls behind footer and user ca
 
 - Email: On final testing, set up a new user being email was not being sent. Delete my gmail sets and readded django. Tested and bug resolved
 
-[Final-email-tests(media/final-email-test.pdf)
+[Final-email-tests](media/final-email-test.pdf)
 
 
 
@@ -478,8 +478,14 @@ Css for footer not fully updating in deployed version. May be a timing issue. To
 
 #### Lighthouse testing
 
-[Reports for Mobile]
-[Reports for Desktop]
+
+- Lighthouse 
+  - Performance scores have gone up and down each time I run the reports. Best practice score is down with a warning about the jquery library
+
+      - Mobile and desktop reports are attached
+
+      [Mobile](README-assets/Lighthouse-reports-Mobile.pdf)
+      [Desktop](README-assets/Lighthouse-Reports-Desktop.pdf)
 
 #### Accessibility
 
@@ -522,13 +528,6 @@ There were a few contrast errors relating to allauth templates. I decided not to
 </details>
 <br>
 
-- Lighthouse 
-  - Performance scores have gone up and down each time I run the reports. Best practice score is down with a warning about the jquery library
-
-      - Mobile and desktop reports are attached
-
-      [Mobile](README-assets/Lighthouse-reports-Mobile.pdf)
-      [Desktop](README-assets/Lighthouse-Reports-Desktop.pdf)
 
 
 
