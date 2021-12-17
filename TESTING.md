@@ -296,7 +296,7 @@ Recommended do not use IE10 to view site, please use Microsoft edge for best vie
 |-------|-----------------|-------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | US-01 | First time User | Find Out what the site is about                       | View the page and read information                                                                                        | As Expected                                                                                           |
 | US-02 | First time User | Navigate easily                                       | View accessible parts of the site without to many clicks                                                                  | As Expected                                                                                           |
-| US-03 | First time User | Register, then login to the site                      | Easily enter my registration details, then click to login                                                                 | register and validate email. No issues                                                                |
+| US-03 | First time User | Register, then login to the site                      | Easily enter my registration details, then click to login                                                                 | register and validate email. No issues    ** On final rechecks bug, but resolved
 | US-04 | Registered User | Login to the site                                     | Easily enter my login details to enter thesite                                                                            | Logged in. No Issues                                                                                  |
 | US-05 | Registered User | View Services & Prices                                | Read the list of available services and  view the cost of each                                                            | View the page and pdetails. Can view all as expected                                                  |
 | US-06 | Registered User | Choose and book a service                             | Select a service, view the total cost, add my details and click to submit                                                 | View the service detail, click to add to cart and then click for checkout, wehre details can be added |
@@ -451,6 +451,10 @@ Trying to position fixed but then main content scrolls behind footer and user ca
 
 - While feature testing the cart page, images are not rendering correctly. Bug resolved. image url needed to be added                                                              
 - go to top of page icon is no longer working. Not sure what issue was with my original code. Resolved by updating with code for this from boutique ado project
+
+- Email: On final testing, set up a new user being email was not being sent. Delete my gmail sets and readded django. TEsted and bug resolved
+
+[Final-email-tests(media/final-email-test.pdf)
 
 
 
