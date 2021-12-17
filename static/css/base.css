@@ -17,11 +17,13 @@
   
 /* header/nav bar stylings */
 
-/* Mobile icon */
-  .fas.fa-bars {
+/* Mobile icon and back to top icon*/
+  .fas.fa-bars,
+  .fas.fa-arrow-up {
     font-size: 2rem;
     color: var(--headers); 
  }
+
 
  .bg-mobile-nav  {
     background-color: var(--color2);
