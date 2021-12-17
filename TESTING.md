@@ -452,7 +452,7 @@ Trying to position fixed but then main content scrolls behind footer and user ca
 - While feature testing the cart page, images are not rendering correctly. Bug resolved. image url needed to be added                                                              
 - go to top of page icon is no longer working. Not sure what issue was with my original code. Resolved by updating with code for this from boutique ado project
 
-- Email: On final testing, set up a new user being email was not being sent. Delete my gmail sets and readded django. TEsted and bug resolved
+- Email: On final testing, set up a new user being email was not being sent. Delete my gmail sets and readded django. Tested and bug resolved
 
 [Final-email-tests(media/final-email-test.pdf)
 

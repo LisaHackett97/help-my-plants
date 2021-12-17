@@ -18,10 +18,15 @@
 /* header/nav bar stylings */
 
 /* Mobile icon and back to top icon*/
-  .fas.fa-bars,
-  .fas.fa-arrow-up {
+  .fas.fa-bars {
     font-size: 2rem;
     color: var(--headers); 
+ }
+
+ .btt-link{
+     color: var(--color1);
+     font-size: 2rem;
+     z-index: 9999;
  }
 
 
